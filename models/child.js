@@ -1,9 +1,6 @@
-// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
-const bcrypt = require("bcryptjs");
-
 // Creating our Child model
 module.exports = function(sequelize, DataTypes) {
-  const Chld = sequelize.define(
+  const Child = sequelize.define(
     "Child",
     {
         childName: {
@@ -25,8 +22,22 @@ module.exports = function(sequelize, DataTypes) {
   Child.associate = function(models) {
     // Associating Child with Posts
     // When an Child is deleted, also delete any associated Posts
-    Child.hasMany(models.Adult, {
-      onDelete: "cascade"
+    Child.belongsToMany(models.Adult, {
+      through: "ParentChild"
+    });
+    Child.belongsToMany(models.Adult, {
+      through: "NonParentChild"
+    });
+    Child.hasMany(models.Food, {
+
+    });
+
+    Child.hasMany(models.Sleep, {
+
+    });
+
+    Child.hasMany(models.Information, {
+
     });
     
   };

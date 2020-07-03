@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     "Adult",
     {
       //Name of adult that cannot be NULL
-      adultName: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -92,13 +92,12 @@ module.exports = function(sequelize, DataTypes) {
   Adult.associate = function(models) {
     // Associating Adult with Posts
     // When an Adult is deleted, also delete any associated Posts
-    Adult.hasMany(models.Child, {
+    Adult.belongsToMany(models.Child, {
       through: "ParentChild",
       onDelete: "cascade"
     });
-    Adult.hasMany(models.Child, {
+    Adult.belongsToMany(models.Child, {
       through: "NonParentChild",
-      onDelete: "cascade"
     });
   };
 
