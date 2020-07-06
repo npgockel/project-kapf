@@ -13,6 +13,7 @@ function Navigation(props) {
           <Button component={Link} to="/requirements" color="inherit">Requirements</Button>
           <Button component={Link} to="/forum" color="inherit">Forum</Button>
 
+
           {user.email ?
             <>
               <Button color="inherit">Logged in as: {user.email}</Button>
@@ -24,6 +25,10 @@ function Navigation(props) {
               <Button component={Link} to="/signup" color="inherit">Signup</Button>
             </>
           }
+          <Button component={Link} to="/child-overview" color="inherit">ChildOverview</Button>
+          <Button component={Link} to="/logfood" color="inherit">LogFood</Button>
+          <Button component={Link} to="/logsleep" color="inherit">LogSleep</Button>
+          <Button component={Link} to="/loginfo" color="inherit">LogInfo</Button>
         </Toolbar>
       </AppBar>
     </>

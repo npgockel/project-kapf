@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Home, Requirements, Forum } from "./pages";
+import { Home, Requirements, Forum, ChildOverview, LogFood, LogInfo, LogSleep } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
@@ -77,6 +77,18 @@ function App() {
                     loginUser={loginUser}
                     signupUser={signupUser}
                   />
+                </Route>
+                <Route exact path={["/child-overview"]}>
+                  <ChildOverview />
+                </Route>
+                <Route exact path={["/logfood"]}>
+                  <LogFood />
+                </Route>
+                <Route exact path={["/logsleep"]}>
+                  <LogSleep />
+                </Route>
+                <Route exact path={["/loginfo"]}>
+                  <LogInfo />
                 </Route>
               </Switch>
             </Grid>

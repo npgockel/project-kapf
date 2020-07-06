@@ -4,3 +4,6 @@ export { default as PostForm } from "./PostForm";
 export { default as LoginForm } from "./LoginForm";
 export { default as SignupForm } from "./SignupForm";
 export { default as Error } from "./Error";
+export { default as BackBtn } from "./Layout/BackBtn";
+export { default as FoodTable } from "./Layout/FoodTable";
+export { default as FoodInput } from "./Layout/FoodInput";
