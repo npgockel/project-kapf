@@ -1,15 +1,15 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, TextField, Container, Grid, Paper } from '@material-ui/core';
+import { Button, TextField, Typography, Container, Grid, Paper } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 
-const useStyles = makeStyles((theme) => ({
-    media: {
-        height: 200,
-        width: 98,
+// const useStyles = makeStyles((theme) => ({
+//     media: {
+//         height: 200,
+//         width: 98,
 
     
-}));
+// }));
 
 
 
@@ -20,7 +20,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
 function Copyright() {
     return (

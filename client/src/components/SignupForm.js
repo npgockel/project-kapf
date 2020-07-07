@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
 function SignupForm(props) {
     const classes = useStyles();
     const { formObject, handleFormSubmit, handleInputChange } = props;
-    const classes = useStyles();
+    // const classes = useStyles();
 
     return (
         <Container component="main" maxWidth="xs">
