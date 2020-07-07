@@ -1,195 +1,157 @@
 import React from 'react';
-import { SwipeableTemporaryDrawer } from "../components/";
-import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import SettingsIcon from '@material-ui/icons/Settings';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import Link from '@material-ui/core/Link';
 
-const useStyles = makeStyles({
-    root: {
-        // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
-    },
-    paper: {
-        margin: 0,
-        padding: 10,
-        backgroundColor: "beige",
-    }
-});
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    marginRight: theme.spacing(2),
+  },
+  heroContent: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 0, 6),
+  },
+  heroButtons: {
+    marginTop: theme.spacing(4),
+  },
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  cardMedia: {
+    paddingTop: '56.25%', // 16:9
+  },
+  cardContent: {
+    flexGrow: 1,
+  },
+  footer: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(6),
+  },
+}));
+
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Home() {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <>
-            {/* <Grid container spacing={1}>
-                <Grid item xs={4}>
-                    <Container className={classes.paper}>xs=4</Container>
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      <AppBar position="relative">
+        <Toolbar>
+          <CameraIcon className={classes.icon} />
+          <Typography variant="h6" color="inherit" noWrap>
+            Album layout
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <main>
+        {/* Hero unit */}
+        <div className={classes.heroContent}>
+          <Container maxWidth="sm">
+            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+              Hi "Parent"
+            </Typography>
+            {/* <Typography variant="h5" align="center" color="textSecondary" paragraph>
+              Something short and leading about the collection below—its contents, the creator, etc.
+              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
+              entirely.
+            </Typography> */}
+            <div className={classes.heroButtons}>
+              <Grid container spacing={1} justify="center">
+                <Grid item>
+                  <Button variant="contained" color="primary">
+                    Add Your Child
+                  </Button>
                 </Grid>
-                <Grid item xs={4}>
-                    <Container className={classes.paper}>xs=4</Container>
+                <Grid item>
+                  <Button variant="outlined" color="primary">
+                    Settings
+                  </Button>
                 </Grid>
-                <Grid item xs={4}>
-                    <Container className={classes.paper}>xs=4</Container>
+                <Grid item>
+                  <Button variant="outlined" color="secondary">
+                    Nanny Schedule
+                  </Button>
                 </Grid>
-                <Grid item xs={8}>
-                    <Container className={classes.paper}>xs=8</Container>
-                </Grid>
-                <Grid item xs={4}>
-                    <Container className={classes.paper}>xs=4</Container>
-                </Grid>
-            </Grid>
- */}
-
-            <Grid container spacing={2}>
-                <Grid container item 
-                    className={classes.paper}
-                    xs={1}
-                    justify="flex-start"
-                    alignItems="center"
-                >
-                </Grid>
-
-                <Grid container item
-                    className={classes.paper}
-                    xs={5}
-                    justify="flex-start"
-                    alignItems="center"
-
-                >
-                    <h2>Hi Parent</h2>
-                </Grid>
-
-                <Grid container item
-                    className={classes.paper}
-                    xs={5}
-                    justify="flex-end"
-                    alignItems="center"
-
-                >
-                    <SettingsIcon></SettingsIcon>
-
-                </Grid>
-
-                <Grid container item
-                    className={classes.paper}
-                    xs={1}
-                    justify="flex-end"
-                    alignItems="center"
-                >
-                </Grid>
-            </Grid>
-
-            <Grid container
-                spacing={2}
-                direction="column"
-            >
-                <Grid container item
-                    className={classes.paper}
-                    xs={12}
-                    justify="center"
-                    alignItems="center"
-
-                >
-                    <Card className={classes.root}>
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                alt="Contemplative Reptile"
-                                height="200"
-                                image="toddler.png"
-                                title="Contemplative Reptile"
-                            />
-                            <CardContent>
-                                <Grid
-                                    container spacing={1}
-
-                                    justify="center"
-                                    alignItems="center"
-                                >
-                                    <Typography gutterBottom variant="h5" component="h2" >
-                                        Nuggs
-                                </Typography>
-                                </Grid>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-
-
-                </Grid>
-                <Grid container item
-                    className={classes.paper}
-                    xs={12}
-                    justify="center"
-                    alignItems="center"
-
-                >
-                    <Card className={classes.root}>
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                alt="Contemplative Reptile"
-                                height="200"
-                                image="toddler.png"
-                                title="Contemplative Reptile"
-                            />
-                            <CardContent>
-                                <Grid
-                                    container spacing={1}
-                                    justify="center"
-                                    alignItems="center"
-                                >
-                                    <Typography gutterBottom variant="h5" component="h2" >
-                                        Nugget
-                                </Typography>
-                                </Grid>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-
-                </Grid>
-                <Grid container item
-                    className={classes.paper}
-                    xs={12}
-                    justify="center"
-                    alignItems="center"
-
-                >
-                    <Card className={classes.root}>
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                alt="Contemplative Reptile"
-                                height="200"
-                                image="http://www.placekitten.com/200"
-                                title="Contemplative Reptile"
-                            />
-                            <CardContent>
-                                <Grid
-                                    container spacing={0}
-                                    direction="column"
-                                    justify="center"
-                                    alignItems="center"
-                                >
-                                    <AddCircleIcon></AddCircleIcon>
-
-                                    <Typography gutterBottom variant="h6" component="h6" >
-                                        <span>add a nugget</span>
-                                    </Typography>
-                                </Grid>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-                </Grid>
-            </Grid>
-        </>
-    );
+              </Grid>
+            </div>
+          </Container>
+        </div>
+        <Container className={classes.cardGrid} maxWidth="md">
+          {/* End hero unit */}
+          <Grid container spacing={4}>
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://source.unsplash.com/random"
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Bartholamew
+                    </Typography>
+                    <Typography>
+                      This is a media card. You can use this section to describe the content.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    <Button size="small" color="primary">
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </main>
+      {/* Footer */}
+      <footer className={classes.footer}>
+        <Typography variant="h6" align="center" gutterBottom>
+          Footer
+        </Typography>
+        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+          Something here to give the footer a purpose!
+        </Typography>
+        <Copyright />
+      </footer>
+      {/* End footer */}
+    </React.Fragment>
+  );
 }
