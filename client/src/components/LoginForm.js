@@ -1,5 +1,16 @@
 import React from "react";
-import { Container, Grid, Button, TextField, Paper, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Button, TextField, Container, Grid, Paper } from '@material-ui/core';
+import CardMedia from '@material-ui/core/CardMedia';
+
+const useStyles = makeStyles((theme) => ({
+    media: {
+        height: 200,
+        width: 98,
+
+    
+}));
+
 
 
 import Avatar from '@material-ui/core/Avatar';

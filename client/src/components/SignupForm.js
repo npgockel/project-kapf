@@ -96,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignupForm(props) {
+    const classes = useStyles();
     const { formObject, handleFormSubmit, handleInputChange } = props;
     const classes = useStyles();
 

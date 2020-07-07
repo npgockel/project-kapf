@@ -1,5 +1,5 @@
 import React from 'react';
-import { SwipeableTemporaryDrawer } from "../components/";
+import { SwipeableTemporaryDrawer } from "../components";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     }
 });
 
-export default function Home() {
+export default function NannyHome() {
     const classes = useStyles();
 
     return (
@@ -50,7 +50,7 @@ export default function Home() {
  */}
 
             <Grid container spacing={2}>
-                <Grid container item 
+            <Grid container item 
                     className={classes.paper}
                     xs={1}
                     justify="flex-start"
@@ -65,7 +65,7 @@ export default function Home() {
                     alignItems="center"
 
                 >
-                    <h2>Hi Parent</h2>
+                    <h2>Hi Nanny</h2>
                 </Grid>
 
                 <Grid container item
@@ -163,33 +163,13 @@ export default function Home() {
                     alignItems="center"
 
                 >
-                    <Card className={classes.root}>
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                alt="Contemplative Reptile"
-                                height="200"
-                                image="http://www.placekitten.com/200"
-                                title="Contemplative Reptile"
-                            />
-                            <CardContent>
-                                <Grid
-                                    container spacing={0}
-                                    direction="column"
-                                    justify="center"
-                                    alignItems="center"
-                                >
-                                    <AddCircleIcon></AddCircleIcon>
 
-                                    <Typography gutterBottom variant="h6" component="h6" >
-                                        <span>add a nugget</span>
-                                    </Typography>
-                                </Grid>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
+
                 </Grid>
             </Grid>
+
+
+
         </>
     );
 }
