@@ -53,13 +53,6 @@ function LogFood() {
                 </Grid>
             </Grid>
             <FoodInput />
-            <Grid container spacing={3} direction="column" alignItems="center">
-                <Grid item xs={12}>
-                    <Button component={Link} to="/logfood" className={classes.paper} variant="contained" size="large" color="primary">
-                        Log New Food
-                    </Button>
-                </Grid>
-            </Grid>
         </div>
     );
 }
