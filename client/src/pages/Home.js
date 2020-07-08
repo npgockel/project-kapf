@@ -18,8 +18,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="/home">
+        Nannny Nanny
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -67,14 +67,14 @@ export default function Home() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative">
+      {/* <AppBar position="relative">
         <Toolbar>
           <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
             Album layout
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -124,7 +124,7 @@ export default function Home() {
                       Bartholamew
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      ---Your child's one liner---
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -144,10 +144,10 @@ export default function Home() {
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          Nanny Feed My Bebe
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
+          Many thanks to David, Anthony, and Brock!
         </Typography>
         <Copyright />
       </footer>

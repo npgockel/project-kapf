@@ -1,6 +1,7 @@
 import React from 'react';
-import { SwipeableTemporaryDrawer } from "../components";
 import { makeStyles } from '@material-ui/core/styles';
+import StickyFooter from "../components/Layout/StickyFooter";
+import Checkout from "../components/Layout/Checkout";
 
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -25,6 +26,21 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 import Input from '@material-ui/core/Input';
 
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Link from '@material-ui/core/Link';
+
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary">
+            {'Copyright © '}
+            <Link color="inherit" href="https://material-ui.com/">
+                Your Website
+        </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
 
 const useStyles = makeStyles({
     root: {
@@ -40,92 +56,43 @@ const useStyles = makeStyles({
         margin: 10,
         padding: 10,
 
-    }
+    },
 });
 
-export default function Home() {
+
+export default function AddChild() {
     const classes = useStyles();
 
     return (
         <>
-            {/* <Grid container spacing={1}>
-                <Grid item xs={4}>
-                    <Container className={classes.paper}>xs=4</Container>
-                </Grid>
-                <Grid item xs={4}>
-                    <Container className={classes.paper}>xs=4</Container>
-                </Grid>
-                <Grid item xs={4}>
-                    <Container className={classes.paper}>xs=4</Container>
-                </Grid>
-                <Grid item xs={8}>
-                    <Container className={classes.paper}>xs=8</Container>
-                </Grid>
-                <Grid item xs={4}>
-                    <Container className={classes.paper}>xs=4</Container>
-                </Grid>
-            </Grid>
- */}
-
             <Grid container spacing={2}>
                 <Grid container item
                     className={classes.topAlignment}
                     xs={12}
                     justify="flex-start"
                     alignItems="center"
-
                 >
                     <ArrowBackIosIcon></ArrowBackIosIcon>
-
                 </Grid>
 
 
-                <Grid container item
+                {/* <Grid container item
                     className={classes.paper}
                     xs={12}
                     justify="center"
                     alignItems="center"
-
                 >
                     <h2>Add your Nugget</h2>
 
 
-                </Grid>
+                </Grid> */}
             </Grid>
 
+            <Checkout />
 
-            <Grid container
-                spacing={2}
-                direction="column"
-            >
-                <Grid container item
-                    className={classes.paper}
-                    xs={6}
-                    justify="center"
-                    alignItems="center"
-                >
-                    <form className={classes.root} noValidate autoComplete="off">
-                        <Input defaultValue="Name" inputProps={{ 'aria-label': 'description' }} /> 
-                        <br></br>
-                        <Input placeholder="Gender" inputProps={{ 'aria-label': 'description' }} />
-                        <br></br>
-                        <Input defaultValue="Birthdate" disabled inputProps={{ 'aria-label': 'description' }} />                        <br></br>
-                        <Input defaultValue="Allergy" error inputProps={{ 'aria-label': 'description' }} />
-                    </form>
 
-                    {/* <FormControl component="fieldset">
-                        <FormLabel component="legend">Gender</FormLabel>
-                        <RadioGroup aria-label="gender" name="gender1"
-                        //  value={value} onChange={handleChange}
-                        >
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
-                            <FormControlLabel value="other" control={<Radio />} label="Other" />
-                        </RadioGroup>
-                    </FormControl> */}
-                </Grid>
 
-            </Grid>
+            <StickyFooter />
         </>
     );
 }
