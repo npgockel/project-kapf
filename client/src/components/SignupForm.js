@@ -67,8 +67,8 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-      </Link>{' '}
+                Nanny Nugget
+            </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
         </Typography>
@@ -187,7 +187,7 @@ function SignupForm(props) {
                     >
                         Sign Up
           </Button>
-                        <Button
+                    <Button
                         component={Link} to="/login"
                         fullWidth
                     >
