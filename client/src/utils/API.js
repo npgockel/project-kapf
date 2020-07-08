@@ -94,5 +94,23 @@ export default {
         update: function(id, data){
             return _update("users", id, data);
         }
+    },
+    Food: {
+        getAll: function () {
+            return _getAll("food");
+        },
+        getById: function (id) {
+            return _getOne("food", id);
+        },
+        delete: function (id) {
+            return _delete("food", id);
+        },
+        create: function(data){
+            return _create("food", data);
+        },
+        update: function(id, data){
+            return _update("food", id, data);
+        }
     }
+
 }
