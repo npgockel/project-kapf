@@ -12,7 +12,7 @@ passport.use(
     },
     function(email, password, done) {
       // When a user tries to sign in this code runs
-      db.User.scope("withPassword")
+      db.Adult.scope("withPassword")
         .findOne({
           where: {
             email: email

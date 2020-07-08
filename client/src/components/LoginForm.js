@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 //         height: 200,
 //         width: 98,
 
-    
+
 // }));
 
 
@@ -55,8 +55,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function LoginForm() {
+export default function LoginForm(props) {
     const classes = useStyles();
+    const { formObject, handleFormSubmit, handleInputChange } = props;
+
     const preventDefault = (event) => event.preventDefault();
 
     return (
@@ -76,6 +78,8 @@ export default function LoginForm() {
                         required
                         fullWidth
                         id="email"
+                        onChange={handleInputChange}
+                        value={formObject.email}
                         label="Email Address"
                         name="email"
                         autoComplete="email"
@@ -87,6 +91,8 @@ export default function LoginForm() {
                         required
                         fullWidth
                         name="password"
+                        value={formObject.password}
+                        onChange={handleInputChange}
                         label="Password"
                         type="password"
                         id="password"
@@ -102,6 +108,7 @@ export default function LoginForm() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        onClick={handleFormSubmit}
                     >
                         Sign In
                     </Button>
@@ -167,7 +174,6 @@ export default function LoginForm() {
 //                                 <TextField
 //                                     label="Password"
 //                                     value={formObject.password}
-//                                     name="password"
 //                                     onChange={handleInputChange}
 //                                     as="input"
 //                                     type="password"

@@ -11,12 +11,12 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
   });
 });
 
-// Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-// how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+// Route for signing up a adult. The adult's password is automatically hashed and stored securely thanks to
+// how we configured our Sequelize Adult Model. If the adult is created successfully, proceed to log the adult in,
 // otherwise send back an error
 router.post("/signup", function (req, res) {
   console.log(req.body);
-  db.User.create({
+  db.Adult.create({
     email: req.body.email,
     password: req.body.password
   })
@@ -28,19 +28,19 @@ router.post("/signup", function (req, res) {
     });
 });
 
-// Route for logging user out
+// Route for logging adult out
 router.get("/logout", function (req, res) {
   req.logout();
   res.redirect("/");
 });
 
-// Route for getting some data about our user to be used client side
-router.get("/user_data", function (req, res) {
+// Route for getting some data about our adult to be used client side
+router.get("/adult_data", function (req, res) {
   if (!req.user) {
-    // The user is not logged in, send back an empty object
+    // The adult is not logged in, send back an empty object
     res.json({});
   } else {
-    // Otherwise send back the user's email and id
+    // Otherwise send back the adult's email and id
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,

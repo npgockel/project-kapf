@@ -6,10 +6,15 @@ module.exports = function(sequelize, DataTypes) {
   const Adult = sequelize.define(
     "Adult",
     {
-      //Name of adult that cannot be NULL
-      name: {
+      //firstName of adult that cannot be NULL
+      firstName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
+      },
+      //lastName of adult that cannot be NULL
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: true
       },
       // The email cannot be null, and must be a proper email before creation
       email: {
@@ -33,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
       // Primary Phone Number of User
       primaryPhone:{
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         validate: {
           is: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
           message: "Please enter valid phone number. (Ex. (123)-456-7890)"
@@ -47,7 +52,7 @@ module.exports = function(sequelize, DataTypes) {
       // Primary Phone Number of User
       secondaryPhone:{
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         validate: {
           is: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
           message: "Please enter valid phone number. (Ex. (123)-456-7890)"
