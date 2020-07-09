@@ -7,7 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { DateTimePicker } from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
-import API from '../../utils/API.js'
+import API from '../../utils/API.js';
 
 
 // ***These are the selections for user to make with types and units***
