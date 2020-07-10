@@ -74,18 +74,6 @@ export default function AddChild() {
                 >
                     <ArrowBackIosIcon></ArrowBackIosIcon>
                 </Grid>
-
-
-                {/* <Grid container item
-                    className={classes.paper}
-                    xs={12}
-                    justify="center"
-                    alignItems="center"
-                >
-                    <h2>Add your Nugget</h2>
-
-
-                </Grid> */}
             </Grid>
 
             <Checkout />

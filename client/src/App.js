@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Home, ChildOverview, AddChild, LogFood, LogInfo, LogSleep, NannyHome } from "./pages";
+import { Home, ChildOverview, AddChild, Scheduling, LogFood, LogInfo, LogSleep, NannyHome } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
@@ -65,11 +65,14 @@ function App() {
                 <Route exact path={["/", "/home"]}>
                   <Home />
                 </Route>
+                <Route exact path={["/", "/scheduling"]}>
+                  <Scheduling />
+                </Route>
                 <Route exact path={["/addchild"]}>
                   <AddChild />
                 </Route>
                 <Route exact path={["/nannyhome"]}>
-                  <NannyHome  />
+                  <NannyHome />
                 </Route>
                 <Route exact path={["/login", "/signup"]}>
                   <Auth
