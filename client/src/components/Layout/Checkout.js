@@ -10,7 +10,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import AddressForm from './AddressForm';
+import Basics from './Basics';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 
@@ -64,12 +64,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Basics', 'Important Info', 'Add a photo!'];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <Basics />;
     case 1:
       return <PaymentForm />;
     case 2:
@@ -106,7 +106,7 @@ export default function Checkout() {
           <Typography component="h1" variant="h4" align="center">
             Your Nugget's Information
           </Typography>
-          <Stepper activeStep={activeStep} className={classes.stepper}>
+          {/* <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
@@ -144,7 +144,7 @@ export default function Checkout() {
                 </div>
               </React.Fragment>
             )}
-          </React.Fragment>
+          </React.Fragment> */}
         </Paper>
         <Copyright />
       </main>
