@@ -1,18 +1,16 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
+import React, { useEffect, useState, makeStyles } from 'react';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import API from '../utils/API';
+
 
 function Copyright() {
   return (
@@ -63,18 +61,24 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Home() {
   const classes = useStyles();
+  const [children, setChildren] = useState([])
+
+  useEffect(() => {
+    loadChildren()
+  }, [])
+
+  function loadChildren() {
+    API.Child.getAll()
+      .then(res => {
+        setChildren(res.data)
+        console.log(res.data)
+      })
+      .catch(err => console.log(err))
+  }
 
   return (
     <React.Fragment>
       <CssBaseline />
-      {/* <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -82,11 +86,6 @@ export default function Home() {
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Hi "Parent"
             </Typography>
-            {/* <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
-            </Typography> */}
             <div className={classes.heroButtons}>
               <Grid container spacing={1} justify="center">
                 <Grid item>
