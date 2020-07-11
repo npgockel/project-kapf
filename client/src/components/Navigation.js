@@ -9,15 +9,20 @@ function Navigation(props) {
     <>
       <AppBar position="static">
         <Toolbar>
-          <Button component={Link} to="/home" color="inherit">Home</Button>
-          <Button component={Link} to="/addchild" color="inherit">Add Your Child</Button>
-          <Button component={Link} to="/nannyhome" color="inherit">Nanny Home</Button>
 
 
           {user.email ?
             <>
+              <Button component={Link} to="/home" color="inherit">Home</Button>
+              <Button component={Link} to="/addchild" color="inherit">Add Your Child</Button>
+              <Button component={Link} to="/nannyhome" color="inherit">Nanny Home</Button>
               <Button color="inherit">Logged in as: {user.email}</Button>
               <Button component={Link} to="/home" onClick={logoutUser} color="inherit">Logout</Button>
+              <Button component={Link} to="/child-overview" color="inherit">ChildOverview</Button>
+              <Button component={Link} to="/logfood" color="inherit">LogFood</Button>
+              <Button component={Link} to="/logsleep" color="inherit">LogSleep</Button>
+              <Button component={Link} to="/loginfo" color="inherit">LogInfo</Button>
+
             </>
             :
             <>
@@ -25,10 +30,6 @@ function Navigation(props) {
               <Button component={Link} to="/signup" color="inherit">Signup</Button>
             </>
           }
-          <Button component={Link} to="/child-overview" color="inherit">ChildOverview</Button>
-          <Button component={Link} to="/logfood" color="inherit">LogFood</Button>
-          <Button component={Link} to="/logsleep" color="inherit">LogSleep</Button>
-          <Button component={Link} to="/loginfo" color="inherit">LogInfo</Button>
         </Toolbar>
       </AppBar>
     </>

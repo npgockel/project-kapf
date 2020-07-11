@@ -1,4 +1,5 @@
-import React, { useEffect, useState, makeStyles } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useTheme, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,9 +9,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import { Link } from "react-router-dom";
 import API from '../utils/API';
-
 
 function Copyright() {
   return (
@@ -59,9 +59,9 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Home() {
+export default function Home(props) {
   const classes = useStyles();
-  const [children, setChildren] = useState([])
+  const [childs, setChildren] = useState([])
 
   useEffect(() => {
     loadChildren()
@@ -71,7 +71,6 @@ export default function Home() {
     API.Child.getAll()
       .then(res => {
         setChildren(res.data)
-        console.log(res.data)
       })
       .catch(err => console.log(err))
   }
@@ -89,11 +88,11 @@ export default function Home() {
             <div className={classes.heroButtons}>
               <Grid container spacing={1} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="primary" component={Link} to="/addchild">
                     Add Your Child
                   </Button>
                 </Grid>
-                <Grid item>
+                {/* <Grid item>
                   <Button variant="outlined" color="primary">
                     Settings
                   </Button>
@@ -102,7 +101,7 @@ export default function Home() {
                   <Button variant="outlined" color="secondary">
                     Nanny Schedule
                   </Button>
-                </Grid>
+                </Grid> */}
               </Grid>
             </div>
           </Container>
@@ -110,33 +109,34 @@ export default function Home() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Bartholamew
+            {childs.length > 0 && props.user.id ?
+              childs.map((card) => (
+                <Grid item key={card} xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image="https://source.unsplash.com/random"
+                      title=""
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {card.childName}
+                      </Typography>
+                      <Typography>
+                        ---Your child's one liner---
                     </Typography>
-                    <Typography>
-                      ---Your child's one liner---
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" color="primary">
+                        View
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                      <Button size="small" color="primary">
+                        Edit
                     </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
+                    </CardActions>
+                  </Card>
+                </Grid>
+              )) : <h2>loading...</h2>}
           </Grid>
         </Container>
       </main>
