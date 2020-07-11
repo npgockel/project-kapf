@@ -188,7 +188,7 @@ export default function Checkout() {
 
 
         </Paper>
-        
+
         {/* <Paper className={classes.paper}>
 
           <Typography variant="h6" gutterBottom>
@@ -243,7 +243,7 @@ export default function Checkout() {
             Add a lil photo of your Nugget-roo
           </Typography>
         </Paper>
-
+                */}
         <Paper className={classes.paper}>
           <Grid container spacing={3} direction='column' alignItems='center'>
             <Grid item xs={12}>
@@ -252,7 +252,7 @@ export default function Checkout() {
                 </Button>
             </Grid>
           </Grid>
-        </Paper> */}
+        </Paper>
 
         <Copyright />
       </main>
