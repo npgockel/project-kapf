@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
 // ***FoodInput Function***
 function FoodInput() {
     const classes = useStyles();
+    
     const [type, setType] = useState('formula');
     const [unit, setUnit] = useState('ounce');
     const [quantity, setQuantity] = useState();
@@ -84,7 +85,7 @@ function FoodInput() {
             foodDate: selectedDate
         }
         API.Food.create(foodData);
-        console.log('THE CLICK WORKED!');
+        console.log('THE CLICK WORKED!', foodData);
     }
 
     return (

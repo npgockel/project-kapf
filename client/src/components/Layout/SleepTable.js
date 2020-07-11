@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -16,7 +16,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
 import Grid from '@material-ui/core/Grid';
-
+import API from '../../utils/API';
 
 // ***Created styles used in FoodTable return***
 const StyledTableCell = withStyles((theme) => ({
@@ -107,20 +107,6 @@ TablePaginationActions.propTypes = {
 
 
 
-// ***Data display function***
-function createData(startTime, endTime, totalTime, date) {
-    return { startTime, endTime, totalTime, date };
-}
-
-// ***Example Info (Hardcoded)***
-const rows = [
-    createData("9:00am", "10:00am", "1 hr", "07-05-2020"),
-    createData("1:00pm", "1:45pm", "45 min", "07-05-2020"),
-    createData("4:00pm", "5:30pm", "1 hr 30 min", "07-05-2020"),
-    createData("8:00am", "8:30am", "30 min", "07-06-2020"),
-].sort((a, b) => (a.date > b.date ? -1 : 1));
-
-
 // ***Style used below in SleepTable return***
 const useStyles2 = makeStyles({
     table: {
@@ -132,6 +118,27 @@ function SleepTable() {
     const classes = useStyles2();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [sleep, setSleep] = useState([])
+
+
+    useEffect(() => {
+        loadSleep()
+    }, [])
+
+
+    function loadSleep() {
+        API.Sleep.getAll()
+            .then(res => {
+                setSleep(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+
+    // ***THIS IS WHERE THE DATA FROM API IS PULLED AND SORTED (Gets mapped later inside TableBody)***
+    const rows = sleep.sort((a, b) => (a.date < b.date ? -1 : 1));
+
+
+
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -164,16 +171,16 @@ function SleepTable() {
                             ).map((row) => (
                                 <StyledTableRow key={row.name}>
                                     <TableCell component="th" scope="row">
-                                        {row.startTime}
+                                        {row.sleepStart}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.endTime}
+                                        {row.sleepEnd}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.totalTime}
+                                        {row.sleepTotal}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.date}
+                                        {row.sleepDate}
                                     </TableCell>
                                 </StyledTableRow>
                             ))}
