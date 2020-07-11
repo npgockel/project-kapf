@@ -131,19 +131,19 @@ export default {
     },
     Sleep: {
         getAll: function () {
-            return _getAll("food");
+            return _getAll("sleep");
         },
         getById: function (id) {
-            return _getOne("food", id);
+            return _getOne("sleep", id);
         },
         delete: function (id) {
-            return _delete("food", id);
+            return _delete("sleep", id);
         },
         create: function(data){
-            return _create("food", data);
+            return _create("sleep", data);
         },
         update: function(id, data){
-            return _update("food", id, data);
+            return _update("sleep", id, data);
         }
     }
 

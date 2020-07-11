@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, makeStyles, useTheme } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -16,7 +16,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
 import Grid from '@material-ui/core/Grid';
-
+import API from '../../utils/API';
 
 // ***Created styles used in FoodTable return***
 const StyledTableCell = withStyles((theme) => ({
@@ -108,25 +108,27 @@ TablePaginationActions.propTypes = {
 
 
 // ***Data display function***
-function createData(food, amount, time, date) {
-    return { food, amount, time, date };
+
+function createData(type, unit, quantity, selectedDate) {
+
+    return { type, unit, quantity, selectedDate };
 }
 
 // ***Example Info (Hardcoded)***
 const rows = [
-    createData('Formula', "6oz", "10:30am", "07-05-2020"),
-    createData('Formula', "4oz", "09:30am", "07-05-2020"),
-    createData('Breast Milk', "6oz", "08:30am", "07-05-2020"),
-    createData('Puree', "4oz", "07:30am", "07-05-2020"),
-    createData('Solid', "5oz", "10:30pm", "07-04-2020"),
-    createData('Formula', "6oz", "09:30pm", "07-04-2020"),
-    createData('Puree', "4oz", "08:30pm", "07-04-2020"),
-    createData('Puree', "5oz", "07:30pm", "07-04-2020"),
-    createData('Breast Milk', "6oz", "06:30pm", "07-04-2020"),
-    createData('Breast Milk', "4oz", "12:30am", "07-03-2020"),
-    createData('Breast Milk', "5oz", "11:30pm", "07-03-2020"),
-    createData('Solid', "4oz", "10:30pm", "07-03-2020"),
-    createData('Formula', "4oz", "09:30pm", "07-03-2020"),
+    // createData('Formula', "6oz", "10:30am", "07-05-2020"),
+    // createData('Formula', "4oz", "09:30am", "07-05-2020"),
+    // createData('Breast Milk', "6oz", "08:30am", "07-05-2020"),
+    // createData('Puree', "4oz", "07:30am", "07-05-2020"),
+    // createData('Solid', "5oz", "10:30pm", "07-04-2020"),
+    // createData('Formula', "6oz", "09:30pm", "07-04-2020"),
+    // createData('Puree', "4oz", "08:30pm", "07-04-2020"),
+    // createData('Puree', "5oz", "07:30pm", "07-04-2020"),
+    // createData('Breast Milk', "6oz", "06:30pm", "07-04-2020"),
+    // createData('Breast Milk', "4oz", "12:30am", "07-03-2020"),
+    // createData('Breast Milk', "5oz", "11:30pm", "07-03-2020"),
+    // createData('Solid', "4oz", "10:30pm", "07-03-2020"),
+    // createData('Formula', "4oz", "09:30pm", "07-03-2020"),
 ].sort((a, b) => (a.date > b.date ? -1 : 1));
 
 
@@ -139,8 +141,28 @@ const useStyles2 = makeStyles({
 
 function FoodTable() {
     const classes = useStyles2();
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+
+
+    const [foods, setFoods] = useState([])
+    const [formObject, setFromObject] = useState({})
+
+    useEffect(() => {
+        loadFood()
+    }, [])
+
+
+    function loadFood() {
+        API.Food.getAll()
+            .then(res => {
+                setFoods(res.data)
+                console.log(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+
+
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -161,7 +183,8 @@ function FoodTable() {
                         <TableHead>
                             <TableRow>
                                 <StyledTableCell>Type of Food</StyledTableCell>
-                                <StyledTableCell align="right">Amount</StyledTableCell>
+                                <StyledTableCell align="right">Unit</StyledTableCell>
+                                <StyledTableCell align="right">Quantity</StyledTableCell>
                                 <StyledTableCell align="right">Time</StyledTableCell>
                                 <StyledTableCell align="right">Date</StyledTableCell>
                             </TableRow>
@@ -173,16 +196,19 @@ function FoodTable() {
                             ).map((row) => (
                                 <StyledTableRow key={row.name}>
                                     <TableCell component="th" scope="row">
-                                        {row.food}
+                                        {row.type}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.amount}
+                                        {row.unit}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.time}
+                                        {row.quantity}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.date}
+                                        {row.selectedDate}
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }} align="right">
+                                        {row.selectedDate}
                                     </TableCell>
                                 </StyledTableRow>
                             ))}
