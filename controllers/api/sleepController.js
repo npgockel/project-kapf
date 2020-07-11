@@ -6,7 +6,7 @@ const isAuthenticated = require("../../config/middleware/isAuthenticated");
  * User Read - All
  */
 router.get("/", isAuthenticated, function (req, res) {
-  db.Sleep.findAll(req.query)
+  db.Sleep.findAll()
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
@@ -26,7 +26,7 @@ router.get("/:id", isAuthenticated, function (req, res) {
  * This allows for us to modify a user's password, as defined in the User model
  */
 router.post("/", function (req, res) {
-  db.Sleep.scope("withPassword")
+  db.Sleep
     .create(req.body)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
