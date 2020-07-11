@@ -112,6 +112,23 @@ export default {
             return _update("food", id, data);
         }
     },
+    Child: {
+        getAll: function () {
+            return _getAll("child");
+        },
+        getById: function (id) {
+            return _getOne("child", id);
+        },
+        delete: function (id) {
+            return _delete("child", id);
+        },
+        create: function(data){
+            return _create("child", data);
+        },
+        update: function(id, data){
+            return _update("child", id, data);
+        }
+    },
     Sleep: {
         getAll: function () {
             return _getAll("food");
