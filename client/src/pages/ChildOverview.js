@@ -32,13 +32,13 @@ const useStyles = makeStyles((theme) => ({
 function ChildOverview() {
     const classes = useStyles();
 
-    const getAllChildren = () => {
-        API.Child.getAll()
-            .then(res => {
-                return console.log(res)
-            })
-            .catch(err => res.status(422).json(err));
-    }
+    // const getAllChildren = () => {
+    //     API.Child.getAll()
+    //         .then(res => {
+    //             return console.log(res)
+    //         })
+    //         .catch(err => res.status(422).json(err));
+    // }
 
 
     return (
@@ -49,7 +49,7 @@ function ChildOverview() {
                         <Typography variant="h3" className={classes.text}>
                             Child Overview
                         </Typography>
-                        {console.log(getAllChildren)}
+                        {/* {console.log(getAllChildren)} */}
                     </Paper>
                     <BackBtn />
                 </Grid>
