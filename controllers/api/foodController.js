@@ -6,8 +6,11 @@ const isAuthenticated = require("../../config/middleware/isAuthenticated");
  * User Read - All
  */
 router.get("/", isAuthenticated, function (req, res) {
-  db.Food.findAll(req.query)
-    .then(dbModel => res.json(dbModel))
+  db.Food.findAll()
+    .then(dbModel => {
+      res.json(dbModel)
+      console.log(dbModel)
+    })
     .catch(err => res.status(422).json(err));
 });
 
