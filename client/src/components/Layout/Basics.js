@@ -25,11 +25,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AddressForm() {
-  const [value, setValue] = React.useState('female');
+  const [gender, setGender] = React.useState('female');
+  const [fname, setFName] = React.useState('First Name');
+  const [lname, setLName] = React.useState('Last Name');
+  const [DOB, setDOB] = React.useState('YYYY-MM-DD');
   const classes = useStyles();
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
+  };
+  const handleFNameChange = (event) => {
+    setFName(event.target.value);
+  };
+  const handleLNameChange = (event) => {
+    setLName(event.target.value);
+  };
+  const handleDOBChange = (event) => {
+    setDOB(event.target.value);
   };
 
   return (
@@ -45,6 +57,8 @@ export default function AddressForm() {
             name="firstName"
             label="First name"
             fullWidth
+            value={fname}
+            onChange={handleFNameChange}
             autoComplete="given-name"
           />
         </Grid>
@@ -55,13 +69,15 @@ export default function AddressForm() {
             name="lastName"
             label="Last name"
             fullWidth
+            value={lname}
+            onChange={handleLNameChange}
             autoComplete="family-name"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl component="fieldset">
             <FormLabel component="legend">Gender</FormLabel>
-            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+            <RadioGroup aria-label="gender" name="gender1" value={gender} onChange={handleGenderChange}>
               <FormControlLabel value="female" control={<Radio />} label="Female" />
               <FormControlLabel value="male" control={<Radio />} label="Male" />
               <FormControlLabel value="other" control={<Radio />} label="Other" />
@@ -75,6 +91,8 @@ export default function AddressForm() {
               type="date"
               defaultValue="X"
               className={classes.textField}
+              onChange={handleDOBChange}
+              value={DOB}
               InputLabelProps={{
                 shrink: true,
               }}

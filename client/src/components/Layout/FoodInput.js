@@ -148,11 +148,12 @@ function FoodInput() {
                             </MuiPickersUtilsProvider>
                         </div>
                     </Grid>
+
                     <Grid container spacing={3} direction='column' alignItems='center'>
                         <Grid item xs={12}>
                             <Button onClick={postFood} className={classes.paper} variant='contained' size='large' color='primary'>
                                 Log New Food
-                </Button>
+                            </Button>
                         </Grid>
                     </Grid>
                 </Grid>
