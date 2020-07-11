@@ -7,9 +7,7 @@ import { Typography, Button } from "@material-ui/core";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { Link } from "react-router-dom";
-
-
-
+import API from '../utils/API';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,12 +32,24 @@ const useStyles = makeStyles((theme) => ({
 function ChildOverview() {
     const classes = useStyles();
 
+    const getAllChildren = () => {
+        API.Child.getAll()
+            .then(res => {
+                return console.log(res)
+            })
+            .catch(err => res.status(422).json(err));
+    }
+
+
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <Typography variant="h3" className={classes.text}>Child Overview</Typography>
+                        <Typography variant="h3" className={classes.text}>
+                            Child Overview
+                        </Typography>
+                        {console.log(getAllChildren)}
                     </Paper>
                     <BackBtn />
                 </Grid>
@@ -51,6 +61,8 @@ function ChildOverview() {
                             <img src={"https://i.ibb.co/SPchxzh/beautifulbabies.png"}></img>
                         </CardContent>
                     </Card>
+                    <div>
+                    </div>
                 </Grid>
             </Grid>
             <Grid container spacing={3} direction="column" alignItems="center">

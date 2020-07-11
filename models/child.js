@@ -1,25 +1,28 @@
 // Creating our Child model
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   const Child = sequelize.define(
     "Child",
     {
-        childName: {
-            type: DataTypes.STRING,
-            allowNull: false
-     },
-        birthday:{
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-            validate: {
-                isDate: true,
-                message: "Enter a birthday in the format of (YYYY-MM-DD)"
-            }
+      childGender: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      childName: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      childDOB: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+        validate: {
+          isDate: true,
         }
+      }
 
     }
   );
 
-  Child.associate = function(models) {
+  Child.associate = function (models) {
     // Associating Child with Posts
     // When an Child is deleted, also delete any associated Posts
     Child.belongsToMany(models.Adult, {
@@ -39,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
     Child.hasMany(models.Information, {
 
     });
-    
+
   };
 
   return Child;
