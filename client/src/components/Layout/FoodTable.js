@@ -157,6 +157,7 @@ function FoodTable() {
     };
 
     return (
+        <>
         <Grid container spacing={3} direction="column" alignItems="center">
             <Grid item xs={12}>
                 <TableContainer component={Paper}>
@@ -222,6 +223,7 @@ function FoodTable() {
                 </TableContainer>
             </Grid>
         </Grid>
+        </>
     );
 }
 export default FoodTable;
