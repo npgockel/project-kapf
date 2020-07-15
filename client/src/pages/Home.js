@@ -92,16 +92,6 @@ export default function Home(props) {
                     Add Your Child
                   </Button>
                 </Grid>
-                {/* <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Settings
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="secondary">
-                    Nanny Schedule
-                  </Button>
-                </Grid> */}
               </Grid>
             </div>
           </Container>
@@ -129,9 +119,6 @@ export default function Home(props) {
                     <CardActions>
                       <Button size="small" color="primary">
                         View
-                    </Button>
-                      <Button size="small" color="primary">
-                        Edit
                     </Button>
                     </CardActions>
                   </Card>
