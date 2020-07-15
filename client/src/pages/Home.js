@@ -62,6 +62,9 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 export default function Home(props) {
   const classes = useStyles();
   const [childs, setChildren] = useState([])
+  const [chosenChild, setChosenChild] = useState([]);
+
+
 
   useEffect(() => {
     loadChildren()
@@ -73,6 +76,10 @@ export default function Home(props) {
         setChildren(res.data)
       })
       .catch(err => console.log(err))
+  }
+
+  function selectChosenChild(event) {
+    setChosenChild(childs[event.target.getAttribute("data-index")]);
   }
 
   return (
@@ -92,16 +99,6 @@ export default function Home(props) {
                     Add Your Child
                   </Button>
                 </Grid>
-                {/* <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Settings
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="secondary">
-                    Nanny Schedule
-                  </Button>
-                </Grid> */}
               </Grid>
             </div>
           </Container>
@@ -110,13 +107,16 @@ export default function Home(props) {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {childs.length > 0 && props.user.id ?
-              childs.map((card) => (
+              childs.map((card, index) => (
                 <Grid item key={card} xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
+                  <Card className={classes.card}
+                  >
                     <CardMedia
                       className={classes.cardMedia}
                       image="https://source.unsplash.com/random"
                       title=""
+                      data-index={index}
+                      onClick={selectChosenChild}
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
@@ -126,12 +126,10 @@ export default function Home(props) {
                         ---Your child's one liner---
                     </Typography>
                     </CardContent>
-                    <CardActions>
-                      <Button size="small" color="primary">
+                    <CardActions
+                    >
+                      <Button component={Link} to={{ pathname: "/child-overview", state: chosenChild }} size="small" color="primary">
                         View
-                    </Button>
-                      <Button size="small" color="primary">
-                        Edit
                     </Button>
                     </CardActions>
                   </Card>

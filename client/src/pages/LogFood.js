@@ -31,8 +31,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function LogFood() {
+function LogFood(props) {
     const classes = useStyles();
+
+    console.log(props);
+
 
     return (
         <div className={classes.root}>
@@ -55,7 +58,7 @@ function LogFood() {
                 </Grid>
             </Grid>
             <Box m={6}>
-            <FoodInput />
+            <FoodInput child={props.location.state}/>
             </Box>
         </div>
     );

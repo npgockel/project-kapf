@@ -7,6 +7,7 @@ import { Typography, Button } from "@material-ui/core";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { Link } from "react-router-dom";
+import API from '../utils/API';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,8 +29,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function ChildOverview() {
+function ChildOverview(props) {
     const classes = useStyles();
+    const [childs, setChildren] = useState([])
+    console.log(props);
+
+    useEffect(() => {
+        loadChildren()
+    }, [])
+
+    function loadChildren() {
+        API.Child.getById()
+            .then(res => {
+                setChildren(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+
+
+
 
     return (
         <div className={classes.root}>
@@ -39,7 +57,6 @@ function ChildOverview() {
                         <Typography variant="h3" className={classes.text}>
                             Child Overview
                         </Typography>
-                        {/* {console.log(getAllChildren)} */}
                     </Paper>
                     <BackBtn />
                 </Grid>
@@ -49,7 +66,12 @@ function ChildOverview() {
                     <Card>
                         <CardContent>
                             <img src={"https://i.ibb.co/SPchxzh/beautifulbabies.png"}></img>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                {childs.childName}
+                            </Typography>
+
                         </CardContent>
+
                     </Card>
                     <div>
                     </div>
@@ -57,7 +79,7 @@ function ChildOverview() {
             </Grid>
             <Grid container spacing={3} direction="column" alignItems="center">
                 <Grid item xs={12}>
-                    <Button component={Link} to="/logfood" className={classes.paper} variant="contained" size="large" color="primary">
+                    <Button component={Link} to={{ pathname: "/logfood", state: props.location.state }} className={classes.paper} variant="contained" size="large" color="primary">
                         Log Food
                     </Button>
                 </Grid>

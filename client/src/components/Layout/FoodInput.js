@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 // ***FoodInput Function***
-function FoodInput() {
+function FoodInput(props) {
     const classes = useStyles();
     
     const [type, setType] = useState('Formula');
@@ -85,7 +85,8 @@ function FoodInput() {
             foodType: type,
             foodUnit: unit,
             foodQuantity: quantity,
-            foodDate: selectedDate
+            foodDate: selectedDate,
+            ChildId: props.child.id
         }
         API.Food.create(foodData);
         console.log('THE CLICK WORKED!', foodData);
@@ -120,7 +121,7 @@ function FoodInput() {
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
-                                // variant='outlined'
+                            // variant='outlined'
                             />
                             <TextField
                                 id='standard-select'
@@ -149,13 +150,13 @@ function FoodInput() {
                         </div>
                     </form>
                     <Box m={6}>
-                    <Grid container spacing={3} direction='column' alignItems='center'>
-                        <Grid item xs={12}>
-                            <Button onClick={postFood} className={classes.paper} variant='contained' size='large' color='primary'>
-                                Log New Food
+                        <Grid container spacing={3} direction='column' alignItems='center'>
+                            <Grid item xs={12}>
+                                <Button onClick={postFood} className={classes.paper} variant='contained' size='large' color='primary'>
+                                    Log New Food
                             </Button>
+                            </Grid>
                         </Grid>
-                    </Grid>
                     </Box>
                 </Grid>
             </Grid>

@@ -7,6 +7,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import API from '../utils/API';
+import Button from '@material-ui/core/Button';
 
 
 function Copyright() {
@@ -22,10 +23,11 @@ function Copyright() {
     );
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
-        // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-
+        '& > *': {
+            margin: theme.spacing(1),
+        },
     },
     paper: {
         margin: 0,
@@ -37,7 +39,7 @@ const useStyles = makeStyles({
         padding: 10,
 
     },
-});
+}));
 
 export default function AddChild() {
     const classes = useStyles();
@@ -50,7 +52,12 @@ export default function AddChild() {
                     justify="flex-start"
                     alignItems="center"
                 >
-                    <ArrowBackIosIcon></ArrowBackIosIcon>
+                    <div className={classes.root}>
+                        <Button component={Link} to="/Home">
+                            <ArrowBackIosIcon />
+                        </Button>
+                    </div>
+
                 </Grid>
             </Grid>
             <Checkout />

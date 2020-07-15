@@ -80,11 +80,9 @@ function App() {
                     signupUser={signupUser}
                   />
                 </Route>
-                <Route exact path={["/child-overview"]}>
-                  <ChildOverview />
+                <Route exact path={["/child-overview"]} render={props => < ChildOverview {...props} />}>
                 </Route>
-                <Route exact path={["/logfood"]}>
-                  <LogFood />
+                <Route exact path={["/logfood"]} render={props => < LogFood {...props} />}>
                 </Route>
                 <Route exact path={["/logsleep"]}>
                   <LogSleep />
