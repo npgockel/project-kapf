@@ -15,7 +15,7 @@ router.get("/", isAuthenticated, function (req, res) {
  * User Read - One
  */
 router.get("/:id", isAuthenticated, function (req, res) {
-  db.Information.findByPk(req.params.id)
+  db.Information.findById(req.params.id)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
@@ -28,11 +28,7 @@ router.get("/:id", isAuthenticated, function (req, res) {
 router.post("/", function (req, res) {
   db.Information.scope("withPassword")
     .create(req.body)
-    .then(dbModel => {
-      db.Child.findByPk(req.user.id).then(
-        child => {
-          dbModel.addChild(child).then(info => res.json(info));
-        })})
+    .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
 

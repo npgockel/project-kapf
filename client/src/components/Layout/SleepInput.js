@@ -2,7 +2,6 @@ import React, { Fragment, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-//import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import API from '../../utils/API.js';
@@ -51,20 +50,19 @@ function SleepInput() {
     }
 
     return (
-        <MuiPickersUtilsProvider>
-            <Grid container spacing={3} direction="column" alignItems="center">
-                <Grid item xs={12}>
-                    <KeyboardDatePicker
-                        margin="normal"
-                        id="date-picker-dialog"
-                        label="Select Date"
-                        format="MM/dd/yyyy"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                    />
+        <>
+            <MuiPickersUtilsProvider utils={MomentUtils}>
+                <Grid container spacing={3} direction="column" alignItems="center">
+                    <Grid item xs={12}>
+                        <Fragment>
+                            <KeyboardDatePicker
+                                clearable
+                                value={selectedDate}
+                                placeholder="10/10/2018"
+                                onChange={date => setSelectedDate(date.toString())}
+                                format="MM/DD/yyyy"
+                            />
+                        </Fragment>
                     </Grid>
                     <Grid item xs={12}>
                         <Fragment>
