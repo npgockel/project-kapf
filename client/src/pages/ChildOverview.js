@@ -29,9 +29,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function ChildOverview() {
+function ChildOverview(props) {
     const classes = useStyles();
     const [childs, setChildren] = useState([])
+    console.log(props);
 
     useEffect(() => {
         loadChildren()
@@ -66,8 +67,8 @@ function ChildOverview() {
                         <CardContent>
                             <img src={"https://i.ibb.co/SPchxzh/beautifulbabies.png"}></img>
                             <Typography gutterBottom variant="h5" component="h2">
-                            {childs.childName}
-                        </Typography>
+                                {childs.childName}
+                            </Typography>
 
                         </CardContent>
 

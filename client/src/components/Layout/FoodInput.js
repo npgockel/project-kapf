@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 // ***FoodInput Function***
-function FoodInput() {
+function FoodInput(props) {
     const classes = useStyles();
     
     const [type, setType] = useState('formula');
