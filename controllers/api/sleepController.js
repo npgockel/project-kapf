@@ -15,8 +15,12 @@ router.get("/", isAuthenticated, function (req, res) {
  * User Read - One
  */
 router.get("/:id", isAuthenticated, function (req, res) {
-  db.Sleep.findById(req.params.id)
-    .then(dbModel => res.json(dbModel))
+  db.Sleep.findByPk(req.params.id)
+    .then(dbModel => {
+      db.Child.findByPk(req.user.id).then(
+        child => {
+          dbModel.addChild(child).then(sleep => res.json(sleep));
+        })})
     .catch(err => res.status(422).json(err));
 });
 
