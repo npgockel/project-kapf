@@ -16,34 +16,34 @@ import 'moment-timezone';
 // ***These are the selections for user to make with types and units***
 const types = [
     {
-        value: 'formula',
+        value: 'Formula',
         label: 'Formula',
     },
     {
-        value: 'breast milk',
+        value: 'Breast Milk',
         label: 'Breast Milk',
     },
     {
-        value: 'puree',
+        value: 'Puree',
         label: 'Puree',
     },
     {
-        value: 'solid',
+        value: 'Solid',
         label: 'Solid',
     },
 ];
 
 const units = [
     {
-        value: 'ounce',
+        value: 'oz.',
         label: 'oz.',
     },
     {
-        value: 'gram',
+        value: 'grams',
         label: 'grams',
     },
     {
-        value: 'milliLiters',
+        value: 'mL',
         label: 'mL',
     },
 ];
@@ -63,8 +63,8 @@ const useStyles = makeStyles((theme) => ({
 function FoodInput() {
     const classes = useStyles();
     
-    const [type, setType] = useState('formula');
-    const [unit, setUnit] = useState('ounce');
+    const [type, setType] = useState('Formula');
+    const [unit, setUnit] = useState('oz.');
     const [quantity, setQuantity] = useState();
     const [selectedDate, setDateChange] = useState(new Date());
 
@@ -78,7 +78,7 @@ function FoodInput() {
         setQuantity(event.target.value);
     };
     const handleDateChange = (event) => {
-        setDateChange(event).format('DD-MM-YYYY')
+        setDateChange(event)
     }
     const postFood = () => {
         let foodData = {

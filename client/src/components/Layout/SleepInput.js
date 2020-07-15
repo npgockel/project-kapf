@@ -28,15 +28,15 @@ function SleepInput() {
 
     const classes = useStyles();
 
-    // const handleDateChange = (date) => {
-    //     setSelectedDate(date);
-    // };
-    // const handleStartSleep = (date) => {
-    //     setStartSleep(date);
-    // };
-    // const handleEndSleep = (date) => {
-    //     setEndSleep(date);
-    // };
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
+    const handleStartSleep = (date) => {
+        setStartSleep(date);
+    };
+    const handleEndSleep = (date) => {
+        setEndSleep(date);
+    };
 
     const postSleep = () => {
         let sleepData = {
@@ -59,7 +59,7 @@ function SleepInput() {
                                 clearable
                                 value={selectedDate}
                                 placeholder="10/10/2018"
-                                onChange={date => setSelectedDate(date.toString())}
+                                onChange={handleDateChange}
                                 format="MM/DD/yyyy"
                             />
                         </Fragment>
@@ -71,7 +71,7 @@ function SleepInput() {
                                 placeholder="08:00 AM"
                                 mask="__:__ _M"
                                 value={startSleep}
-                                onChange={date => setStartSleep(date.toString())}
+                                onChange={handleStartSleep}
                             />
                         </Fragment>
                     </Grid>
@@ -82,7 +82,7 @@ function SleepInput() {
                                 placeholder="08:00 AM"
                                 mask="__:__ _M"
                                 value={endSleep}
-                                onChange={date => setEndSleep(date.toString())}
+                                onChange={handleEndSleep}
                             />
                         </Fragment>
                     </Grid>

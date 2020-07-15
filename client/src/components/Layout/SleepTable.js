@@ -17,6 +17,7 @@ import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
 import Grid from '@material-ui/core/Grid';
 import API from '../../utils/API';
+import moment from 'moment';
 
 // ***Created styles used in FoodTable return***
 const StyledTableCell = withStyles((theme) => ({
@@ -138,8 +139,6 @@ function SleepTable() {
     const rows = sleep.sort((a, b) => (a.date < b.date ? -1 : 1));
 
 
-
-
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
     const handleChangePage = (event, newPage) => {
@@ -171,16 +170,16 @@ function SleepTable() {
                             ).map((row) => (
                                 <StyledTableRow key={row.name}>
                                     <TableCell component="th" scope="row">
-                                        {row.sleepStart}
+                                        {moment(row.sleepStart).format('LT')}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.sleepEnd}
+                                        {moment(row.sleepEnd).format('LT')}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.sleepTotal}
+                                        {moment(row.sleepEnd).diff(row.sleepStart, "hours", "minutes").toFixed(1) + "" + "hrs"}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.sleepDate}
+                                        {moment(row.sleepDate).format("MMM Do YYYY")}
                                     </TableCell>
                                 </StyledTableRow>
                             ))}
