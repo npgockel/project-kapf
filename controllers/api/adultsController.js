@@ -15,7 +15,7 @@ router.get("/", isAuthenticated, function (req, res) {
  * User Read - One
  */
 router.get("/:id", isAuthenticated, function (req, res) {
-  db.Adult.findByPk(req.params.id)
+  db.Adult.findById(req.params.id)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
