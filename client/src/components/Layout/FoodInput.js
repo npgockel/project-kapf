@@ -8,6 +8,9 @@ import { DateTimePicker } from "@material-ui/pickers";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import API from '../../utils/API.js';
+import Box from '@material-ui/core/Box';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 
 // ***These are the selections for user to make with types and units***
@@ -59,10 +62,11 @@ const useStyles = makeStyles((theme) => ({
 // ***FoodInput Function***
 function FoodInput() {
     const classes = useStyles();
+    
     const [type, setType] = useState('formula');
     const [unit, setUnit] = useState('ounce');
     const [quantity, setQuantity] = useState();
-    const [selectedDate, setDateChange] = useState(new Date('2014-08-18T21:11:54'));
+    const [selectedDate, setDateChange] = useState(new Date());
 
     const handleTypeChange = (event) => {
         setType(event.target.value);
@@ -74,7 +78,7 @@ function FoodInput() {
         setQuantity(event.target.value);
     };
     const handleDateChange = (event) => {
-        setDateChange(event)
+        setDateChange(event).format('DD-MM-YYYY')
     }
     const postFood = () => {
         let foodData = {
@@ -84,7 +88,7 @@ function FoodInput() {
             foodDate: selectedDate
         }
         API.Food.create(foodData);
-        console.log('THE CLICK WORKED!');
+        console.log('THE CLICK WORKED!', foodData);
     }
 
     return (
@@ -116,7 +120,7 @@ function FoodInput() {
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
-                                variant='outlined'
+                                // variant='outlined'
                             />
                             <TextField
                                 id='standard-select'
@@ -132,10 +136,6 @@ function FoodInput() {
                                     </MenuItem>
                                 ))}
                             </TextField>
-                        </div>
-                    </form>
-                    <Grid item xs={12}>
-                        <div>
                             <MuiPickersUtilsProvider utils={MomentUtils}>
                                 <Fragment>
                                     <DateTimePicker
@@ -147,8 +147,8 @@ function FoodInput() {
                                 </Fragment>
                             </MuiPickersUtilsProvider>
                         </div>
-                    </Grid>
-
+                    </form>
+                    <Box m={6}>
                     <Grid container spacing={3} direction='column' alignItems='center'>
                         <Grid item xs={12}>
                             <Button onClick={postFood} className={classes.paper} variant='contained' size='large' color='primary'>
@@ -156,6 +156,7 @@ function FoodInput() {
                             </Button>
                         </Grid>
                     </Grid>
+                    </Box>
                 </Grid>
             </Grid>
         </>

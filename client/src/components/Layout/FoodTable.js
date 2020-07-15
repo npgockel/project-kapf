@@ -106,32 +106,6 @@ TablePaginationActions.propTypes = {
 };
 
 
-
-// ***Data display function***
-
-function createData(type, unit, quantity, selectedDate) {
-
-    return { type, unit, quantity, selectedDate };
-}
-
-// ***Example Info (Hardcoded)***
-const rows = [
-    // createData('Formula', "6oz", "10:30am", "07-05-2020"),
-    // createData('Formula', "4oz", "09:30am", "07-05-2020"),
-    // createData('Breast Milk', "6oz", "08:30am", "07-05-2020"),
-    // createData('Puree', "4oz", "07:30am", "07-05-2020"),
-    // createData('Solid', "5oz", "10:30pm", "07-04-2020"),
-    // createData('Formula', "6oz", "09:30pm", "07-04-2020"),
-    // createData('Puree', "4oz", "08:30pm", "07-04-2020"),
-    // createData('Puree', "5oz", "07:30pm", "07-04-2020"),
-    // createData('Breast Milk', "6oz", "06:30pm", "07-04-2020"),
-    // createData('Breast Milk', "4oz", "12:30am", "07-03-2020"),
-    // createData('Breast Milk', "5oz", "11:30pm", "07-03-2020"),
-    // createData('Solid', "4oz", "10:30pm", "07-03-2020"),
-    // createData('Formula', "4oz", "09:30pm", "07-03-2020"),
-].sort((a, b) => (a.date > b.date ? -1 : 1));
-
-
 // ***Style used below in FoodTable return***
 const useStyles2 = makeStyles({
     table: {
@@ -139,14 +113,14 @@ const useStyles2 = makeStyles({
     },
 });
 
+
+
 function FoodTable() {
     const classes = useStyles2();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
-
-
     const [foods, setFoods] = useState([])
-    const [formObject, setFromObject] = useState({})
+
 
     useEffect(() => {
         loadFood()
@@ -157,10 +131,17 @@ function FoodTable() {
         API.Food.getAll()
             .then(res => {
                 setFoods(res.data)
-                console.log(res.data)
             })
             .catch(err => console.log(err))
     }
+
+    
+
+    // ***THIS IS WHERE THE DATA FROM API IS PULLED AND SORTED (Gets mapped later inside TableBody)***
+    const rows = foods.sort((a, b) => (a.date < b.date ? -1 : 1));
+
+
+
 
 
 
@@ -176,6 +157,7 @@ function FoodTable() {
     };
 
     return (
+        <>
         <Grid container spacing={3} direction="column" alignItems="center">
             <Grid item xs={12}>
                 <TableContainer component={Paper}>
@@ -183,8 +165,8 @@ function FoodTable() {
                         <TableHead>
                             <TableRow>
                                 <StyledTableCell>Type of Food</StyledTableCell>
-                                <StyledTableCell align="right">Unit</StyledTableCell>
                                 <StyledTableCell align="right">Quantity</StyledTableCell>
+                                <StyledTableCell align="right">Unit</StyledTableCell>
                                 <StyledTableCell align="right">Time</StyledTableCell>
                                 <StyledTableCell align="right">Date</StyledTableCell>
                             </TableRow>
@@ -196,19 +178,19 @@ function FoodTable() {
                             ).map((row) => (
                                 <StyledTableRow key={row.name}>
                                     <TableCell component="th" scope="row">
-                                        {row.type}
+                                        {row.foodType}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.unit}
+                                        {row.foodQuantity}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.quantity}
+                                        {row.foodUnit}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.selectedDate}
+                                        {row.foodDate}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.selectedDate}
+                                        {row.foodDate}
                                     </TableCell>
                                 </StyledTableRow>
                             ))}
@@ -241,6 +223,7 @@ function FoodTable() {
                 </TableContainer>
             </Grid>
         </Grid>
+        </>
     );
 }
 export default FoodTable;

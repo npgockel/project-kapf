@@ -1,9 +1,10 @@
-import React, { useState }from 'react';
+import React, { Fragment, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 //import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
 import API from '../../utils/API.js';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,23 +22,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SleepInput() {
-    
-    const [selectedDate, setSelectedDate] = useState(new Date());
     const [startSleep, setStartSleep] = useState();
     const [endSleep, setEndSleep] = useState();
-    const [totalSleep, setTotalSleep] = useState();
+    const [totalSleep, setTotalSleep] = useState("test total");
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const classes = useStyles();
 
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-    };
-    const handleStartSleep = (date) => {
-        setStartSleep(date);
-    };
-    const handleEndSleep = (date) => {
-        setEndSleep(date);
-    };
+    // const handleDateChange = (date) => {
+    //     setSelectedDate(date);
+    // };
+    // const handleStartSleep = (date) => {
+    //     setStartSleep(date);
+    // };
+    // const handleEndSleep = (date) => {
+    //     setEndSleep(date);
+    // };
 
     const postSleep = () => {
         let sleepData = {
@@ -47,7 +47,7 @@ function SleepInput() {
             sleepDate: selectedDate
         }
         API.Sleep.create(sleepData);
-        console.log("thanks for click");
+        console.log("thanks for click", sleepData);
     }
 
     return (
@@ -67,30 +67,29 @@ function SleepInput() {
                     />
                     </Grid>
                     <Grid item xs={12}>
-                    <KeyboardTimePicker
-                        margin="normal"
-                        id="time-picker"
-                        label="Start Time"
-                        value={selectedDate}
-                        onChange={handleStartSleep}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change time',
-                        }}
-                    />
+                        <Fragment>
+                            <KeyboardTimePicker
+                                label="Masked timepicker"
+                                placeholder="08:00 AM"
+                                mask="__:__ _M"
+                                value={startSleep}
+                                onChange={date => setStartSleep(date.toString())}
+                            />
+                        </Fragment>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Fragment>
+                            <KeyboardTimePicker
+                                label="Masked timepicker"
+                                placeholder="08:00 AM"
+                                mask="__:__ _M"
+                                value={endSleep}
+                                onChange={date => setEndSleep(date.toString())}
+                            />
+                        </Fragment>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                    <KeyboardTimePicker
-                        margin="normal"
-                        id="time-picker"
-                        label="End Time"
-                        value={selectedDate}
-                        onChange={handleEndSleep}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change time',
-                        }}
-                    />
-                </Grid>
-            </Grid>
+            </MuiPickersUtilsProvider>
             <Grid container spacing={3} direction="column" alignItems="center">
                 <Grid item xs={12}>
                     <Button onClick={postSleep} className={classes.paper} variant="contained" size="large" color="primary">
@@ -98,7 +97,7 @@ function SleepInput() {
                     </Button>
                 </Grid>
             </Grid>
-        </MuiPickersUtilsProvider>
+        </>
     );
 }
 

@@ -3,10 +3,10 @@ import BackBtn from "../components/Layout/BackBtn";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { Typography, Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import FoodTable from "../components/Layout/FoodTable"
-import FoodInput from "../components/Layout/FoodInput"
+import { Typography } from "@material-ui/core";
+import FoodTable from "../components/Layout/FoodTable";
+import FoodInput from "../components/Layout/FoodInput";
+import Box from '@material-ui/core/Box';
 
 
 
@@ -40,19 +40,23 @@ function LogFood() {
                 <BackBtn />
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <Typography variant="h3" className={classes.text}>Feeding Times</Typography>
+                        <Typography variant="h4" className={classes.text}>Feeding Times</Typography>
                     </Paper>
                 </Grid>
             </Grid>
+            <Box m={6}>
             <FoodTable />
+            </Box>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <Typography variant="h3" className={classes.text}>Add a New Food</Typography>
+                        <Typography variant="h4" className={classes.text}>Add a New Food</Typography>
                     </Paper>
                 </Grid>
             </Grid>
+            <Box m={6}>
             <FoodInput />
+            </Box>
         </div>
     );
 }

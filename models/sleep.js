@@ -15,15 +15,9 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false,
             },
             sleepDate: {
-                type: DataTypes.DATEONLY,
+                type: DataTypes.STRING,
                 allowNull: false,
-                validate: {
-                    isDate: true,
-                    message: "Enter date in form of (YYYY-MM-DD)"
-                }
-            }
-
-
+            },
         }
     );
 

@@ -9,3 +9,7 @@ export { default as FoodTable } from "./Layout/FoodTable";
 export { default as FoodInput } from "./Layout/FoodInput";
 export { default as SleepTable } from "./Layout/SleepTable";
 export { default as SleepInput } from "./Layout/SleepInput";
+export { default as ChildLikes } from "./Layout/ChildLikes";
+export { default as ChildDislikes } from "./Layout/ChildDislikes";
+export { default as ChildAllergies } from "./Layout/ChildAllergies";
+export { default as ChildNotes } from "./Layout/ChildNotes";

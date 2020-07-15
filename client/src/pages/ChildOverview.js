@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import BackBtn from "../components/Layout/BackBtn";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -7,7 +7,6 @@ import { Typography, Button } from "@material-ui/core";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { Link } from "react-router-dom";
-import API from '../utils/API';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,15 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
 function ChildOverview() {
     const classes = useStyles();
-
-    // const getAllChildren = () => {
-    //     API.Child.getAll()
-    //         .then(res => {
-    //             return console.log(res)
-    //         })
-    //         .catch(err => res.status(422).json(err));
-    // }
-
 
     return (
         <div className={classes.root}>
