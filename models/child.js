@@ -31,17 +31,17 @@ module.exports = function (sequelize, DataTypes) {
     Child.belongsToMany(models.Adult, {
       through: "NonParentChild"
     });
-    Child.hasMany(models.Food, {
+    Child.hasMany(models.Food);
 
-    });
+    Child.hasMany(models.Sleep);
 
-    Child.hasMany(models.Sleep, {
+    Child.hasMany(models.Like);
 
-    });
+    Child.hasMany(models.Dislike);
 
-    Child.hasMany(models.Information, {
+    Child.hasMany(models.Allergy);
 
-    });
+    Child.hasMany(models.Note);
 
   };
 
