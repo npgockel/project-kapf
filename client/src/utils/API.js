@@ -145,6 +145,74 @@ export default {
         update: function(id, data){
             return _update("sleep", id, data);
         }
+    },
+    Likes: {
+        getAll: function () {
+            return _getAll("likes");
+        },
+        getById: function (id) {
+            return _getOne("likes", id);
+        },
+        delete: function (id) {
+            return _delete("likes", id);
+        },
+        create: function(data){
+            return _create("likes", data);
+        },
+        update: function(id, data){
+            return _update("likes", id, data);
+        }
+    },
+    Dislikes: {
+        getAll: function () {
+            return _getAll("dislikes");
+        },
+        getById: function (id) {
+            return _getOne("dislikes", id);
+        },
+        delete: function (id) {
+            return _delete("dislikes", id);
+        },
+        create: function(data){
+            return _create("dislikes", data);
+        },
+        update: function(id, data){
+            return _update("dislikes", id, data);
+        }
+    },
+    Allergies: {
+        getAll: function () {
+            return _getAll("allergies");
+        },
+        getById: function (id) {
+            return _getOne("allergies", id);
+        },
+        delete: function (id) {
+            return _delete("allergies", id);
+        },
+        create: function(data){
+            return _create("allergies", data);
+        },
+        update: function(id, data){
+            return _update("allergies", id, data);
+        }
+    },
+    Info: {
+        getAll: function () {
+            return _getAll("info");
+        },
+        getById: function (id) {
+            return _getOne("info", id);
+        },
+        delete: function (id) {
+            return _delete("info", id);
+        },
+        create: function(data){
+            return _create("info", data);
+        },
+        update: function(id, data){
+            return _update("info", id, data);
+        }
     }
 
 }
