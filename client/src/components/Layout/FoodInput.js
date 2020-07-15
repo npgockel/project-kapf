@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 // ***FoodInput Function***
 function FoodInput(props) {
     const classes = useStyles();
-    
+
     const [type, setType] = useState('formula');
     const [unit, setUnit] = useState('ounce');
     const [quantity, setQuantity] = useState();
@@ -78,14 +78,15 @@ function FoodInput(props) {
         setQuantity(event.target.value);
     };
     const handleDateChange = (event) => {
-        setDateChange(event).format('DD-MM-YYYY')
+        setDateChange(event)
     }
     const postFood = () => {
         let foodData = {
             foodType: type,
             foodUnit: unit,
             foodQuantity: quantity,
-            foodDate: selectedDate
+            foodDate: selectedDate,
+            ChildId: props.child.id
         }
         API.Food.create(foodData);
         console.log('THE CLICK WORKED!', foodData);
@@ -120,7 +121,7 @@ function FoodInput(props) {
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
-                                // variant='outlined'
+                            // variant='outlined'
                             />
                             <TextField
                                 id='standard-select'
@@ -149,13 +150,13 @@ function FoodInput(props) {
                         </div>
                     </form>
                     <Box m={6}>
-                    <Grid container spacing={3} direction='column' alignItems='center'>
-                        <Grid item xs={12}>
-                            <Button onClick={postFood} className={classes.paper} variant='contained' size='large' color='primary'>
-                                Log New Food
+                        <Grid container spacing={3} direction='column' alignItems='center'>
+                            <Grid item xs={12}>
+                                <Button onClick={postFood} className={classes.paper} variant='contained' size='large' color='primary'>
+                                    Log New Food
                             </Button>
+                            </Grid>
                         </Grid>
-                    </Grid>
                     </Box>
                 </Grid>
             </Grid>
