@@ -75,6 +75,10 @@ export default function Home(props) {
       .catch(err => console.log(err))
   }
 
+function loadChosenChild(){
+  
+}
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -110,7 +114,12 @@ export default function Home(props) {
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {card.childName}
+                        <Link
+                          href="#"
+                          // onClick={preventDefault}
+                          >
+                          {card.childName}
+                        </Link>
                       </Typography>
                       <Typography>
                         ---Your child's one liner---
