@@ -2,7 +2,7 @@ import React, { useState }from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import DateFnsUtils from '@date-io/date-fns';
+//import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import API from '../../utils/API.js';
 
@@ -51,7 +51,7 @@ function SleepInput() {
     }
 
     return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <MuiPickersUtilsProvider>
             <Grid container spacing={3} direction="column" alignItems="center">
                 <Grid item xs={12}>
                     <KeyboardDatePicker
