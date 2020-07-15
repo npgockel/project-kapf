@@ -17,6 +17,7 @@ import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
 import Grid from '@material-ui/core/Grid';
 import API from '../../utils/API';
+import moment from 'moment';
 
 // ***Created styles used in FoodTable return***
 const StyledTableCell = withStyles((theme) => ({
@@ -138,7 +139,7 @@ function FoodTable() {
     
 
     // ***THIS IS WHERE THE DATA FROM API IS PULLED AND SORTED (Gets mapped later inside TableBody)***
-    const rows = foods.sort((a, b) => (a.date < b.date ? -1 : 1));
+    const rows = foods.sort((a, b) => (a.foodDate > b.foodDate ? -1 : 1));
 
 
 
@@ -187,10 +188,10 @@ function FoodTable() {
                                         {row.foodUnit}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.foodDate}
+                                        {moment(row.foodDate).format('LT')}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {row.foodDate}
+                                        {moment(row.foodDate).format("MMM Do YYYY")}
                                     </TableCell>
                                 </StyledTableRow>
                             ))}
