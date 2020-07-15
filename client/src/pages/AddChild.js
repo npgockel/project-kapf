@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import StickyFooter from "../components/Layout/StickyFooter";
 import Checkout from "../components/Layout/Checkout";
-import Typography from '@material-ui/core/Typography';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
@@ -10,18 +9,6 @@ import API from '../utils/API';
 import Button from '@material-ui/core/Button';
 
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-        </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 const useStyles = makeStyles((theme) => ({
     root: {

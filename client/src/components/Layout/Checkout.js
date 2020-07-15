@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -13,12 +13,9 @@ import Typography from '@material-ui/core/Typography';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 import API from '../../utils/API.js';
-
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
@@ -103,9 +100,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Checkout() {
   const classes = useStyles();
-  const [gender, setGender] = React.useState('');
-  const [name, setFName] = React.useState('');
-  const [DOB, setDOB] = React.useState('YYYY-MM-DD');
+  const [gender, setGender] = useState('');
+  const [name, setFName] = useState('');
+  const [DOB, setDOB] = useState('YYYY-MM-DD');
 
   const handleGenderChange = (event) => {
     setGender(event.target.value);
@@ -140,15 +137,8 @@ export default function Checkout() {
   }
 
   return (
-    <React.Fragment>
+    <Fragment>
       <CssBaseline />
-      {/* <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Company name
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
@@ -270,7 +260,7 @@ export default function Checkout() {
 
         <Copyright />
       </main>
-    </React.Fragment>
+    </Fragment>
   );
 }
 

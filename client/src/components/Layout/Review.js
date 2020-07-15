@@ -1,10 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Grid from '@material-ui/core/Grid';
 
 const products = [
   { name: 'Product 1', desc: 'A nice thing', price: '$9.99' },
@@ -45,17 +41,19 @@ function nugImg(){
   myWidget.open()
 }
 
-export default function Review() {
+function Review() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Typography variant="h6" gutterBottom>
         Add a lil photo of your Nuggetroo
       </Typography>
       <button onClcik={nugImg}>
         Upload Image
       </button>
-    </React.Fragment>
+    </Fragment>
   );
-}
+};
+
+export default Review;
