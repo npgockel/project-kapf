@@ -127,6 +127,17 @@ export default function Checkout() {
     console.log("success")
   };
 
+  function nugImg(){
+    var myWidget = window.cloudinary.createUploadWidget({
+      cloudName: 'project-kapf', 
+      uploadPreset: 'fec0tg1l'}, (error, result) => { 
+        if (!error && result && result.event === "success") { 
+          console.log('Done! Here is the image info: ', result.info); 
+        }
+      }
+    )
+    myWidget.open()
+  }
 
   return (
     <React.Fragment>
@@ -242,6 +253,9 @@ export default function Checkout() {
           <Typography variant="h6" gutterBottom>
             Add a lil photo of your Nugget-roo
           </Typography>
+          <button onClick={nugImg}>
+          Upload Image
+          </button>
         </Paper>
                
         <Paper className={classes.paper}>

@@ -33,6 +33,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function nugImg(){
+  var myWidget = window.cloudinary.createUploadWidget({
+    cloudName: 'my_cloud_name', 
+    uploadPreset: 'my_preset'}, (error, result) => { 
+      if (!error && result && result.event === "success") { 
+        console.log('Done! Here is the image info: ', result.info); 
+      }
+    }
+  )
+  myWidget.open()
+}
+
 export default function Review() {
   const classes = useStyles();
 
@@ -41,6 +53,9 @@ export default function Review() {
       <Typography variant="h6" gutterBottom>
         Add a lil photo of your Nuggetroo
       </Typography>
+      <button onClcik={nugImg}>
+        Upload Image
+      </button>
     </React.Fragment>
   );
 }
