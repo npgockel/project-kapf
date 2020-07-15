@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { Typography } from "@material-ui/core";
 import BackBtn from "../components/Layout/BackBtn";
 import { ChildLikes, ChildDislikes, ChildAllergies, ChildNotes } from "../components";
-import API from '../../utils/API';
+import API from '../utils/API';
 
 
 
