@@ -33,20 +33,19 @@ function ChildOverview(props) {
     const classes = useStyles();
     const [childs, setChildren] = useState([])
     console.log(props);
+    console.log(childs);
 
     useEffect(() => {
         loadChildren()
     }, [])
 
     function loadChildren() {
-        API.Child.getById()
+        API.Child.getById(props.location.state.id)
             .then(res => {
                 setChildren(res.data)
             })
             .catch(err => console.log(err))
     }
-
-
 
 
     return (
