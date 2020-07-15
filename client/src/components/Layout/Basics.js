@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
@@ -24,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddressForm() {
-  const [gender, setGender] = React.useState('female');
-  const [fname, setFName] = React.useState('First Name');
-  const [lname, setLName] = React.useState('Last Name');
-  const [DOB, setDOB] = React.useState('YYYY-MM-DD');
+function AddressForm() {
+  const [gender, setGender] = useState('female');
+  const [fname, setFName] = useState('First Name');
+  const [lname, setLName] = useState('Last Name');
+  const [DOB, setDOB] = useState('YYYY-MM-DD');
   const classes = useStyles();
 
   const handleGenderChange = (event) => {
@@ -45,7 +42,7 @@ export default function AddressForm() {
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Typography variant="h6" gutterBottom>
         Child's Basics
       </Typography>
@@ -100,6 +97,7 @@ export default function AddressForm() {
           </form>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Fragment>
   );
-}
+};
+export default AddressForm;

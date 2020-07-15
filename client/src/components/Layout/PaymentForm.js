@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 
-export default function PaymentForm() {
+function PaymentForm() {
   return (
-    <React.Fragment>
+    <Fragment>
       <Typography variant="h6" gutterBottom>
         Health Info and Comments
       </Typography>
@@ -53,6 +51,8 @@ export default function PaymentForm() {
           />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Fragment>
   );
-}
+};
+
+export default PaymentForm;
