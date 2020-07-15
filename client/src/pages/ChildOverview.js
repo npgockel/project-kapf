@@ -32,8 +32,6 @@ const useStyles = makeStyles((theme) => ({
 function ChildOverview(props) {
     const classes = useStyles();
     const [childs, setChildren] = useState([])
-    console.log(props);
-    console.log(childs);
 
     useEffect(() => {
         loadChildren()

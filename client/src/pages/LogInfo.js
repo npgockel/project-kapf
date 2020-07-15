@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { Typography } from "@material-ui/core";
 import BackBtn from "../components/Layout/BackBtn";
 import { ChildLikes, ChildDislikes, ChildAllergies, ChildNotes } from "../components";
+import API from '../../utils/API';
 
 
 
@@ -31,6 +32,53 @@ const useStyles = makeStyles((theme) => ({
 
 function LogInfo() {
     const classes = useStyles();
+
+    const [likes, setLikes] = useState([])
+    const [dislikes, setDislikes] = useState([])
+    const [allergies, setAllergies] = useState([])
+    const [info, setInfo] = useState([])
+
+    useEffect(() => {
+        loadLikes();
+        loadDislikes();
+        loadAllergies();
+        loadInfo();
+    }, [])
+
+
+    function loadLikes() {
+        API.Likes.getAll()
+            .then(res => {
+                setLikes(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+    function loadDislikes() {
+        API.Dislikes.getAll()
+            .then(res => {
+                setDislikes(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+    function loadAllergies() {
+        API.Allergies.getAll()
+            .then(res => {
+                setAllergies(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+    function loadInfo() {
+        API.Info.getAll()
+            .then(res => {
+                setInfo(res.data)
+            })
+            .catch(err => console.log(err))
+    }
+
+    console.log(likes);
+    console.log(dislikes);
+    console.log(allergies);
+    console.log(info);
 
     return (
         <div className={classes.root}>
