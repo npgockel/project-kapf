@@ -1,17 +1,9 @@
 import React, { useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import PaymentForm from './PaymentForm';
-import Review from './Review';
 import API from '../../utils/API.js';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -20,21 +12,9 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import CopyrightFooter from './CopyrightFooter';
 
 
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -83,26 +63,12 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-// const steps = ['Basics', 'Important Info', 'Add a photo!'];
-
-// function getStepContent(step) {
-//   switch (step) {
-//     case 0:
-//       return <Basics />;
-//     case 1:
-//       return <PaymentForm />;
-//     case 2:
-//       return <Review />;
-//     default:
-//       throw new Error('Unknown step');
-//   }
-// }
-
-export default function Checkout() {
+function ChildCreate() {
   const classes = useStyles();
   const [gender, setGender] = useState('');
   const [name, setFName] = useState('');
   const [DOB, setDOB] = useState('YYYY-MM-DD');
+  const [childImage, setChildImg] = useState();
 
   const handleGenderChange = (event) => {
     setGender(event.target.value);
@@ -113,17 +79,22 @@ export default function Checkout() {
   const handleDOBChange = (event) => {
     setDOB(event.target.value);
   };
+  const handleImgChange = (event) => {
+    setChildImg(event.target.value);
+  };
 
   const postChild = () => {
     let childData = {
       childGender: gender,
       childName: name,
-      childDOB: DOB
+      childDOB: DOB,
+      childImg: childImage
     }
     API.Child.create(childData);
     console.log("success")
   };
 
+  
   function nugImg(){
     var myWidget = window.cloudinary.createUploadWidget({
       cloudName: 'project-kapf', 
@@ -258,51 +229,10 @@ export default function Checkout() {
           </Grid>
         </Paper>
 
-        <Copyright />
+        <CopyrightFooter />
       </main>
     </Fragment>
   );
-}
+};
 
-
-
-
-{/* <Stepper activeStep={activeStep} className={classes.stepper}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Thank you for entering your child.
-                </Typography>
-                <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {getStepContent(activeStep)}
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
-                      Back
-                    </Button>
-                  )}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                  </Button>
-                </div>
-              </React.Fragment>
-            )}
-          </React.Fragment> */}
+export default ChildCreate;

@@ -176,7 +176,7 @@ function SleepTable() {
                                         {moment(row.sleepEnd).format('LT')}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
-                                        {moment(row.sleepEnd).diff(row.sleepStart, "hours", "minutes").toFixed(1) + "" + "hrs"}
+                                        {moment(row.sleepEnd).diff(row.sleepStart, "hours", "minutes").toFixed(1) + " " + "hrs"}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }} align="right">
                                         {moment(row.sleepDate).format("MMM Do YYYY")}
