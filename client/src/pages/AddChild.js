@@ -1,11 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import StickyFooter from "../components/Layout/StickyFooter";
-import Checkout from "../components/Layout/Checkout";
+import ChildCreate from "../components/Layout/ChildCreate";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import API from '../utils/API';
 import Button from '@material-ui/core/Button';
 
 
@@ -19,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         margin: 0,
         padding: 10,
-        // backgroundColor: "beige",
+
     },
     topAlignment: {
         margin: 10,
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function AddChild() {
+function AddChild() {
     const classes = useStyles();
     return (
         <>
@@ -47,8 +46,10 @@ export default function AddChild() {
 
                 </Grid>
             </Grid>
-            <Checkout />
+            <ChildCreate />
             <StickyFooter />
         </>
     );
-}
+};
+
+export default AddChild;

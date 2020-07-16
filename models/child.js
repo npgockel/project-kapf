@@ -17,6 +17,10 @@ module.exports = function (sequelize, DataTypes) {
         validate: {
           isDate: true,
         }
+      },
+      childImg: {
+        type: DataTypes.STRING,
+        allowNull: true
       }
 
     }

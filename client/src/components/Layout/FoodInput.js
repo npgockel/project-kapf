@@ -9,7 +9,6 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import API from '../../utils/API.js';
 import Box from '@material-ui/core/Box';
-import Moment from 'react-moment';
 import 'moment-timezone';
 
 

@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Home, ChildOverview, AddChild, LogFood, LogInfo, LogSleep, NannyHome } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
@@ -48,6 +43,8 @@ function App() {
   function clearError() {
     setError("");
   }
+
+
 
   return (
     <>
