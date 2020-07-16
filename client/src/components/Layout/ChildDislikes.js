@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,7 +8,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import { red } from '@material-ui/core/colors';
-import SvgIcon from '@material-ui/core/SvgIcon';
+import API from '../../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,22 +29,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
-
-
-function HomeIcon(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </SvgIcon>
-  );
-}
 
 function ChildDislikes(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+  const [dislikes, setDislikes] = useState([])
+
+  useEffect(() => {
+    loadDislikes();
+  }, [])
+
+
+  function loadDislikes() {
+    API.Allergies.getAll()
+      .then(res => {
+        setDislikes(res.data)
+      })
+      .catch(err => console.log(err))
+  }
+
+
+  console.log(dislikes);
 
   return (
     <div>

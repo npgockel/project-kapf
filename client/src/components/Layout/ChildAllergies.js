@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,7 +8,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HealingIcon from '@material-ui/icons/Healing';
 import { yellow } from '@material-ui/core/colors';
-import SvgIcon from '@material-ui/core/SvgIcon';
+import API from '../../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,22 +29,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
 
-
-function HomeIcon(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </SvgIcon>
-  );
-}
 
 function ChildAllergies(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+  const [allergies, setAllergies] = useState([])
+
+  useEffect(() => {
+    loadAllergies();
+  }, [])
+
+
+  function loadAllergies() {
+    API.Allergies.getAll()
+      .then(res => {
+        setAllergies(res.data)
+      })
+      .catch(err => console.log(err))
+  }
+
+
+  console.log(allergies);
+
+
+
+
+
+
+
 
   return (
     <div>
