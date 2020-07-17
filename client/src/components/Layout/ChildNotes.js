@@ -39,7 +39,7 @@ function ChildAllergies(props) {
 
 
   function loadNotes() {
-    API.Allergies.getAll()
+    API.Note.getAll()
       .then(res => {
         setNotes(res.data)
       })
@@ -54,30 +54,16 @@ function ChildAllergies(props) {
       <Card className={classes.root}>
         <CardContent>
           <List>
-            <ListItem>
+          {notes.map((list) => (
+            <ListItem >
               <ListItemIcon>
-                <InfoIcon style={{ color: blue[500] }} />
+              <InfoIcon style={{ color: blue[500] }} />
               </ListItemIcon>
               <ListItemText>
-                Started teething so may be a bit fussy out of nowhere.
+                {list.note}
               </ListItemText>
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <InfoIcon style={{ color: blue[500] }} />
-              </ListItemIcon>
-              <ListItemText>
-                Is able to identify different shapes and starting to say them.
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <InfoIcon style={{ color: blue[500] }} />
-              </ListItemIcon>
-              <ListItemText>
-                Starts to whine when not being held. Power through it.
-              </ListItemText>
-            </ListItem>
+              ))}
           </List>
         </CardContent>
       </Card>

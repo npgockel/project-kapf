@@ -41,7 +41,7 @@ function ChildAllergies(props) {
 
 
   function loadAllergies() {
-    API.Allergies.getAll()
+    API.Allergy.getAll()
       .then(res => {
         setAllergies(res.data)
       })
@@ -63,30 +63,16 @@ function ChildAllergies(props) {
       <Card className={classes.root}>
         <CardContent>
           <List>
-            <ListItem>
+          {allergies.map((list) => (
+            <ListItem >
               <ListItemIcon>
-                <HealingIcon style={{ color: yellow[900] }} />
+              <HealingIcon style={{ color: yellow[900] }} />
               </ListItemIcon>
               <ListItemText>
-                Peanut Allergy
+                {list.allergy}
               </ListItemText>
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <HealingIcon style={{ color: yellow[900] }} />
-              </ListItemIcon>
-              <ListItemText>
-                Bees
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <HealingIcon style={{ color: yellow[900] }} />
-              </ListItemIcon>
-              <ListItemText>
-                Lactose Intolerant
-              </ListItemText>
-            </ListItem>
+              ))}
           </List>
         </CardContent>
       </Card>

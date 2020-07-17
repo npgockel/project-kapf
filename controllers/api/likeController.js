@@ -26,7 +26,7 @@ router.get("/:id", isAuthenticated, function (req, res) {
  * This allows for us to modify a user's password, as defined in the User model
  */
 router.post("/", function (req, res) {
-  db.Like.scope("withPassword")
+  db.Like
     .create(req.body)
     .then(dbModel => {
       db.Child.findByPk(req.user.id).then(

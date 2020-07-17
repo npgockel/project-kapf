@@ -40,7 +40,7 @@ function ChildDislikes(props) {
 
 
   function loadDislikes() {
-    API.Allergies.getAll()
+    API.Dislikes.getAll()
       .then(res => {
         setDislikes(res.data)
       })
@@ -55,30 +55,16 @@ function ChildDislikes(props) {
       <Card className={classes.root}>
         <CardContent>
           <List>
-            <ListItem>
+          {dislikes.map((list) => (
+            <ListItem >
               <ListItemIcon>
                 <SentimentVeryDissatisfiedIcon style={{ color: red[500] }} />
               </ListItemIcon>
               <ListItemText>
-                Nap Time
+                {list.dislike}
               </ListItemText>
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <SentimentVeryDissatisfiedIcon style={{ color: red[500] }} />
-              </ListItemIcon>
-              <ListItemText>
-                Dogs Barking
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <SentimentVeryDissatisfiedIcon style={{ color: red[500] }} />
-              </ListItemIcon>
-              <ListItemText>
-                Bad Breath
-              </ListItemText>
-            </ListItem>
+              ))}
           </List>
         </CardContent>
       </Card>
