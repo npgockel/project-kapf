@@ -12,7 +12,6 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import API from './utils/API';
 
-
 function App() {
   const [user, setUser] = useState({});
   const [error, setError] = useState("")
@@ -54,14 +53,14 @@ function App() {
   return (
     <>
       <Router>
-        <Container>
+        <Container fullwidth>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <Navigation user={user} logoutUser={logoutUser} />
             </Grid>
             <Grid item xs={12}>
               {error && <Error error={error} clearError={clearError} />}
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <Switch>
                 <Route exact path={["/", "/home"]}>

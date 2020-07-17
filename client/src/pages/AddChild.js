@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import StickyFooter from "../components/Layout/StickyFooter";
 import Checkout from "../components/Layout/Checkout";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Grid from '@material-ui/core/Grid';
@@ -48,7 +47,6 @@ export default function AddChild() {
                 </Grid>
             </Grid>
             <Checkout />
-            <StickyFooter />
         </>
     );
 }
