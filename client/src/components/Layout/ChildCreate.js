@@ -67,8 +67,13 @@ function ChildCreate() {
   const classes = useStyles();
   const [gender, setGender] = useState('');
   const [name, setFName] = useState('');
-  const [DOB, setDOB] = useState('YYYY-MM-DD');
+  const [DOB, setDOB] = useState('');
   const [childImage, setChildImg] = useState();
+
+  const [allergies, setAllergies] = useState('');
+  const [likes, setLikes] = useState('');
+  const [dislikes, setDislikes] = useState('');
+  const [notes, setNotes] = useState('');
 
   const handleGenderChange = (event) => {
     setGender(event.target.value);
@@ -79,8 +84,17 @@ function ChildCreate() {
   const handleDOBChange = (event) => {
     setDOB(event.target.value);
   };
-  const handleImgChange = (event) => {
-    setChildImg(event.target.value);
+  const handleAllergiesChange = (event) => {
+    setAllergies(event.target.value);
+  };
+  const handleNotesChange = (event) => {
+    setNotes(event.target.value);
+  };
+  const handleLikesChange = (event) => {
+    setLikes(event.target.value);
+  };
+  const handleDislikesChange = (event) => {
+    setDislikes(event.target.value);
   };
 
   const postChild = () => {
@@ -91,9 +105,39 @@ function ChildCreate() {
       childImg: childImage
     }
     API.Child.create(childData);
-    console.log("success")
   };
 
+  const postLike = () => {
+    let likeData = {
+      like: likes
+    }
+    API.Likes.create(likeData);
+    console.log(likeData);
+  };
+
+  const postDislike = () => {
+    let dislikeData = {
+      dislike: dislikes
+    }
+    API.Dislikes.create(dislikeData);
+    console.log(dislikeData);
+  };
+
+  const postAllergy = () => {
+    let allergyData = {
+      allergy: allergies
+    }
+    API.Allergy.create(allergyData);
+    console.log(allergyData);
+  };
+
+  const postNote = () => {
+    let noteData = {
+      note: notes
+    }
+    API.Note.create(noteData);
+    console.log(noteData);
+  };
   
   function nugImg(){
     var myWidget = window.cloudinary.createUploadWidget({
@@ -169,44 +213,46 @@ function ChildCreate() {
       </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
+              <form>
               <TextField
                 id="outlined-multiline-static"
                 label="Allergies"
-                multiline
-                rows={4}
-                // defaultValue="trucks, rock'n'roll, etc."
                 variant="outlined"
+                value={allergies}
+                onChange={handleAllergiesChange}
               />
+              <Button variant="contained" color="primary" onClick={postAllergy}>Add</Button>
+              </form>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-multiline-static"
-                label="Medical Instructions"
-                multiline
-                rows={4}
-                // defaultValue="trucks, rock'n'roll, etc."
+                label="Notes"
                 variant="outlined"
+                value={notes}
+                onChange={handleNotesChange}
               />
+              <Button variant="contained" color="primary" onClick={postNote}>Add</Button>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
-                id="outlined-multiline-static"
-                label="Favorite Things"
-                multiline
-                rows={4}
-                // defaultValue="trucks, rock'n'roll, etc."
-                variant="outlined"
+                 id="outlined-multiline-static"
+                 label="Likes"
+                 variant="outlined"
+                 value={likes}
+                 onChange={handleLikesChange}
               />
+              <Button variant="contained" color="primary" onClick={postLike}>Add</Button>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
-                id="outlined-multiline-static"
-                label="Rules - TV and such"
-                multiline
-                rows={4}
-                // defaultValue="trucks, rock'n'roll, etc."
-                variant="outlined"
+                 id="outlined-multiline-static"
+                 label="Dislikes"
+                 variant="outlined"
+                 value={dislikes}
+                 onChange={handleDislikesChange}
               />
+              <Button variant="contained" color="primary" onClick={postDislike}>Add</Button>
             </Grid>
           </Grid>
         </Paper>
