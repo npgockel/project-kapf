@@ -103,7 +103,7 @@ function Home(props) {
                   >
                     <CardMedia
                       className={classes.cardMedia}
-                      image="https://source.unsplash.com/random"
+                      image={card.childImg}
                       title=""
                       data-index={index}
                       onClick={selectChosenChild}
