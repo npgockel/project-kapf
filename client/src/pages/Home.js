@@ -26,12 +26,14 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
+
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundImage: "url('./Artboard1.png')",
+    backgroundColor: '#ffdbdb',
     padding: theme.spacing(8, 0, 6),
+  },
+  backgroundImage: {
+    url: '../Artboard1.png',
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -52,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   footer: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundImage: "url('./Artboard1.png')",
     padding: theme.spacing(6),
   },
 }));

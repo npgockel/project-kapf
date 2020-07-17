@@ -83,20 +83,6 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-// const steps = ['Basics', 'Important Info', 'Add a photo!'];
-
-// function getStepContent(step) {
-//   switch (step) {
-//     case 0:
-//       return <Basics />;
-//     case 1:
-//       return <PaymentForm />;
-//     case 2:
-//       return <Review />;
-//     default:
-//       throw new Error('Unknown step');
-//   }
-// }
 
 export default function Checkout() {
   const classes = useStyles();
