@@ -8,17 +8,11 @@ import { red, blue, purple, yellow, green } from '@material-ui/core/colors'
 
 
 const theme = createMuiTheme({
-  backgroundImage: {
-    url: "Artboard1.png"
-  },
   palette: {
     primary: {
       main: red[100]
     },
   },
-  spacing: {
-
-  }
 });
 
 

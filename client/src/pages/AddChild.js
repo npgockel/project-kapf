@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         margin: 0,
         padding: 10,
-        // backgroundColor: "beige",
     },
     topAlignment: {
         margin: 10,
@@ -34,7 +33,7 @@ export default function AddChild() {
             <Grid container spacing={4}>
                 <Grid container item
                     className={classes.topAlignment}
-                    xs={12}
+                    xs={12} s={6} m={4}
                     justify="flex-start"
                     alignItems="center"
                 >
