@@ -62,7 +62,7 @@ function ChildOverview(props) {
                 <Grid item xs={12}>
                     <Card>
                         <CardContent>
-                            <img src={"https://i.ibb.co/SPchxzh/beautifulbabies.png"} alt="beauty"></img>
+                            <img src={childs.childImg} alt="beauty"></img>
                             <Typography gutterBottom variant="h5" component="h2">
                                 {childs.childName}
                             </Typography>

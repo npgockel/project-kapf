@@ -100,7 +100,8 @@ function ChildCreate() {
       cloudName: 'project-kapf', 
       uploadPreset: 'fec0tg1l'}, (error, result) => { 
         if (!error && result && result.event === "success") { 
-          console.log('Done! Here is the image info: ', result.info); 
+          console.log('Done! Here is the image info: ', result.info);
+          setChildImg(result.info.secure_url);
         }
       }
     )
