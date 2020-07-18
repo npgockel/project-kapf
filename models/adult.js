@@ -101,9 +101,8 @@ module.exports = function(sequelize, DataTypes) {
       through: "ParentChild",
       onDelete: "cascade"
     });
-    Adult.belongsToMany(models.Child, {
-      through: "NonParentChild",
-    });
+
+    Adult.hasMany(models.BabysitterRelation);
   };
 
   return Adult;

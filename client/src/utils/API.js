@@ -78,21 +78,21 @@ export default {
             return _update("posts", id, data);
         }
     },
-    User: {
+    Adult: {
         getAll: function () {
-            return _getAll("users");
+            return _getAll("adults");
         },
         getById: function (id) {
-            return _getOne("users", id);
+            return _getOne("adults", id);
         },
         delete: function (id) {
-            return _delete("users", id);
+            return _delete("adults", id);
         },
         create: function(data){
-            return _create("users", data);
+            return _create("adults", data);
         },
         update: function(id, data){
-            return _update("users", id, data);
+            return _update("adults", id, data);
         }
     },
     Food: {
@@ -144,6 +144,23 @@ export default {
         },
         update: function(id, data){
             return _update("sleep", id, data);
+        }
+    },
+    BabysitterRelation: {
+        getAll: function () {
+            return _getAll("likes");
+        },
+        getById: function (id) {
+            return _getOne("likes", id);
+        },
+        delete: function (id) {
+            return _delete("likes", id);
+        },
+        create: function(data){
+            return _create("likes", data);
+        },
+        update: function(id, data){
+            return _update("likes", id, data);
         }
     },
     Likes: {

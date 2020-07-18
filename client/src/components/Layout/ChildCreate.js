@@ -214,7 +214,7 @@ function ChildCreate() {
           <Typography variant="h6" gutterBottom>
             Add a lil photo of your Nugget-roo
           </Typography>
-          <button onClick={nugImg}>
+          <button onClick={nugImg, handleImgChange}>
           Upload Image
           </button>
         </Paper>

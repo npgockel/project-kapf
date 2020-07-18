@@ -115,7 +115,7 @@ function Home(props) {
                     </CardContent>
                     <CardActions
                     >
-                      <Button component={Link} to={{ pathname: "/child-overview", state: chosenChild }} size="small" color="primary">
+                      <Button component={Link} data-index={index} onClick={selectChosenChild} to={{ pathname: "/child-overview", state: chosenChild }} size="small" color="primary">
                         View
                     </Button>
                     </CardActions>
