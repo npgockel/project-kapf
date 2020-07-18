@@ -4,7 +4,7 @@ const postRoutes = require("./postsController");
 const adultRoutes = require("./adultsController");
 const childRoutes = require("./childController");
 const foodRoutes = require("./foodController");
-
+const babysitterRoutes = require("./babysitterController");
 const sleepRoutes = require("./sleepController");
 const likeRoutes = require("./likeController");
 const dislikeRoutes = require("./dislikeController");
@@ -16,7 +16,7 @@ router.use("/posts", postRoutes);
 router.use("/adults", adultRoutes);
 router.use("/child", childRoutes);
 router.use("/food", foodRoutes);
-
+router.use("/babysitter", babysitterRoutes);
 router.use("/sleep", sleepRoutes);
 router.use("/like", likeRoutes);
 router.use("/dislike", dislikeRoutes);

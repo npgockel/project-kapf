@@ -32,9 +32,8 @@ module.exports = function (sequelize, DataTypes) {
     Child.belongsToMany(models.Adult, {
       through: "ParentChild"
     });
-    Child.belongsToMany(models.Adult, {
-      through: "NonParentChild"
-    });
+    Child.hasMany(models.BabysitterRelation);
+    
     Child.hasMany(models.Food);
 
     Child.hasMany(models.Sleep);
