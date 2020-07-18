@@ -28,12 +28,8 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
 
   heroContent: {
-    backgroundImage: "url('./Artboard1.png')",
     backgroundColor: '#ffdbdb',
     padding: theme.spacing(8, 0, 6),
-  },
-  backgroundImage: {
-    url: '../Artboard1.png',
   },
   heroButtons: {
     marginTop: theme.spacing(4),

@@ -5,12 +5,19 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Home, ChildOverview, AddChild, LogFood, LogInfo, LogSleep, NannyHome } from "./pages";
+import { Home, SplashPage, ChildOverview, AddChild, LogFood, LogInfo, LogSleep, NannyHome } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import API from './utils/API';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  someStyle: {
+    color: "red"
+  }
+});
 
 function App() {
   const [user, setUser] = useState({});
@@ -70,6 +77,9 @@ function App() {
                 </Route>
                 <Route exact path={["/addchild"]}>
                   <AddChild />
+                </Route>
+                <Route exact path={["/splashpage"]}>
+                  <SplashPage />
                 </Route>
                 <Route exact path={["/nannyhome"]}>
                   <NannyHome />

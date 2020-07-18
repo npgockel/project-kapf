@@ -25,6 +25,7 @@
     "express": "^4.17.0",
     "express-session": "^1.16.1",
     "if-env": "^1.0.4",
+    "material-ui-image": "^3.2.3",
     "moment": "^2.27.0",
     "morgan": "^1.10.0",
     "mysql2": "^1.6.5",
