@@ -67,16 +67,16 @@ function App() {
             </Grid> */}
             <Grid item xs={12}>
               <Switch>
-                <Route exact path={["/home"]}>
-                  <Home
-                    user={user}
+              <Route exact path={["/","/splashpage"]}>
+                  <SplashPage
                   />
                 </Route>
                 <Route exact path={["/addchild"]}>
                   <AddChild />
                 </Route>
-                <Route exact path={["/", "/splashpage"]}>
-                  <SplashPage />
+                <Route exact path={["/home"]}>
+                  <Home
+                  user={user} />
                 </Route>
                 <Route exact path={["/addbabysitter"]}>
                   <AddBabysitter />

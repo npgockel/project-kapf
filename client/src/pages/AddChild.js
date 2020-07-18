@@ -4,7 +4,7 @@ import StickyFooter from "../components/Layout/StickyFooter";
 import ChildCreate from "../components/Layout/ChildCreate";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
+import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 
 
@@ -38,7 +38,7 @@ function AddChild() {
                     alignItems="center"
                 >
                     <div className={classes.root}>
-                        <Button component={Link} to="/Home">
+                        <Button component={Link} to="/home">
                             <ArrowBackIosIcon />
                         </Button>
                     </div>
