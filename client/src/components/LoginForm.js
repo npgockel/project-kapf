@@ -1,18 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, TextField, Typography, Container, Grid, Paper } from '@material-ui/core';
-import CardMedia from '@material-ui/core/CardMedia';
-
-// const useStyles = makeStyles((theme) => ({
-//     media: {
-//         height: 200,
-//         width: 98,
-
-
-// }));
-
-
-
+import { Button, TextField, Typography, Container, Grid } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -20,20 +8,9 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-// import { makeStyles } from '@material-ui/core/styles';
+import CopyrightFooter from '../components/Layout/CopyrightFooter';
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="/home">
-                Nanny Nugget
-      </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -55,11 +32,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function LoginForm(props) {
+function LoginForm(props) {
     const classes = useStyles();
     const { formObject, handleFormSubmit, handleInputChange } = props;
-
-    const preventDefault = (event) => event.preventDefault();
 
     return (
         <Container component="main" maxWidth="xs">
@@ -119,28 +94,20 @@ export default function LoginForm(props) {
                         Don't have an account? Sign Up!
                     </Button>
 
-
                     <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2">
                                 Forgot password?
                             </Link>
                         </Grid>
-                        {/* <Grid item>
-                            <Link
-                                href="/signup"
-                                onClick={preventDefault}
-                            >
-                                {"Don't have an account? Sign Up"}
-                            </Link>
-                        </Grid> */}
                     </Grid>
                 </form>
             </div>
             <Box mt={8}>
-                <Copyright />
+                <CopyrightFooter />
             </Box>
         </Container>
     );
 }
 
+export default LoginForm;

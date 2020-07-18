@@ -17,6 +17,10 @@ module.exports = function (sequelize, DataTypes) {
         validate: {
           isDate: true,
         }
+      },
+      childImg: {
+        type: DataTypes.STRING,
+        allowNull: true
       }
 
     }
@@ -28,9 +32,8 @@ module.exports = function (sequelize, DataTypes) {
     Child.belongsToMany(models.Adult, {
       through: "ParentChild"
     });
-    Child.belongsToMany(models.Adult, {
-      through: "NonParentChild"
-    });
+    Child.hasMany(models.BabysitterRelation);
+    
     Child.hasMany(models.Food);
 
     Child.hasMany(models.Sleep);

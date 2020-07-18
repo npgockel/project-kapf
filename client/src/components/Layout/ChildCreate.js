@@ -1,14 +1,9 @@
 import React, { useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import PaymentForm from './PaymentForm';
-import Review from './Review';
 import API from '../../utils/API.js';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -17,21 +12,9 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import CopyrightFooter from './CopyrightFooter';
 
 
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -77,12 +60,17 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-
-export default function Checkout() {
+function ChildCreate() {
   const classes = useStyles();
   const [gender, setGender] = useState('');
   const [name, setFName] = useState('');
-  const [DOB, setDOB] = useState('YYYY-MM-DD');
+  const [DOB, setDOB] = useState('');
+  const [childImage, setChildImg] = useState();
+
+  const [allergies, setAllergies] = useState('');
+  const [likes, setLikes] = useState('');
+  const [dislikes, setDislikes] = useState('');
+  const [notes, setNotes] = useState('');
 
   const handleGenderChange = (event) => {
     setGender(event.target.value);
@@ -93,23 +81,68 @@ export default function Checkout() {
   const handleDOBChange = (event) => {
     setDOB(event.target.value);
   };
+  const handleAllergiesChange = (event) => {
+    setAllergies(event.target.value);
+  };
+  const handleNotesChange = (event) => {
+    setNotes(event.target.value);
+  };
+  const handleLikesChange = (event) => {
+    setLikes(event.target.value);
+  };
+  const handleDislikesChange = (event) => {
+    setDislikes(event.target.value);
+  };
 
   const postChild = () => {
     let childData = {
       childGender: gender,
       childName: name,
-      childDOB: DOB
+      childDOB: DOB,
+      childImg: childImage
     }
     API.Child.create(childData);
-    console.log("success")
   };
 
+  const postLike = () => {
+    let likeData = {
+      like: likes
+    }
+    API.Likes.create(likeData);
+    console.log(likeData);
+  };
+
+  const postDislike = () => {
+    let dislikeData = {
+      dislike: dislikes
+    }
+    API.Dislikes.create(dislikeData);
+    console.log(dislikeData);
+  };
+
+  const postAllergy = () => {
+    let allergyData = {
+      allergy: allergies
+    }
+    API.Allergy.create(allergyData);
+    console.log(allergyData);
+  };
+
+  const postNote = () => {
+    let noteData = {
+      note: notes
+    }
+    API.Note.create(noteData);
+    console.log(noteData);
+  };
+  
   function nugImg(){
     var myWidget = window.cloudinary.createUploadWidget({
       cloudName: 'project-kapf', 
       uploadPreset: 'fec0tg1l'}, (error, result) => { 
         if (!error && result && result.event === "success") { 
-          console.log('Done! Here is the image info: ', result.info); 
+          console.log('Done! Here is the image info: ', result.info);
+          setChildImg(result.info.secure_url);
         }
       }
     )
@@ -177,44 +210,46 @@ export default function Checkout() {
       </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
+              <form>
               <TextField
                 id="outlined-multiline-static"
                 label="Allergies"
-                multiline
-                rows={4}
-                // defaultValue="trucks, rock'n'roll, etc."
                 variant="outlined"
+                value={allergies}
+                onChange={handleAllergiesChange}
               />
+              <Button variant="contained" color="primary" onClick={postAllergy}>Add</Button>
+              </form>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
                 id="outlined-multiline-static"
-                label="Medical Instructions"
-                multiline
-                rows={4}
-                // defaultValue="trucks, rock'n'roll, etc."
+                label="Notes"
                 variant="outlined"
+                value={notes}
+                onChange={handleNotesChange}
               />
+              <Button variant="contained" color="primary" onClick={postNote}>Add</Button>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
-                id="outlined-multiline-static"
-                label="Favorite Things"
-                multiline
-                rows={4}
-                // defaultValue="trucks, rock'n'roll, etc."
-                variant="outlined"
+                 id="outlined-multiline-static"
+                 label="Likes"
+                 variant="outlined"
+                 value={likes}
+                 onChange={handleLikesChange}
               />
+              <Button variant="contained" color="primary" onClick={postLike}>Add</Button>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
-                id="outlined-multiline-static"
-                label="Rules - TV and such"
-                multiline
-                rows={4}
-                // defaultValue="trucks, rock'n'roll, etc."
-                variant="outlined"
+                 id="outlined-multiline-static"
+                 label="Dislikes"
+                 variant="outlined"
+                 value={dislikes}
+                 onChange={handleDislikesChange}
               />
+              <Button variant="contained" color="primary" onClick={postDislike}>Add</Button>
             </Grid>
           </Grid>
         </Paper>
@@ -238,51 +273,10 @@ export default function Checkout() {
           </Grid>
         </Paper>
 
-        <Copyright />
+        <CopyrightFooter />
       </main>
     </Fragment>
   );
-}
+};
 
-
-
-
-{/* <Stepper activeStep={activeStep} className={classes.stepper}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Thank you for entering your child.
-                </Typography>
-                <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {getStepContent(activeStep)}
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
-                      Back
-                    </Button>
-                  )}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                  </Button>
-                </div>
-              </React.Fragment>
-            )}
-          </React.Fragment> */}
+export default ChildCreate;

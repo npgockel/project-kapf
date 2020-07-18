@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useTheme, makeStyles } from '@material-ui/core/styles';
+import React, { useEffect, useState, Fragment } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -11,19 +11,10 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom";
 import API from '../utils/API';
+import CopyrightFooter from '../components/Layout/CopyrightFooter'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="/home">
-        Nannny Nanny
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -51,9 +42,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Home(props) {
+function Home(props) {
   const classes = useStyles();
   const [childs, setChildren] = useState([])
   const [chosenChild, setChosenChild] = useState([]);
@@ -77,7 +67,7 @@ export default function Home(props) {
   }
 
   return (
-    <React.Fragment>
+    <Fragment>
       <CssBaseline />
       <main>
         {/* Hero unit */}
@@ -107,7 +97,7 @@ export default function Home(props) {
                   >
                     <CardMedia
                       className={classes.cardMedia}
-                      image="https://source.unsplash.com/random"
+                      image={card.childImg}
                       title=""
                       data-index={index}
                       onClick={selectChosenChild}
@@ -116,13 +106,10 @@ export default function Home(props) {
                       <Typography gutterBottom variant="h5" component="h2">
                         {card.childName}
                       </Typography>
-                      <Typography>
-                        ---Your child's one liner---
-                    </Typography>
                     </CardContent>
                     <CardActions
                     >
-                      <Button component={Link} to={{ pathname: "/child-overview", state: chosenChild }} size="small" color="primary">
+                      <Button component={Link} data-index={index} onClick={selectChosenChild} to={{ pathname: "/child-overview", state: chosenChild }} size="small" color="primary">
                         View
                     </Button>
                     </CardActions>
@@ -135,3 +122,5 @@ export default function Home(props) {
     </React.Fragment>
   );
 }
+
+export default Home;

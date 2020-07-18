@@ -13,3 +13,7 @@ export { default as ChildLikes } from "./Layout/ChildLikes";
 export { default as ChildDislikes } from "./Layout/ChildDislikes";
 export { default as ChildAllergies } from "./Layout/ChildAllergies";
 export { default as ChildNotes } from "./Layout/ChildNotes";
+export { default as CopyrightFooter } from "./Layout/CopyrightFooter";
+export { default as ChildCreate } from "./Layout/ChildCreate";
+export { default as StickyFooter } from "./Layout/StickyFooter";
+export { default as BabysitterLink } from "./Layout/BabysitterLink";

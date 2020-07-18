@@ -35,7 +35,7 @@ function ChildOverview(props) {
 
     useEffect(() => {
         loadChildren()
-    }, [])
+    })
 
     function loadChildren() {
         API.Child.getById(props.location.state.id)
@@ -62,7 +62,7 @@ function ChildOverview(props) {
                 <Grid item xs={12}>
                     <Card>
                         <CardContent>
-                            <img src={"https://i.ibb.co/SPchxzh/beautifulbabies.png"}></img>
+                            <img src={childs.childImg} alt="beauty"></img>
                             <Typography gutterBottom variant="h5" component="h2">
                                 {childs.childName}
                             </Typography>
@@ -88,6 +88,11 @@ function ChildOverview(props) {
                 <Grid item xs={12}>
                     <Button component={Link} to="/loginfo" className={classes.paper} variant="contained" size="large" color="primary">
                         Log Info
+                    </Button>
+                </Grid>
+                <Grid item xs={12}>
+                    <Button component={Link} to="/addbabysitter" className={classes.paper} variant="contained" size="large" color="primary">
+                        Add Babysitter
                     </Button>
                 </Grid>
             </Grid>

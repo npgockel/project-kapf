@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
-import { Home, SplashPage, ChildOverview, AddChild, LogFood, LogInfo, LogSleep, NannyHome } from "./pages";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { Home, SplashPage, ChildOverview, AddChild, LogFood, LogInfo, LogSleep, AddBabysitter } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
@@ -57,6 +52,8 @@ function App() {
     setError("");
   }
 
+
+
   return (
     <>
       <Router>
@@ -81,8 +78,8 @@ function App() {
                 <Route exact path={["/splashpage"]}>
                   <SplashPage />
                 </Route>
-                <Route exact path={["/nannyhome"]}>
-                  <NannyHome />
+                <Route exact path={["/addbabysitter"]}>
+                  <AddBabysitter />
                 </Route>
                 <Route exact path={["/login", "/signup"]}>
                   <Auth

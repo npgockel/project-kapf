@@ -40,7 +40,7 @@ function ChildLikes(props) {
 
 
   function loadLikes() {
-    API.Allergies.getAll()
+    API.Likes.getAll()
       .then(res => {
         setLikes(res.data)
       })
@@ -55,30 +55,16 @@ function ChildLikes(props) {
       <Card className={classes.root}>
         <CardContent>
           <List>
-            <ListItem>
+          {likes.map((list) => (
+            <ListItem >
               <ListItemIcon>
-                <SentimentSatisfiedAltIcon style={{ color: green[500] }} />
+              <SentimentSatisfiedAltIcon style={{ color: green[500] }} />
               </ListItemIcon>
               <ListItemText>
-                Daniel Tiger
+                {list.like}
               </ListItemText>
             </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <SentimentSatisfiedAltIcon style={{ color: green[500] }} />
-              </ListItemIcon>
-              <ListItemText>
-                Trucks
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <SentimentSatisfiedAltIcon style={{ color: green[500] }} />
-              </ListItemIcon>
-              <ListItemText>
-                Democracy
-              </ListItemText>
-            </ListItem>
+              ))}
           </List>
         </CardContent>
       </Card>
