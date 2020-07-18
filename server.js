@@ -23,11 +23,13 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use("/static", express.static("public"));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
 
 // We need to use sessions to keep track of our user's login status
 app.use(
@@ -45,7 +47,7 @@ if (process.env.NODE_ENV === "TEST") {
 }
 // if we need it! {force:true}
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync(config).then(function() {
+db.sequelize.sync(config).then(function () {
   if (process.env.NODE_ENV === "TEST") {
     db.User.create({ email: "test@test.com", password: "password" }).then(
       () => {
@@ -53,7 +55,7 @@ db.sequelize.sync(config).then(function() {
       }
     );
   }
-  app.listen(PORT, function() {
+  app.listen(PORT, function () {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,

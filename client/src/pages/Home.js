@@ -17,11 +17,9 @@ import CopyrightFooter from '../components/Layout/CopyrightFooter'
 
 
 const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
+
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#ffdbdb',
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -41,10 +39,6 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
   },
 }));
 
@@ -125,18 +119,7 @@ function Home(props) {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Nanny Feed My Bebe
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Many thanks to David, Anthony, and Brock!
-        </Typography>
-        <CopyrightFooter />
-      </footer>
-      {/* End footer */}
-    </Fragment>
+    </React.Fragment>
   );
 }
 

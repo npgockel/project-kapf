@@ -7,3 +7,4 @@ export { default as AddBabysitter } from "./AddBabysitter";
 export { default as LogFood } from "./LogFood";
 export { default as LogInfo } from "./LogInfo";
 export { default as LogSleep } from "./LogSleep";
+export { default as SplashPage } from "./SplashPage";

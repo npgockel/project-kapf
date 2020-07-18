@@ -14,14 +14,14 @@ import CopyrightFooter from '../components/Layout/CopyrightFooter';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(1),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
     },
     avatar: {
         margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: '#d1d1f9',
     },
     form: {
         width: '100%', // Fix IE 11 issue.
@@ -74,14 +74,14 @@ function LoginForm(props) {
                         autoComplete="current-password"
                     />
                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
+                        control={<Checkbox value="remember" color="#ffdbdb" />}
                         label="Remember me"
                     />
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
-                        color="primary"
+                        color="#ffdbdb"
                         className={classes.submit}
                         onClick={handleFormSubmit}
                     >

@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import { Home, ChildOverview, AddChild, LogFood, LogInfo, LogSleep, AddBabysitter } from "./pages";
+import { Home, SplashPage, ChildOverview, AddChild, LogFood, LogInfo, LogSleep, AddBabysitter } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import API from './utils/API';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  someStyle: {
+    color: "red"
+  }
+});
 
 function App() {
   const [user, setUser] = useState({});
   const [error, setError] = useState("")
+
 
   function loginUser(email, password) {
     const data = {
@@ -49,14 +57,14 @@ function App() {
   return (
     <>
       <Router>
-        <Container>
+        <Container fullwidth>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <Navigation user={user} logoutUser={logoutUser} />
             </Grid>
             <Grid item xs={12}>
               {error && <Error error={error} clearError={clearError} />}
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <Switch>
                 <Route exact path={["/", "/home"]}>
@@ -66,6 +74,9 @@ function App() {
                 </Route>
                 <Route exact path={["/addchild"]}>
                   <AddChild />
+                </Route>
+                <Route exact path={["/splashpage"]}>
+                  <SplashPage />
                 </Route>
                 <Route exact path={["/addbabysitter"]}>
                   <AddBabysitter />
