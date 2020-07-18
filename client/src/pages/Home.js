@@ -119,7 +119,7 @@ function Home(props) {
           </Grid>
         </Container>
       </main>
-    </React.Fragment>
+    </Fragment>
   );
 }
 
