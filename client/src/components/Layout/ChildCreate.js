@@ -13,6 +13,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import CopyrightFooter from './CopyrightFooter';
+import { Link } from "react-router-dom";
 
 
 
@@ -266,7 +267,7 @@ function ChildCreate() {
         <Paper className={classes.paper}>
           <Grid container spacing={3} direction='column' alignItems='center'>
             <Grid item xs={12}>
-              <Button onClick={postChild} className={classes.paper} variant='contained' size='large' color='primary'>
+              <Button onClick={postChild} component={Link} to="/home" className={classes.paper} variant='contained' size='large' color='primary'>
                 Submit
                 </Button>
             </Grid>
