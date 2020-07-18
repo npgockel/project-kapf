@@ -19,7 +19,7 @@
 <img src="https://avatars3.githubusercontent.com/u/59748336?s=200&v=4">
 
 Ken Williams
-* Website: kenwilliams74.github.io
+* Website: [kenwilliams74.github.io](https://kenwilliams74.github.io/)
 * Github: [@kenwilliams74](https://github.com/KenWilliams74)
 * LinkedIn: [ken-williams-fullstackcoding](https://www.linkedin.com/in/ken-williams-fullstackcoding/)
 * Email: kenwilliams74@gmail.com
@@ -30,7 +30,7 @@ Nectarios 'Ari' Gockel
 * LinkedIn: [nectarios-gockel](https://www.linkedin.com/in/nectarios-gockel/)
 * Email: npgockel@gmail.com
 * Github: [@NPGockel](https://github.com/NPGockel)
-* Website: npgockel.github.io
+* Website: [npgockel.github.io](https://npgockel.github.io/)
 
 <img src="https://avatars2.githubusercontent.com/u/58503954?s=200&v=4">
 
