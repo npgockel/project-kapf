@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Home, ChildOverview, AddChild, LogFood, LogInfo, LogSleep, AddBabysitter } from "./pages";
 import Auth from "./pages/Auth"
@@ -44,16 +44,6 @@ function App() {
     setError("");
   }
 
-  useEffect(() => {
-    function getCurrentUser() {
-      API.Auth.user_data().then(res => {
-        if (res.data) {
-          setUser(res.data)
-        }
-      })
-    }
-    getCurrentUser()
-  }, []) 
 
 
   return (

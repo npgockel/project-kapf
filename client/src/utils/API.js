@@ -58,7 +58,7 @@ export default {
             return axios.get("/auth/logout");
         },
         user_data: function(){
-            return axios.get("/auth/adult_data");
+            return axios.get("/auth/user_data");
         }
     },
     Post: {
