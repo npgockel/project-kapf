@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, CardActionArea } from '@material-ui/core';
+import { Box, Container, Typography, Button, Grid, Card, CardActions, CardContent, CardMedia, CardActionArea } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom";
 import Image from 'material-ui-image';
 import { red, grey, blue, purple, yellow, green } from '@material-ui/core/colors'
 import { CopyrightFooter } from '../components';
-
-
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -34,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    // paddingTop: '56.25%', // 16:9
   },
   cardContent: {
     flexGrow: 1,
@@ -51,15 +46,16 @@ export default function Album() {
     >
       <div className={classes.heroContent}>
         {/* <Image
+          height='auto'
             src="Banner.png"
             disableSpinner
           /> */}
         <Card >
           <CardMedia
             component="img"
-            alt="Contemplative Reptile"
+            alt="Swaddle Swan Logo"
             image="Banner.png"
-            title="Contemplative Reptile"
+            title="Swaddle Swan Logo"
           />
         </Card>
       </div>
@@ -253,7 +249,16 @@ export default function Album() {
           </Button>
         </Grid>
       </Grid>
-      <CopyrightFooter />
+      <Grid container>
+        <Grid item>
+
+        </Grid>
+
+      </Grid>
+
+      <Box mt={8}>
+        <CopyrightFooter />
+      </Box>
     </Container>
   );
 }

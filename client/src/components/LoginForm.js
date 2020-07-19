@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, TextField, Typography, Container, Grid } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, CardMedia, CardActionArea, TextField, Typography, Container, Grid } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -13,6 +13,9 @@ import CopyrightFooter from '../components/Layout/CopyrightFooter';
 
 
 const useStyles = makeStyles((theme) => ({
+    heroContent: {
+        margin: theme.spacing(10),
+    },
     paper: {
         marginTop: theme.spacing(1),
         display: 'flex',
@@ -21,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         margin: theme.spacing(1),
-        backgroundColor: '#d1d1f9',
+        backgroundColor: theme.palette.warning.main,
+        color: theme.palette.primary.dark,
     },
     form: {
         width: '100%', // Fix IE 11 issue.
@@ -29,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+        backgroundColor: theme.palette.warning.main,
+        color: theme.palette.primary.dark,
+
     },
 }));
 
@@ -39,13 +46,32 @@ function LoginForm(props) {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
+
+            <div className={classes.heroContent}>
+                {/* <Image
+          height='auto'
+            src="Banner.png"
+            disableSpinner
+          /> */}
+                <Card >
+                    <CardMedia
+                        component="img"
+                        alt="Swaddle Swan Logo"
+                        image="Banner.png"
+                        title="Swaddle Swan Logo"
+                    />
+                </Card>
+            </div>
+
+
+
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
                     Sign in
-        </Typography>
+                </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
