@@ -1,14 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import { Container, Typography, Grid, CssBaseline, Box, Card, CardActions, CardContent, CardMedia, Button, AppBar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import API from '../utils/API';
 import CopyrightFooter from '../components/Layout/CopyrightFooter'
@@ -17,10 +9,8 @@ import CopyrightFooter from '../components/Layout/CopyrightFooter'
 
 
 const useStyles = makeStyles((theme) => ({
-
   heroContent: {
-    backgroundColor: '#ffdbdb',
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(1),
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -28,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
+  },
+  buttonOption3: {
+    background: theme.palette.secondary.main,
+    margin: theme.spacing(1),
+    color: theme.palette.primary.dark,
   },
   card: {
     height: '100%',
@@ -69,24 +64,54 @@ function Home(props) {
   return (
     <Fragment>
       <CssBaseline />
+      <AppBar
+        position="static"
+        spacing="0"
+        color="transparent"
+      // className={classes.heroContent}
+      >
+        {/* <Image
+          height='auto'
+            src="Banner.png"
+            disableSpinner
+          /> */}
+        <Card >
+          <CardMedia
+            component="img"
+            alt="Swaddle Swan Logo"
+            image="Banner.png"
+            title="Swaddle Swan Logo"
+          />
+        </Card>
+      </AppBar>
+
       <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
+        <Grid container
+          justify="center"
+          fullwidth
+        >
+          <Grid item
+          >
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Hi "Parent"
             </Typography>
-            <div className={classes.heroButtons}>
+            <div >
               <Grid container spacing={1} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary" component={Link} to="/addchild">
+                  <Button
+                    className={classes.buttonOption3}
+                    variant="contained"
+                    component={Link}
+                    to="/addchild"
+                  >
                     Add Your Child
                   </Button>
                 </Grid>
               </Grid>
             </div>
-          </Container>
-        </div>
+          </Grid>
+        </Grid>
+
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
@@ -115,10 +140,14 @@ function Home(props) {
                     </CardActions>
                   </Card>
                 </Grid>
-              )) : <h2>loading...</h2>}
+              )) : <h2>you've got to add children</h2>}
           </Grid>
         </Container>
       </main>
+      <Box mt={8}>
+        <CopyrightFooter />
+      </Box>
+
     </Fragment>
   );
 }

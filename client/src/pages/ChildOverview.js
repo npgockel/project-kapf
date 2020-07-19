@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import BackBtn from "../components/Layout/BackBtn";
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { Typography, Button } from "@material-ui/core";
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import { AppBar, CardMedia, Typography, Card, CardContent, Grid, Paper, Button, Box } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import API from '../utils/API';
-
+import CopyrightFooter from "../components/Layout/CopyrightFooter"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,6 +43,28 @@ function ChildOverview(props) {
 
 
     return (
+        <>
+            <AppBar
+                position="static"
+                spacing="0"
+                color="transparent"
+            // className={classes.heroContent}
+            >
+                {/* <Image
+            src="Banner.png"
+            disableSpinner
+          /> */}
+                <Card >
+                    <CardMedia
+                        component="img"
+                        alt="Swaddle Swan Logo"
+                        image="Banner.png"
+                        title="Swaddle Swan Logo"
+                    />
+                </Card>
+            </AppBar>
+
+
         <div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
@@ -96,7 +114,12 @@ function ChildOverview(props) {
                     </Button>
                 </Grid>
             </Grid>
+            <Box mt={8}>
+                <CopyrightFooter />
+            </Box>
+
         </div>
+        </>
     );
 }
 

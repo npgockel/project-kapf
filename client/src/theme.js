@@ -11,20 +11,25 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      main: grey[900]
+      main: grey[900],
+      light: grey[100]
     },
     secondary: {
+      main: blue[100]
+    },
+    error: {
       main: red[100]
-    }
+    },
+    warning: {
+      main: yellow[100]
+    },
+    success: {
+      main: green[100]
+    },
 
   },
-  text: {
-    primary: grey[900],
-    secondary: grey[50]
-  },
-  background: {
-    paper: purple[100]
-  },
+  // spacing: 1,
+  shadows: ["none"]
 
 });
 

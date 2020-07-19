@@ -11,7 +11,7 @@ function CopyrightFooter() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="/home">
+            <Link color="inherit" href="/">
                 Nanny Nugget
       </Link>{' '}
             {new Date().getFullYear()}

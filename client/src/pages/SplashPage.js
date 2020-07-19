@@ -1,74 +1,39 @@
-import React from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, CardActionArea } from '@material-ui/core';
+import React, { Component } from 'react';
+import { Box, Container, Typography, AppBar, Button, Grid, Card, CardActions, CardContent, CardMedia, CardActionArea } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import { Link } from "react-router-dom";
 import Image from 'material-ui-image';
 import { red, grey, blue, purple, yellow, green } from '@material-ui/core/colors'
-
-
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+import { CopyrightFooter } from '../components';
 
 const useStyles = makeStyles((theme) => ({
-  HeroMedia: {
-    height: 100,
-    width: '100%',
-    objectFit: 'cover'
-  },
-
-  // root: {
-  //   width: 300,
-  //   height: 400,
-  // },
   heroContent: {
-    opacity: .4,
-    padding: theme.spacing(0),
-    height: 400,
+    padding: theme.spacing(1),
   },
-  button:{
-    background: theme.palette.secondary.main,
+  buttonOption1: {
+    background: theme.palette.warning.main,
+    margin: theme.spacing(1),
   },
-  // heroButtons: {
-  //   marginTop: theme.spacing(10),
-  // },
+  buttonOption2: {
+    background: theme.palette.success.main,
+    margin: theme.spacing(1),
+  },
   cardGrid: {
-    paddingTop: theme.spacing(0),
-    paddingBottom: theme.spacing(0),
-    margin: theme.spacing(0),
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
   },
   card: {
+    height: '100%',
     display: 'flex',
-    height: 300,
-    width: 300,
     flexDirection: 'column',
   },
-  // cardMedia: {
-  //   height: 300,
-  //   width: 300,
-  // },
-  // cardContent: {
-  //   height: 300,
-  //   width: 300,
-
-  // },
-  // footer: {
-  //   backgroundColor: theme.palette.background.paper,
-  //   padding: theme.spacing(6),
-  // },
+  cardMedia: {
+    // paddingTop: '56.25%', // 16:9
+  },
+  cardContent: {
+    flexGrow: 1,
+  },  // },
 }));
 
 
@@ -76,67 +41,78 @@ export default function Album() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <div className={classes.heroContent}>
-          <Image
-          src="header-lp-3-b80ddc64.jpg"
-          disableSpinner
+    <Container
+      maxWidth='false'
+    >
+      <AppBar
+        position="static"
+        spacing="0"
+        color="transparent"
+      // className={classes.heroContent}
+      >
+        {/* <Image
+            src="Banner.png"
+            disableSpinner
+          /> */}
+        <Card >
+          <CardMedia
+            component="img"
+            alt="Swaddle Swan Logo"
+            image="Banner.png"
+            title="Swaddle Swan Logo"
           />
-      </div>
+        </Card>
+      </AppBar>
+
       <Grid container
+        spacing={1}
+        justify="center"
+        align="center"
+        xs={12}
       >
         <Grid item
-          className={classes.HeroMedia}
-          xs={12}
+          xs={3}
         >
-        </Grid>
-        <Grid item
-          align="center"
-          xs={12}
-        >
-          <Typography
-            align="center"
-            variant="h5"
-          >
-            Swaddle Swan
-            </Typography>
-
-
           <Button
             component={Link}
             to="/login"
             variant="contained"
             fullWidth
-            color="blue"
-            className={classes.button}
-
+            size="small"
+            className={classes.buttonOption1}
           >
             Login
           </Button>
         </Grid>
+
         <Grid item
-          align="center"
-
-          xs={12}
+          xs={3}
         >
-          <Button component={Link} to="/signup" color="inherit">Signup</Button>
-
+          <Button
+            component={Link}
+            to="/signup"
+            variant="contained"
+            fullWidth
+            size="small"
+            className={classes.buttonOption2}
+          >
+            Signup
+          </Button>
         </Grid>
-
       </Grid>
+
 
       <Container className={classes.cardGrid}>
         <Grid container
           spacing={10}
           direction="row"
-          align="center"
-          alignItems="center"
+          // align="center"
+          // alignItems="center"
           justify="center"
 
         >
           <Grid item
-            xs={12} md={6} lg={4}
+            xs={11} sm={6} md={4} lg={3}
           >
             <Card >
               <CardActionArea>
@@ -153,10 +129,16 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Kepping track of your Tots
+                    Log Food and Sleep
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                    gutterBottom
+                  >
+                    Track your baby’s digestive development by recording feeding times and food types with our Food Log.
+                    Help your child develop a sleep cycle for your nugget and get an edge on your own free time with our Sleep Log
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -168,7 +150,7 @@ export default function Album() {
             </Card>
           </Grid>
           <Grid item
-            xs={12} md={6} lg={4}
+            xs={11} sm={6} md={4} lg={3}
           >
             <Card >
               <CardActionArea>
@@ -185,8 +167,7 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Kepping track of your Tots
-                  </Typography>
+                    Log Sleep                  </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
                     Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++
                   </Typography>
@@ -200,7 +181,7 @@ export default function Album() {
             </Card>
           </Grid>
           <Grid item
-            xs={12} md={6} lg={4}
+            xs={11} sm={6} md={4} lg={3}
           >
             <Card
             >
@@ -234,17 +215,53 @@ export default function Album() {
           </Grid>
         </Grid>
       </Container>
-      {/* Footer */}
-      {/* <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer> */}
-      {/* End footer */}
-    </React.Fragment>
+
+      <Grid container
+        spacing={1}
+        justify="center"
+        align="center"
+        xs={12}
+      >
+        <Grid item
+          xs={3}
+        >
+          <Button
+            component={Link}
+            to="/login"
+            variant="contained"
+            fullWidth
+            size="small"
+            className={classes.buttonOption1}
+          >
+            Login
+          </Button>
+        </Grid>
+
+        <Grid item
+          xs={3}
+        >
+          <Button
+            component={Link}
+            to="/signup"
+            variant="contained"
+            fullWidth
+            size="small"
+            className={classes.buttonOption2}
+          >
+            Signup
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item>
+
+        </Grid>
+
+      </Grid>
+
+      <Box mt={8}>
+        <CopyrightFooter />
+      </Box>
+    </Container>
   );
 }
