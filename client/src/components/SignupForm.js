@@ -1,81 +1,15 @@
 import React from "react";
-import { Button, TextField, Container, Grid, Typography } from '@material-ui/core';
+import { Avatar, Card, CardMedia, Link, Box, Checkbox, CssBaseline, FormControlLabel, Button, TextField, Container, Grid, Typography } from '@material-ui/core';
 
-// function SignupForm(props) {
-//     const { formObject, handleFormSubmit, handleInputChange } = props;
-
-//     return (
-//         <>
-//             <Paper>
-//                 <Container maxWidth="sm">
-//                     <form>
-//                         <Grid container spacing={3}>
-//                             <Grid item xs={12}>
-//                                 <Typography variant="h4" gutterBottom>
-//                                     Signup
-//                                 </Typography>
-//                             </Grid>
-//                             <Grid item xs={12}>
-//                                 <TextField
-//                                     label="Email"
-//                                     value={formObject.email}
-//                                     name="email"
-//                                     onChange={handleInputChange}
-//                                     as="input"
-//                                     type="email"
-//                                     placeholder="Enter your Email"
-//                                     helperText="This will be public!"
-//                                 />
-//                             </Grid>
-//                             <Grid item xs={12}>
-//                                 <TextField
-//                                     label="Password"
-//                                     value={formObject.password}
-//                                     name="password"
-//                                     onChange={handleInputChange}
-//                                     as="input"
-//                                     type="password"
-//                                     placeholder="Enter your password"
-//                                     helperText="This will be your password (we won't share it with anyone!)"
-//                                 />
-//                             </Grid>
-//                             <Grid item xs={12}>
-//                                 <Button variant="contained" color="primary" type="submit" onClick={handleFormSubmit}>
-//                                     Signup
-//                                 </Button>
-//                             </Grid>
-//                         </Grid>
-//                     </form>
-//                 </Container>
-//             </Paper>
-//         </>
-//     )
-// }
-
-// export default SignupForm;
-import Avatar from '@material-ui/core/Avatar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
+import CopyrightFooter from "./Layout/CopyrightFooter";
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Nanny Nugget
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 const useStyles = makeStyles((theme) => ({
+    heroContent: {
+        padding: theme.spacing(1),
+    },
     paper: {
         marginTop: theme.spacing(8),
         display: 'flex',
@@ -84,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: theme.palette.success.main,
+        color: theme.palette.primary.dark,
     },
     form: {
         width: '100%', // Fix IE 11 issue.
@@ -92,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+        backgroundColor: theme.palette.success.main,
+        color: theme.palette.primary.dark,
     },
 }));
 
@@ -103,13 +40,31 @@ function SignupForm(props) {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
+
+            <div className={classes.heroContent}>
+                {/* <Image
+          height='auto'
+            src="Banner.png"
+            disableSpinner
+          /> */}
+                <Card >
+                    <CardMedia
+                        component="img"
+                        alt="Swaddle Swan Logo"
+                        image="Banner.png"
+                        title="Swaddle Swan Logo"
+                    />
+                </Card>
+            </div>
+
+
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
                     Sign up
-        </Typography>
+                </Typography>
                 <form className={classes.form} noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
@@ -181,7 +136,7 @@ function SignupForm(props) {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        color="primary"
+                        color="#ffdbdb"
                         className={classes.submit}
                         onClick={handleFormSubmit}
                     >
@@ -197,8 +152,8 @@ function SignupForm(props) {
 
                 </form>
             </div>
-            <Box mt={5}>
-                <Copyright />
+            <Box mt={8}>
+                <CopyrightFooter />
             </Box>
         </Container>
     );
