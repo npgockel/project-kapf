@@ -1,14 +1,9 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { Typography } from "@material-ui/core";
+import { AppBar, Card, CardMedia, Typography, Grid, Paper, Box } from "@material-ui/core";
 import BackBtn from "../components/Layout/BackBtn";
+import CopyrightFooter from "../components/Layout/CopyrightFooter"
 import { ChildLikes, ChildDislikes, ChildAllergies, ChildNotes } from "../components";
-
-
-
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,40 +30,68 @@ function LogInfo() {
 
 
     return (
-        <div className={classes.root}>
-            <BackBtn />
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <Paper className={classes.paper}>
-                        <Typography variant="h5" className={classes.text}>Likes</Typography>
-                    </Paper>
-                    <ChildLikes />
+        <>
+            <AppBar
+                position="static"
+                spacing="0"
+                color="transparent"
+            // className={classes.heroContent}
+            >
+                {/* <Image
+          height='auto'
+            src="Banner.png"
+            disableSpinner
+          /> */}
+                <Card >
+                    <CardMedia
+                        component="img"
+                        alt="Swaddle Swan Logo"
+                        image="Banner.png"
+                        title="Swaddle Swan Logo"
+                    />
+                </Card>
+            </AppBar>
+
+            <div className={classes.root}>
+                <BackBtn />
+                <Grid container spacing={3}>
+                    <Grid item xs={6}>
+                        <Paper className={classes.paper}>
+                            <Typography variant="h5" className={classes.text}>Likes</Typography>
+                        </Paper>
+                        <ChildLikes />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Paper className={classes.paper}>
+                            <Typography variant="h5" className={classes.text}>Disikes</Typography>
+                        </Paper>
+                        <ChildDislikes />
+                    </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                    <Paper className={classes.paper}>
-                        <Typography variant="h5" className={classes.text}>Disikes</Typography>
-                    </Paper>
-                    <ChildDislikes />
+                <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                        <Paper className={classes.paper}>
+                            <Typography variant="h5" className={classes.text}>Allergies</Typography>
+                        </Paper>
+                        <ChildAllergies />
+                    </Grid>
                 </Grid>
-            </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                        <Typography variant="h5" className={classes.text}>Allergies</Typography>
-                    </Paper>
-                    <ChildAllergies />
+                <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                        <Paper className={classes.paper}>
+                            <Typography variant="h5" className={classes.text}>Notes</Typography>
+                        </Paper>
+                        <ChildNotes />
+                    </Grid>
                 </Grid>
-            </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                        <Typography variant="h5" className={classes.text}>Notes</Typography>
-                    </Paper>
-                    <ChildNotes />
-                </Grid>
-            </Grid>
-        </div>
+                <Box mt={8}>
+                    <CopyrightFooter />
+                </Box>
+
+            </div>
+        </>
     );
 }
+
 
 export default LogInfo;
