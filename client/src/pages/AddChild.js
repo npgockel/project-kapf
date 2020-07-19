@@ -1,11 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import StickyFooter from "../components/Layout/StickyFooter";
+import CopyrightFooter from "../components/Layout/CopyrightFooter";
 import ChildCreate from "../components/Layout/ChildCreate";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import Grid from '@material-ui/core/Grid';
+import { AppBar, Card, CardMedia, Box, Grid, Button } from '@material-ui/core';
 import { Link } from "react-router-dom";
-import Button from '@material-ui/core/Button';
 
 
 
@@ -30,6 +29,27 @@ function AddChild() {
     const classes = useStyles();
     return (
         <>
+            <AppBar
+                position="static"
+                spacing="0"
+                color="transparent"
+            // className={classes.heroContent}
+            >
+                {/* <Image
+                src="Banner.png"
+                disableSpinner
+                /> */}
+                <Card >
+                    <CardMedia
+                        component="img"
+                        alt="Swaddle Swan Logo"
+                        image="Banner.png"
+                        title="Swaddle Swan Logo"
+                    />
+                </Card>
+            </AppBar>
+
+
             <Grid container spacing={4}>
                 <Grid container item
                     className={classes.topAlignment}
@@ -46,7 +66,9 @@ function AddChild() {
                 </Grid>
             </Grid>
             <ChildCreate />
-            <StickyFooter />
+            <Box mt={8}>
+                <CopyrightFooter />
+            </Box>
         </>
     );
 };

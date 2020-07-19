@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Grid, CssBaseline, Box, Card, CardActions, CardContent, CardMedia, Button } from '@material-ui/core';
+import { Container, Typography, Grid, CssBaseline, Box, Card, CardActions, CardContent, CardMedia, Button, AppBar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import API from '../utils/API';
 import CopyrightFooter from '../components/Layout/CopyrightFooter'
@@ -64,22 +64,28 @@ function Home(props) {
   return (
     <Fragment>
       <CssBaseline />
-      <main>
-        <div className={classes.heroContent}>
-          {/* <Image
+      <AppBar
+        position="static"
+        spacing="0"
+        color="transparent"
+      // className={classes.heroContent}
+      >
+        {/* <Image
           height='auto'
             src="Banner.png"
             disableSpinner
           /> */}
-          <Card >
-            <CardMedia
-              component="img"
-              alt="Swaddle Swan Logo"
-              image="Banner.png"
-              title="Swaddle Swan Logo"
-            />
-          </Card>
-        </div>
+        <Card >
+          <CardMedia
+            component="img"
+            alt="Swaddle Swan Logo"
+            image="Banner.png"
+            title="Swaddle Swan Logo"
+          />
+        </Card>
+      </AppBar>
+
+      <main>
         <Grid container
           justify="center"
           fullwidth

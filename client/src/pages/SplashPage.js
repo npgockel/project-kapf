@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Box, Container, Typography, Button, Grid, Card, CardActions, CardContent, CardMedia, CardActionArea } from '@material-ui/core';
+import { Box, Container, Typography, AppBar, Button, Grid, Card, CardActions, CardContent, CardMedia, CardActionArea } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
@@ -44,9 +44,13 @@ export default function Album() {
     <Container
       maxWidth='false'
     >
-      <div className={classes.heroContent}>
+      <AppBar
+        position="static"
+        spacing="0"
+        color="transparent"
+      // className={classes.heroContent}
+      >
         {/* <Image
-          height='auto'
             src="Banner.png"
             disableSpinner
           /> */}
@@ -58,8 +62,7 @@ export default function Album() {
             title="Swaddle Swan Logo"
           />
         </Card>
-      </div>
-
+      </AppBar>
 
       <Grid container
         spacing={1}
@@ -109,7 +112,7 @@ export default function Album() {
 
         >
           <Grid item
-            xs={12} md={6} lg={4}
+            xs={11} sm={6} md={4} lg={3}
           >
             <Card >
               <CardActionArea>
@@ -147,7 +150,7 @@ export default function Album() {
             </Card>
           </Grid>
           <Grid item
-            xs={12} md={6} lg={4}
+            xs={11} sm={6} md={4} lg={3}
           >
             <Card >
               <CardActionArea>
@@ -178,7 +181,7 @@ export default function Album() {
             </Card>
           </Grid>
           <Grid item
-            xs={12} md={6} lg={4}
+            xs={11} sm={6} md={4} lg={3}
           >
             <Card
             >
