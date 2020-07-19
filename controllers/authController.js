@@ -18,7 +18,9 @@ router.post("/signup", function (req, res) {
   console.log(req.body);
   db.Adult.create({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
   })
     .then(function () {
       res.redirect(307, "/auth/login");
@@ -44,7 +46,9 @@ router.get("/adult_data", function (req, res) {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id
+      id: req.user.id,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName
     });
   }
 });

@@ -26,10 +26,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function AddBabysitter() {
+function AddBabysitter(props) {
     const classes = useStyles();
 
     return (
+
         <>
             <AppBar
                 position="static"
@@ -52,6 +53,7 @@ function AddBabysitter() {
             </AppBar>
 
 
+
             <Grid container spacing={4}>
                 <Grid container item
                     className={classes.topAlignment}
@@ -67,11 +69,13 @@ function AddBabysitter() {
 
                 </Grid>
             </Grid>
-            <BabysitterLink />
+
+            <BabysitterLink child={props.location.state}/>
             <Box mt={8}>
                 <CopyrightFooter />
             </Box>
         </>
+
     );
 };
 

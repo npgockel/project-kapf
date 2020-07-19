@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
@@ -8,6 +8,9 @@ import API from '../../utils/API.js';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import CopyrightFooter from './CopyrightFooter';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 
 
 
@@ -58,18 +61,52 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-function BabysitterLink() {
+function BabysitterLink(props) {
     const classes = useStyles();
     const [babysitterEmail, setBabysitterEmail] = useState('');
     const [babysitterId, setBabysitterId] = useState();
+    const [babysitter, setBabysitter] = useState('');
+    const [babysitterFirstName, setFirstName] = useState('');
+    const [babysitterLastName, setLastName] = useState('');
+
+    const handleFirstName = (name) => {
+        setFirstName(name);
+    }
+
+    const handleLastName = (name) => {
+        setLastName(name);
+    }
 
     const handleEmail = (event) => {
         setBabysitterEmail(event.target.value);
+        console.log(babysitterEmail);
     };
 
     const handleBabysitterId = (id) => {
         setBabysitterId(id);
+        console.log(id);
     }
+
+    const postBabysitterLink = () => {
+        let babysitterLink = {
+            AdultId: babysitterId,
+            ChildId: props.child.id
+        }
+        API.BabysitterRelation.create(babysitterLink)
+    }
+
+    useEffect(() => {
+        API.Adult.getById(babysitterId)
+            .then(res => {
+                setBabysitter(res.data.email);
+                console.log(res.data.email);
+                handleFirstName(res.data.firstName);
+                handleLastName(res.data.lastName);
+
+            })
+            .catch(err => console.log(err))
+    }, [babysitterId])
+
 
 
 
@@ -79,32 +116,8 @@ function BabysitterLink() {
             for (let i = 0; i < res.data.length; i++) {
                 if (res.data[i].email === babysitterEmailQuery) {
                     handleBabysitterId(res.data[i].id);
+
                 }
-            }
-        })
-    }
-
-    function displayBabysitter(id) {
-        API.Adult.getById(id).then(res => {
-            console.log(res.data);
-
-            if (!res.data) {
-                return (
-                    <>
-                    No Babysitter Found
-                    </>
-                )
-            }
-
-            else {
-                return (
-                    <>
-                        {res.data.firstName}
-                        {res.data.lastName}
-                        {res.data.email}
-                    </>
-                
-                    )
             }
         })
     }
@@ -125,14 +138,14 @@ function BabysitterLink() {
                             <TextField
                                 id="outlined-helperText"
                                 label="Search Babysitters"
-                                defaultValue=""
+                                value={babysitterEmail}
                                 helperText="Email only"
                                 variant="outlined"
-                                onChange={(handleEmail)}
+                                onChange={handleEmail}
                             />
                         </Grid>
                         <Grid item xs={6} sm={6}>
-                            <Button onClick={findBabysitters(babysitterEmail)} variant='contained' size='large' color='primary'>
+                            <Button onClick={() => findBabysitters(babysitterEmail)} variant='contained' size='large' color='primary'>
                                 Search
                 </Button>
                         </Grid>
@@ -146,9 +159,20 @@ function BabysitterLink() {
                     <Typography variant="h6" gutterBottom>
                         Babysitters Found
       </Typography>
-                    <Typography variant="h6" gutterBottom>
-                        {displayBabysitter(babysitterId)}
-                    </Typography>
+
+                    <Card className={classes.root}>
+                        <CardContent>
+                            <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                {babysitterFirstName} {babysitterLastName}
+        </Typography>
+                            <Typography className={classes.pos} color="textSecondary">
+                                {babysitter}
+        </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Button size="small" onClick={postBabysitterLink}>Add Babysitter</Button>
+                        </CardActions>
+                    </Card>
 
 
                 </Paper>

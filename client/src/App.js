@@ -42,10 +42,12 @@ function App() {
     })
   }
 
-  function signupUser(email, password) {
+  function signupUser(email, password, firstName, lastName) {
     const data = {
       email: email,
-      password: password
+      password: password,
+      firstName: firstName,
+      lastName: lastName
     }
     API.Auth.signup(data).then(res => {
       setUser(res.data)
@@ -90,8 +92,7 @@ function App() {
                   <Home
                   user={user} />
                 </Route>
-                <Route exact path={["/addbabysitter"]}>
-                  <AddBabysitter />
+                <Route exact path={["/addbabysitter"]} render={props => < AddBabysitter {...props} />}>
                 </Route>
                 <Route exact path={["/login", "/signup"]}>
                   <Auth
