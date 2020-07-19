@@ -91,7 +91,7 @@ function ChildOverview(props) {
                     </Button>
                 </Grid>
                 <Grid item xs={12}>
-                    <Button component={Link} to="/addbabysitter" className={classes.paper} variant="contained" size="large" color="primary">
+                    <Button component={Link}  to={{ pathname: "/addbabysitter", state: props.location.state }} className={classes.paper} variant="contained" size="large" color="primary">
                         Add Babysitter
                     </Button>
                 </Grid>

@@ -148,19 +148,19 @@ export default {
     },
     BabysitterRelation: {
         getAll: function () {
-            return _getAll("likes");
+            return _getAll("babysitter");
         },
         getById: function (id) {
-            return _getOne("likes", id);
+            return _getOne("babysitter", id);
         },
         delete: function (id) {
-            return _delete("likes", id);
+            return _delete("babysitter", id);
         },
         create: function(data){
-            return _create("likes", data);
+            return _create("babysitter", data);
         },
         update: function(id, data){
-            return _update("likes", id, data);
+            return _update("babysitter", id, data);
         }
     },
     Likes: {

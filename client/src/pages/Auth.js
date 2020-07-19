@@ -25,8 +25,8 @@ function Auth(props) {
 
     const handleSignupSubmit = (event) => {
         event.preventDefault();
-        const { email, password } = formObject;
-        signupUser(email, password);
+        const { email, password, firstName, lastName } = formObject;
+        signupUser(email, password, firstName, lastName);
         setFormObject(initialFormState);
     }
 

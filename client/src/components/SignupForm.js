@@ -118,6 +118,8 @@ function SignupForm(props) {
                                 name="firstName"
                                 variant="outlined"
                                 required
+                                value={formObject.firstName}
+                                onChange={handleInputChange}
                                 fullWidth
                                 id="firstName"
                                 label="First Name"
@@ -128,6 +130,8 @@ function SignupForm(props) {
                             <TextField
                                 variant="outlined"
                                 required
+                                value={formObject.lastName}
+                                onChange={handleInputChange}
                                 fullWidth
                                 id="lastName"
                                 label="Last Name"
