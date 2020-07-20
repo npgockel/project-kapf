@@ -3,12 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button, Card, CardActions, CardContent, CardMedia, CardActionArea, TextField, Typography, Container, Grid } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import CopyrightFooter from '../components/Layout/CopyrightFooter';
+import { Link } from "react-router-dom";
 
 
 
@@ -99,10 +97,6 @@ function LoginForm(props) {
                         id="password"
                         autoComplete="current-password"
                     />
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="#ffdbdb" />}
-                        label="Remember me"
-                    />
                     <Button
                         type="submit"
                         fullWidth
@@ -114,7 +108,8 @@ function LoginForm(props) {
                         Sign In
                     </Button>
                     <Button
-                        component={Link} to="/child-overview"
+                        component={Link}
+                        to="/signup"
                         fullWidth
                     >
                         Don't have an account? Sign Up!

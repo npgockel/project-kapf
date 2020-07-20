@@ -9,19 +9,23 @@ import { CopyrightFooter } from '../components';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(10, 0, 0, 0),
+  },
+  radius: {
+    borderRadius: 10,
   },
   buttonOption1: {
     background: theme.palette.warning.main,
-    margin: theme.spacing(6),
+    margin: theme.spacing(6, 0, 0, 0),
+    borderRadius: 10,
   },
   buttonOption2: {
     background: theme.palette.success.main,
-    margin: theme.spacing(6),
+    margin: theme.spacing(6, 0),
+    borderRadius: 10,
   },
   cardGrid: {
-    paddingTop: theme.spacing(0),
-    paddingBottom: theme.spacing(0),
+    padding: theme.spacing(8),
   },
   card: {
     height: '100%',
@@ -48,20 +52,28 @@ export default function Album() {
         position="static"
         spacing="0"
         color="transparent"
-      // className={classes.heroContent}
+        fullwidth
+        className={classes.heroContent}
       >
-        {/* <Image
-            src="Banner.png"
-            disableSpinner
-          /> */}
-        <Card >
-          <CardMedia
-            component="img"
-            alt="Swaddle Swan Logo"
-            image="Banner.png"
-            title="Swaddle Swan Logo"
-          />
-        </Card>
+        <Grid container
+          fullwidth
+          justify="center"
+        >
+          <Grid item
+            xs={12} sm={11} md={10} lg={9} xl={8}
+          >
+            <Card
+              className={classes.radius}
+            >
+              <CardMedia
+                component="img"
+                alt="Swaddle Swan Logo"
+                image="Banner.png"
+                title="Swaddle Swan Logo"
+              />
+            </Card>
+          </Grid>
+        </Grid>
       </AppBar>
 
       <Grid container
@@ -104,7 +116,7 @@ export default function Album() {
 
       <Container className={classes.cardGrid}>
         <Grid container
-          spacing={10}
+          spacing={8}
           direction="row"
           // align="center"
           // alignItems="center"
@@ -114,7 +126,9 @@ export default function Album() {
           <Grid item
             xs={11} sm={6} md={4} lg={3}
           >
-            <Card >
+            <Card
+              className={classes.radius}
+            >
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -134,56 +148,20 @@ export default function Album() {
                   <Typography
                     variant="body2"
                     color="textSecondary"
-                    component="p"
                     gutterBottom
-                  >
-                    Track your baby’s digestive development by recording feeding times and food types with our Food Log.
-                    Help your child develop a sleep cycle for your nugget and get an edge on your own free time with our Sleep Log
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item
-            xs={11} sm={6} md={4} lg={3}
-          >
-            <Card >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  image="featured_art_istock_baby.jpg"
-                  title="Contemplative Reptile"
-                />
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
                     align="center"
                   >
-                    Log Sleep                  </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++
+                    Track your little one's meals and sleep patterns with our Food/Sleep Log!
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
-              </CardActions>
             </Card>
           </Grid>
           <Grid item
             xs={11} sm={6} md={4} lg={3}
           >
             <Card
+              className={classes.radius}
             >
               <CardActionArea>
                 <CardMedia
@@ -199,18 +177,47 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Kepping track of your Tots
+                    Connent With Nanny
                   </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++ Baby Force Connect ++
+                  <Typography
+                    variant="body2"
+                    align="center">
+                    Track your little one's meals and sleep patterns with our Food/Sleep Log!
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
-              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item
+            xs={11} sm={6} md={4} lg={3}
+          >
+            <Card
+              className={classes.radius}
+            >
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  alt="Contemplative Reptile"
+                  image="featured_art_istock_baby.jpg"
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                    align="center"
+                  >
+                    Bond With Your Bebe!
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    align="center"
+                  >
+                    Track your little one's meals and sleep patterns with our Food/Sleep Log!
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
             </Card>
           </Grid>
         </Grid>

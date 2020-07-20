@@ -1,34 +1,53 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Grid, CssBaseline, Box, Card, CardActions, CardContent, CardMedia, Button, AppBar } from '@material-ui/core';
+import { CardActionArea, Container, Typography, Grid, CssBaseline, Box, Card, CardActions, CardContent, CardMedia, Button, AppBar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import API from '../utils/API';
 import CopyrightFooter from '../components/Layout/CopyrightFooter'
 
 
-
-
 const useStyles = makeStyles((theme) => ({
   heroContent: {
-    padding: theme.spacing(0),
-    // maxWidth: 400,
+    padding: theme.spacing(10, 0, 1, 0),
   },
-  heroButtons: {
-    marginTop: theme.spacing(4),
+  radius: {
+    borderRadius: 10,
+  },
+  buttonOption1: {
+    background: theme.palette.warning.main,
+    margin: theme.spacing(6, 0, 0, 0),
+    borderRadius: 10,
+  },
+  buttonOption2: {
+    background: theme.palette.success.main,
+    margin: theme.spacing(6, 0),
+    borderRadius: 10,
+  },
+  headBody: {
+    background: theme.palette.error.main,
+    padding: theme.spacing(2, 0, 2),
+    borderRadius: 10,
+  },
+  headText: {
+    color: theme.palette.primary.dark,
   },
   cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
+    padding: theme.spacing(8),
+
   },
   buttonOption3: {
     background: theme.palette.secondary.main,
-    margin: theme.spacing(1),
+    padding: theme.spacing(10),
+    // margin: theme.spacing(10),
     color: theme.palette.primary.dark,
   },
   card: {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+  },
+  defaultCards: {
+    opacity: '0.5',
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
@@ -68,25 +87,20 @@ function Home(props) {
       <AppBar
         position="static"
         spacing="0"
-        color="transparent"
         fullwidth
+        color="transparent"
         className={classes.heroContent}
       >
-        {/* <Image
-          height='auto'
-            src="Banner.png"
-            disableSpinner
-          /> */}
         <Grid container
           fullwidth
-          // align="center"
           justify="center"
-          // alignItems="center"
         >
           <Grid item
-            xs={12} sm={11} md={10} lg={9} xl={8} 
+            xs={12} sm={11} md={10} lg={9} xl={8}
           >
-            <Card>
+            <Card
+              className={classes.radius}
+            >
               <CardMedia
                 component="img"
                 alt="Swaddle Swan Logo"
@@ -101,33 +115,25 @@ function Home(props) {
       <main>
         <Grid container
           justify="center"
-          fullwidth
+        // component={Link}
+        // to="/addchild"
         >
           <Grid item
-          
+            className={classes.headBody}
+            xs={10} sm={9} md={8} lg={7} xl={6}
           >
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            <Typography
+              className={classes.headText}
+              component="h1"
+              variant="h4"
+              align="center"
+            >
               Let's Swaddle!
             </Typography>
-            <div >
-              <Grid container spacing={1} justify="center">
-                <Grid item>
-                  <Button
-                    className={classes.buttonOption3}
-                    variant="contained"
-                    component={Link}
-                    to="/addchild"
-                  >
-                    Add Your Child
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
           </Grid>
         </Grid>
 
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {childs.length > 0 && props.user.id ?
               childs.map((card, index) => (
@@ -137,7 +143,7 @@ function Home(props) {
                     <CardMedia
                       className={classes.cardMedia}
                       image={card.childImg}
-                      title=""
+                      title="Your Child's Image"
                       data-index={index}
                       onClick={selectChosenChild}
                     />
@@ -154,13 +160,108 @@ function Home(props) {
                     </CardActions>
                   </Card>
                 </Grid>
-              )) : 
-              
-              <h2>you've got to add children</h2>
-              
-              
-              
-              }
+              )) :
+              // <h3>hello</h3>
+              <div>
+                <Container className={classes.cardGrid}>
+                  <Grid container
+                    spacing={10}
+                    direction="row"
+                    justify="center"
+                  >
+                    <Grid item
+                      xs={11} sm={6} md={4}
+                    >
+                      <Card
+                        className={classes.defaultCards}
+                      >
+                        <CardActionArea
+                          component={Link}
+                          to="/addchild"
+                        >
+                          <CardMedia
+                            component="img"
+                            alt="Contemplative Reptile"
+                            image="Nugget.png"
+                            title="Contemplative Reptile"
+                          />
+                          <CardContent>
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              component="h2"
+                              align="center"
+                            >
+                              Add
+                        </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </Grid>
+                    <Grid item
+                      xs={11} sm={6} md={4}
+                    >
+                      <Card
+                        className={classes.defaultCards}
+                      >
+                        <CardActionArea
+                          component={Link}
+                          to="/addchild"
+                        >
+                          <CardMedia
+                            component="img"
+                            alt="Contemplative Reptile"
+                            image="Nugget.png"
+                            title="Contemplative Reptile"
+                          />
+                          <CardContent>
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              component="h2"
+                              align="center"
+                            >
+                              Your
+                          </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </Grid>
+                    <Grid item
+                      xs={11} sm={6} md={4}
+                    >
+                      <Card
+                        className={classes.defaultCards}
+                      >
+                        <CardActionArea
+                          component={Link}
+                          to="/addchild"
+                        >
+                          <CardMedia
+                            component="img"
+                            alt="plus sign"
+                            image="Plus.png"
+                            title="plus sign"
+                            opacity="0.3"
+                          />
+                          <CardContent>
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              component="h2"
+                              align="center"
+                            >
+                              Tot!
+                        </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </Grid>
+                  </Grid>
+                </Container>
+              </div>
+
+            }
           </Grid>
         </Container>
       </main>
