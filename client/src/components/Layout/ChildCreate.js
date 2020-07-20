@@ -66,7 +66,7 @@ function ChildCreate() {
   const [gender, setGender] = useState('');
   const [name, setFName] = useState('');
   const [DOB, setDOB] = useState('');
-  const [childImage, setChildImg] = useState();
+  const [childImage, setChildImg] = useState("https://w0.pngwave.com/png/971/847/diaper-infant-crawling-illustration-cartoon-baby-png-clip-art.png")
 
   const [allergies, setAllergies] = useState('');
   const [likes, setLikes] = useState('');
