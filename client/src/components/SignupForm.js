@@ -1,6 +1,6 @@
 import React from "react";
-import { Avatar, Card, CardMedia, Link, Box, Checkbox, CssBaseline, FormControlLabel, Button, TextField, Container, Grid, Typography } from '@material-ui/core';
-
+import { Avatar, Card, CardMedia, Box, Checkbox, CssBaseline, FormControlLabel, Button, TextField, Container, Grid, Typography } from '@material-ui/core';
+import { Link } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import CopyrightFooter from "./Layout/CopyrightFooter";
@@ -8,7 +8,7 @@ import CopyrightFooter from "./Layout/CopyrightFooter";
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(0),
     },
     paper: {
         marginTop: theme.spacing(8),
@@ -38,7 +38,7 @@ function SignupForm(props) {
     // const classes = useStyles();
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="sm">
             <CssBaseline />
 
             <div className={classes.heroContent}>
@@ -129,12 +129,12 @@ function SignupForm(props) {
                                 autoComplete="current-password"
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        {/* <Grid item xs={12}>
                             <FormControlLabel
                                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                                 label="I want to receive a year's worth of cloth diapers from Huggies."
                             />
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                     <Button
                         type="submit"
@@ -147,7 +147,8 @@ function SignupForm(props) {
                         Sign Up
           </Button>
                     <Button
-                        component={Link} to="/login"
+                        component={Link}
+                        to="/login"
                         fullWidth
                     >
                         Aready have an account? Log in!

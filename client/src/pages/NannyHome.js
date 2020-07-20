@@ -8,16 +8,27 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
-  },
   heroButtons: {
     marginTop: theme.spacing(4),
   },
+  heroContent: {
+    padding: theme.spacing(10, 0, 0, 0),
+  },
+  radius: {
+    borderRadius: 10,
+  },
+  buttonOption1: {
+    background: theme.palette.warning.main,
+    margin: theme.spacing(6, 0, 0, 0),
+    borderRadius: 10,
+  },
+  buttonOption2: {
+    background: theme.palette.success.main,
+    margin: theme.spacing(6, 0),
+    borderRadius: 10,
+  },
   cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
+    padding: theme.spacing(8),
   },
   card: {
     height: '100%',
@@ -39,30 +50,54 @@ export default function Home() {
 
   return (
     <React.Fragment>
+      <CssBaseline />
       <AppBar
         position="static"
         spacing="0"
+        fullwidth
         color="transparent"
-      // className={classes.heroContent}
+        className={classes.heroContent}
       >
-        {/* <Image
-          height='auto'
-            src="Banner.png"
-            disableSpinner
-          /> */}
-        <Card >
-          <CardMedia
-            component="img"
-            alt="Swaddle Swan Logo"
-            image="Banner.png"
-            title="Swaddle Swan Logo"
-          />
-        </Card>
+        <Grid container
+          fullwidth
+          justify="center"
+        >
+          <Grid item
+            xs={12} sm={11} md={10} lg={9} xl={8}
+          >
+            <Card>
+              <CardMedia
+                component="img"
+                alt="Swaddle Swan Logo"
+                image="Banner.png"
+                title="Swaddle Swan Logo"
+              />
+            </Card>
+          </Grid>
+        </Grid>
       </AppBar>
 
-
-      <CssBaseline />
       <main>
+        <Grid container
+          justify="center"
+        // component={Link}
+        // to="/addchild"
+        >
+          <Grid item
+            className={classes.headBody}
+            xs={10} sm={9} md={8} lg={7} xl={6}
+          >
+            <Typography
+              className={classes.headText}
+              component="h1"
+              variant="h4"
+              align="center"
+            >
+              Let's Swaddle!
+            </Typography>
+          </Grid>
+        </Grid>
+
         <Grid container spacing={4}>
           {cards.map((card) => (
             <Grid item key={card} xs={12} sm={6} md={4}>
