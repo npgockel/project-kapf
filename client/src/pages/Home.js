@@ -10,7 +10,8 @@ import CopyrightFooter from '../components/Layout/CopyrightFooter'
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(0),
+    // maxWidth: 400,
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -68,21 +69,33 @@ function Home(props) {
         position="static"
         spacing="0"
         color="transparent"
-      // className={classes.heroContent}
+        fullwidth
+        className={classes.heroContent}
       >
         {/* <Image
           height='auto'
             src="Banner.png"
             disableSpinner
           /> */}
-        <Card >
-          <CardMedia
-            component="img"
-            alt="Swaddle Swan Logo"
-            image="Banner.png"
-            title="Swaddle Swan Logo"
-          />
-        </Card>
+        <Grid container
+          fullwidth
+          // align="center"
+          justify="center"
+          // alignItems="center"
+        >
+          <Grid item
+            xs={12} sm={11} md={10} lg={9} xl={8} 
+          >
+            <Card>
+              <CardMedia
+                component="img"
+                alt="Swaddle Swan Logo"
+                image="Banner.png"
+                title="Swaddle Swan Logo"
+              />
+            </Card>
+          </Grid>
+        </Grid>
       </AppBar>
 
       <main>
@@ -91,9 +104,10 @@ function Home(props) {
           fullwidth
         >
           <Grid item
+          
           >
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Hi "Parent"
+              Let's Swaddle!
             </Typography>
             <div >
               <Grid container spacing={1} justify="center">
@@ -140,7 +154,13 @@ function Home(props) {
                     </CardActions>
                   </Card>
                 </Grid>
-              )) : <h2>you've got to add children</h2>}
+              )) : 
+              
+              <h2>you've got to add children</h2>
+              
+              
+              
+              }
           </Grid>
         </Container>
       </main>

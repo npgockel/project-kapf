@@ -13,15 +13,15 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonOption1: {
     background: theme.palette.warning.main,
-    margin: theme.spacing(1),
+    margin: theme.spacing(6),
   },
   buttonOption2: {
     background: theme.palette.success.main,
-    margin: theme.spacing(1),
+    margin: theme.spacing(6),
   },
   cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
+    paddingTop: theme.spacing(0),
+    paddingBottom: theme.spacing(0),
   },
   card: {
     height: '100%',

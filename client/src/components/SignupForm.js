@@ -8,7 +8,7 @@ import CopyrightFooter from "./Layout/CopyrightFooter";
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(0),
     },
     paper: {
         marginTop: theme.spacing(8),
@@ -38,7 +38,7 @@ function SignupForm(props) {
     // const classes = useStyles();
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="sm">
             <CssBaseline />
 
             <div className={classes.heroContent}>

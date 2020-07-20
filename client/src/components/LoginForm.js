@@ -14,7 +14,7 @@ import CopyrightFooter from '../components/Layout/CopyrightFooter';
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
-        margin: theme.spacing(10),
+        margin: theme.spacing(0),
     },
     paper: {
         marginTop: theme.spacing(1),
@@ -44,7 +44,7 @@ function LoginForm(props) {
     const { formObject, handleFormSubmit, handleInputChange } = props;
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="sm">
             <CssBaseline />
 
             <div className={classes.heroContent}>
