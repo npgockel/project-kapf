@@ -161,12 +161,12 @@ function ChildOverview(props) {
                     </Grid>
                 </Grid>
 
-                <Grid container 
-                spacing={3} 
-                direction="column" 
-                alignItems="center">
-                    <Grid item 
-                    xs={10} sm={9} md={8} lg={7} xl={6}
+                <Grid container
+                    spacing={3}
+                    direction="column"
+                    alignItems="center">
+                    <Grid item
+                        xs={10} sm={9} md={8} lg={7} xl={6}
                     >
                         <Card>
                             <CardContent>
@@ -176,76 +176,79 @@ function ChildOverview(props) {
                                 </Typography>
                             </CardContent>
 
-                    <Grid container spacing={3} direction="column" alignItems="center">
-                        <Grid item xs={12}>
-                            <Card>
-                                <CardContent>
-                                    <img className={classes.cardImg} src={childs.childImg} alt="beauty"></img>
-                                    <Typography className={classes.paper2} gutterBottom variant="h5" component="h2">
-                                        {childs.childName}
-                                    </Typography>
+                            <Grid container spacing={3} direction="column" alignItems="center">
+                                <Grid item xs={12}>
+                                    <Card>
+                                        <CardContent>
+                                            <img className={classes.cardImg} src={childs.childImg} alt="beauty"></img>
+                                            <Typography className={classes.paper2} gutterBottom variant="h5" component="h2">
+                                                {childs.childName}
+                                            </Typography>
 
-                                </CardContent>
+                                        </CardContent>
 
+                                    </Card>
+                                </Grid>
+                            </Grid>
+
+                            <Grid container
+                                direction="row"
+                                align="center"
+                                // fullwidth
+                                justify="center"
+                            >
+                                <Grid item
+                                    xs={12} sm={6} md={4} lg={2}
+                                >
+                                    <Button
+                                        component={Link} to={{ pathname: "/logfood", state: props.location.state }}
+                                        variant="contained"
+                                        size="medium"
+                                        className={classes.button1}
+                                    >
+                                        Log Food
+                    </Button>
+                                </Grid>
+                                <Grid item
+                                    xs={12} sm={6} md={4} lg={2}
+                                >
+                                    <Button
+                                        component={Link}
+                                        to={{ pathname: "/logsleep", state: props.location.state }} className={classes.paper}
+                                        variant="contained"
+                                        size="medium"
+                                        className={classes.button2}
+                                    >
+                                        Log Sleep
+                    </Button>
+                                </Grid>
+                                <Grid item
+                                    xs={12} sm={6} md={4} lg={2}
+                                >
+                                    <Button
+                                        component={Link}
+                                        to={{ pathname: "/loginfo", state: props.location.state }} className={classes.paper}
+                                        variant="contained"
+                                        size="medium"
+                                        className={classes.button3}
+                                    >
+                                        Log Info
+
+                    </Button>
+                                </Grid>
+                                <Grid item
+                                    xs={12} sm={6} md={4} lg={2}
+                                >
+                                    <Button component={Link} to={{ pathname: "/addbabysitter", state: props.location.state }}
+                                        variant="contained"
+                                        size="medium"
+                                        className={classes.button4}
+                                    >
+                                        Add Babysitter
+                    </Button>
+                                </Grid>
+                            </Grid>
                         </Card>
-                    </Grid>
-                </Grid>
-
-                <Grid container
-                    direction="row"
-                    align="center"
-                    // fullwidth
-                    justify="center"
-                >
-                    <Grid item
-                        xs={12} sm={6} md={4} lg={2}
-                    >
-                        <Button
-                            component={Link} to={{ pathname: "/logfood", state: props.location.state }}
-                            variant="contained"
-                            size="medium"
-                            className={classes.button1}
-                        >
-                            Log Food
-                    </Button>
-                    </Grid>
-                    <Grid item
-                        xs={12} sm={6} md={4} lg={2}
-                    >
-                        <Button 
-      component={Link}
-    to={{ pathname: "/logsleep", state: props.location.state }} className={classes.paper}
-                            variant="contained"
-                            size="medium"
-                            className={classes.button2}
-                        >
-                            Log Sleep
-                    </Button>
-                    </Grid>
-                    <Grid item
-                        xs={12} sm={6} md={4} lg={2}
-                    >
-                        <Button 
-      component={Link}
-     to={{ pathname: "/loginfo", state: props.location.state }} className={classes.paper}
-                            variant="contained"
-                            size="medium"
-                            className={classes.button3}
-                        >
-                            Log Info
-
-                    </Button>
-                    </Grid>
-                    <Grid item
-                        xs={12} sm={6} md={4} lg={2}
-                    >
-                        <Button component={Link} to={{ pathname: "/addbabysitter", state: props.location.state }}
-                            variant="contained"
-                            size="medium"
-                            className={classes.button4}
-                        >
-                            Add Babysitter
-                    </Button>
                     </Grid>
                 </Grid>
             </main>
