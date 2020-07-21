@@ -140,11 +140,11 @@ function ChildOverview(props) {
                                         </IconButton>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="h6"
+                                        <Typography variant="h5"
                                             align="center"
                                             className={classes.title}
                                         >
-                                            Let's Make Your<br></br>Child's Profile
+                                           {childs.childName}'s<br></br>Overview
                                     </Typography>
                                     </Grid>
                                     <Grid item>
@@ -169,24 +169,12 @@ function ChildOverview(props) {
                         xs={10} sm={9} md={8} lg={7} xl={6}
                     >
                         <Card>
-                            <CardContent>
-                                <img src={childs.childImg} alt="beauty"></img>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    {childs.childName}
-                                </Typography>
-                            </CardContent>
-
                             <Grid container spacing={3} direction="column" alignItems="center">
                                 <Grid item xs={12}>
                                     <Card>
                                         <CardContent>
                                             <img className={classes.cardImg} src={childs.childImg} alt="beauty"></img>
-                                            <Typography className={classes.paper2} gutterBottom variant="h5" component="h2">
-                                                {childs.childName}
-                                            </Typography>
-
                                         </CardContent>
-
                                     </Card>
                                 </Grid>
                             </Grid>

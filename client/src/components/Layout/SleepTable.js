@@ -22,11 +22,10 @@ import moment from 'moment';
 // ***Created styles used in FoodTable return***
 const StyledTableCell = withStyles((theme) => ({
     head: {
-        backgroundColor: theme.palette.info.main,
-        color: theme.palette.common.white,
+        backgroundColor: theme.palette.primary.light,
     },
     body: {
-        fontSize: 14,
+        fontSize: 12,
     },
 }))(TableCell);
 
@@ -41,7 +40,7 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles1 = makeStyles((theme) => ({
     root: {
         flexShrink: 0,
-        marginLeft: theme.spacing(2.5),
+        marginLeft: theme.spacing(.5),
     },
 }));
 

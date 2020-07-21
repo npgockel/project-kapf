@@ -177,7 +177,6 @@ function BabysitterLink(props) {
 
                 </Paper>
 
-                <CopyrightFooter />
             </main>
         </Fragment>
     );
