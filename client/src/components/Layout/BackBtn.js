@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,12 +12,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function BackBtn(props) {
+function BackBtn() {
   const classes = useStyles();
+  let history = useHistory();
 
   return (
     <div className={classes.root}>
-      <Button component={Link} to="/child-overview">
+      <Button onClick={() => history.goBack()}>
           <ArrowBackIcon/>
       </Button>
     </div>
