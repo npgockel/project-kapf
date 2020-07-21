@@ -38,10 +38,22 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 3,
         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)'
     },
+    paper2: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: "white",
+        background: theme.palette.info.light,
+        borderRadius: 3,
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)'
+    },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
     },
+    cardImg: {
+        height: 250,
+        width: 250
+    }
 }));
 
 
@@ -51,7 +63,7 @@ function ChildOverview(props) {
 
     useEffect(() => {
         loadChildren()
-    })
+    },[])
 
     function loadChildren() {
         API.Child.getById(props.location.state.id)
@@ -127,8 +139,8 @@ function ChildOverview(props) {
                         <Grid item xs={12}>
                             <Card>
                                 <CardContent>
-                                    <img src={childs.childImg} alt="beauty"></img>
-                                    <Typography gutterBottom variant="h5" component="h2">
+                                    <img className={classes.cardImg} src={childs.childImg} alt="beauty"></img>
+                                    <Typography className={classes.paper2} gutterBottom variant="h5" component="h2">
                                         {childs.childName}
                                     </Typography>
 
