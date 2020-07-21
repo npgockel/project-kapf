@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Card, CardActions, CardContent, CardMedia, CardActionArea, TextField, Typography, Container, Grid } from '@material-ui/core';
+import { Button, AppBar, Card, CardMedia, TextField, Typography, Container, Grid } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
@@ -12,10 +12,13 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
-        margin: theme.spacing(0),
+        padding: theme.spacing(5, 0, 0, 0),
+    },
+    radius: {
+        borderRadius: 10,
     },
     paper: {
-        marginTop: theme.spacing(1),
+        marginTop: theme.spacing(8),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -27,13 +30,13 @@ const useStyles = makeStyles((theme) => ({
     },
     form: {
         width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
+        marginTop: theme.spacing(3),
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
         backgroundColor: theme.palette.warning.main,
         color: theme.palette.primary.dark,
-
+        borderRadius: 10,
     },
 }));
 
@@ -42,92 +45,105 @@ function LoginForm(props) {
     const { formObject, handleFormSubmit, handleInputChange } = props;
 
     return (
-        <Container component="main" maxWidth="sm">
+        <Container component="main">
             <CssBaseline />
 
-            <div className={classes.heroContent}>
-                {/* <Image
-          height='auto'
-            src="Banner.png"
-            disableSpinner
-          /> */}
-                <Card >
-                    <CardMedia
-                        component="img"
-                        alt="Swaddle Swan Logo"
-                        image="Banner.png"
-                        title="Swaddle Swan Logo"
-                    />
-                </Card>
-            </div>
-
-
-
-            <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign in
-                </Typography>
-                <form className={classes.form} noValidate>
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        onChange={handleInputChange}
-                        value={formObject.email}
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
-                        autoFocus
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        value={formObject.password}
-                        onChange={handleInputChange}
-                        label="Password"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="#ffdbdb"
-                        className={classes.submit}
-                        onClick={handleFormSubmit}
+            <AppBar
+                position="static"
+                spacing="0"
+                color="transparent"
+                fullwidth
+                className={classes.heroContent}
+            >
+                <Grid container
+                    fullwidth
+                    justify="center"
+                >
+                    <Grid item
+                        xs={12} sm={11} md={10} lg={9} xl={8}
                     >
-                        Sign In
-                    </Button>
-                    <Button
-                        component={Link}
-                        to="/signup"
-                        fullWidth
-                    >
-                        Don't have an account? Sign Up!
-                    </Button>
-
-                    <Grid container>
-                        <Grid item xs>
-                            <Link href="#" variant="body2">
-                                Forgot password?
-                            </Link>
-                        </Grid>
+                        <Card
+                            className={classes.radius}
+                        >
+                            <CardMedia
+                                component="img"
+                                alt="Swaddle Swan Logo"
+                                image="Banner.png"
+                                title="Swaddle Swan Logo"
+                            />
+                        </Card>
                     </Grid>
-                </form>
-            </div>
+                </Grid>
+            </AppBar>
+
+            <Grid container
+                className={classes.paper}>
+                <Grid item
+                    align="center"
+                >
+                    <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                </Typography>
+                </Grid>
+                <Grid
+                    xs={11} sm={5} md={4} lg={3}
+                >
+                    <form className={classes.form} noValidate>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            onChange={handleInputChange}
+                            value={formObject.email}
+                            label="Email Address"
+                            name="email"
+                            autoComplete="email"
+                            autoFocus
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            value={formObject.password}
+                            onChange={handleInputChange}
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="#ffdbdb"
+                            className={classes.submit}
+                            onClick={handleFormSubmit}
+                        >
+                            Sign In
+                    </Button>
+                        <Button
+                            component={Link}
+                            to="/signup"
+                            fullWidth
+                            align="center"
+                        >
+                            Don't have an account?<br></br> Sign Up!
+                    </Button>
+                        <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
+                    </form>
+                </Grid>
+            </Grid>
             <Box mt={8}>
                 <CopyrightFooter />
             </Box>
-        </Container>
+        </Container >
     );
 }
 

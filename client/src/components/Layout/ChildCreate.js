@@ -41,13 +41,29 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(3),
     },
   },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end',
+  button1: {
+    backgroundColor: theme.palette.success.main,
+    margin: theme.spacing(1),
   },
-  button: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
+  button2: {
+    backgroundColor: theme.palette.warning.main,
+    margin: theme.spacing(1),
+  },
+  button3: {
+    backgroundColor: theme.palette.info.main,
+    margin: theme.spacing(1),
+  },
+  button4: {
+    backgroundColor: theme.palette.error.main,
+    margin: theme.spacing(1),
+  },
+  button5: {
+    backgroundColor: theme.palette.secondary.main,
+    margin: theme.spacing(1),
+  },
+  button6: {
+    backgroundColor: theme.palette.secondary.main,
+    margin: theme.spacing(1),
   },
   container: {
     display: 'flex',
@@ -136,16 +152,17 @@ function ChildCreate() {
     API.Note.create(noteData);
     console.log(noteData);
   };
-  
-  function nugImg(){
+
+  function nugImg() {
     var myWidget = window.cloudinary.createUploadWidget({
-      cloudName: 'project-kapf', 
-      uploadPreset: 'fec0tg1l'}, (error, result) => { 
-        if (!error && result && result.event === "success") { 
-          console.log('Done! Here is the image info: ', result.info);
-          setChildImg(result.info.secure_url);
-        }
+      cloudName: 'project-kapf',
+      uploadPreset: 'fec0tg1l'
+    }, (error, result) => {
+      if (!error && result && result.event === "success") {
+        console.log('Done! Here is the image info: ', result.info);
+        setChildImg(result.info.secure_url);
       }
+    }
     )
     myWidget.open()
   }
@@ -155,9 +172,6 @@ function ChildCreate() {
       <CssBaseline />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-          <Typography component="h1" variant="h4" align="center">
-            Your Nugget's Information
-          </Typography>
           <Typography variant="h6" gutterBottom>
             Child's Basics
           </Typography>
@@ -212,14 +226,20 @@ function ChildCreate() {
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <form>
-              <TextField
-                id="outlined-multiline-static"
-                label="Allergies"
-                variant="outlined"
-                value={allergies}
-                onChange={handleAllergiesChange}
-              />
-              <Button variant="contained" color="primary" onClick={postAllergy}>Add</Button>
+                <TextField
+                  id="outlined-multiline-static"
+                  label="Allergies"
+                  variant="outlined"
+                  value={allergies}
+                  onChange={handleAllergiesChange}
+                />
+                <Button
+                  variant="contained"
+                  className={classes.button1}
+                  onClick={postAllergy}
+                >
+                  Add
+                    </Button>
               </form>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -230,27 +250,45 @@ function ChildCreate() {
                 value={notes}
                 onChange={handleNotesChange}
               />
-              <Button variant="contained" color="primary" onClick={postNote}>Add</Button>
+              <Button
+                variant="contained"
+                className={classes.button2}
+                onClick={postNote}
+              >
+                Add
+                </Button>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
-                 id="outlined-multiline-static"
-                 label="Likes"
-                 variant="outlined"
-                 value={likes}
-                 onChange={handleLikesChange}
+                id="outlined-multiline-static"
+                label="Likes"
+                variant="outlined"
+                value={likes}
+                onChange={handleLikesChange}
               />
-              <Button variant="contained" color="primary" onClick={postLike}>Add</Button>
+              <Button
+                variant="contained"
+                className={classes.button3}
+                onClick={postLike}
+              >
+                Add
+                </Button>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
-                 id="outlined-multiline-static"
-                 label="Dislikes"
-                 variant="outlined"
-                 value={dislikes}
-                 onChange={handleDislikesChange}
+                id="outlined-multiline-static"
+                label="Dislikes"
+                variant="outlined"
+                value={dislikes}
+                onChange={handleDislikesChange}
               />
-              <Button variant="contained" color="primary" onClick={postDislike}>Add</Button>
+              <Button
+                variant="contained"
+                className={classes.button4}
+                onClick={postDislike}
+              >
+                Add
+                </Button>
             </Grid>
           </Grid>
         </Paper>
@@ -259,22 +297,28 @@ function ChildCreate() {
           <Typography variant="h6" gutterBottom>
             Add a lil photo of your Nugget-roo
           </Typography>
-          <button onClick={nugImg}>
-          Upload Image
-          </button>
+          <Button
+            className={classes.button6}
+            onClick={nugImg}>
+            Upload Image
+          </Button>
         </Paper>
-               
+
         <Paper className={classes.paper}>
           <Grid container spacing={3} direction='column' alignItems='center'>
             <Grid item xs={12}>
-              <Button onClick={postChild} component={Link} to="/home" className={classes.paper} variant='contained' size='large' color='primary'>
+              <Button
+                onClick={postChild}
+                component={Link} to="/home" className={classes.paper}
+                variant='contained'
+                size='small'
+                className={classes.button5}
+              >
                 Submit
                 </Button>
             </Grid>
           </Grid>
         </Paper>
-
-        <CopyrightFooter />
       </main>
     </Fragment>
   );

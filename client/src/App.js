@@ -2,17 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Home, SplashPage, ChildOverview, AddChild, LogFood, LogInfo, LogSleep, AddBabysitter } from "./pages";
 import Auth from "./pages/Auth"
-import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import API from './utils/API';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles({
-  someStyle: {
-    color: "red"
-  }
-});
 
 function App() {
   const [user, setUser] = useState({});

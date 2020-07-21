@@ -55,13 +55,16 @@ const useStyles = makeStyles((theme) => ({
             width: '25ch',
         },
     },
+    buttonOption1: {
+        background: theme.palette.secondary.light
+    }
 }));
 
 
 // ***FoodInput Function***
 function FoodInput(props) {
     const classes = useStyles();
-    
+
     const [type, setType] = useState('Formula');
     const [unit, setUnit] = useState('oz.');
     const [quantity, setQuantity] = useState();
@@ -155,10 +158,17 @@ function FoodInput(props) {
                     </form>
                     <Box m={6}>
                         <Grid container spacing={3} direction='column' alignItems='center'>
-                            <Grid item xs={12}>
-                                <Button onClick={postFood} className={classes.paper} variant='contained' size='large' color='primary'>
+                            <Grid item
+                                xs={12}
+                                className={classes.buttonOption1}>
+                                <Button
+                                    onClick={postFood}
+                                    className={classes.buttonOption1}
+                                    variant='contained'
+                                    size='large'
+                                >
                                     Log New Food
-                            </Button>
+                                </Button>
                             </Grid>
                         </Grid>
                     </Box>

@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { red, grey, blue, purple, yellow, green } from '@material-ui/core/colors'
+import { red, grey, blue, orange, teal, lime, purple, yellow, green } from '@material-ui/core/colors'
 
 const theme = createMuiTheme({
   props: {
@@ -15,16 +15,23 @@ const theme = createMuiTheme({
       light: grey[100]
     },
     secondary: {
-      main: blue[100]
+      main: blue[100],
+      light: teal[100]
     },
     error: {
       main: red[100]
     },
     warning: {
-      main: yellow[100]
+      main: yellow[100],
+      light: orange[100]
     },
     success: {
-      main: green[100]
+      main: green[100],
+      light: lime[100]
+    },
+    info: {
+      main: purple[100]
+
     },
 
   },

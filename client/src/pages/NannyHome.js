@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   heroContent: {
-    padding: theme.spacing(10, 0, 0, 0),
+    padding: theme.spacing(5, 0, 1, 0),
   },
   radius: {
     borderRadius: 10,

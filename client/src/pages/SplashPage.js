@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import { Box, Container, Typography, AppBar, Button, Grid, Card, CardActions, CardContent, CardMedia, CardActionArea } from '@material-ui/core';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { Box, Container, Typography, AppBar, Button, Grid, Card, CardContent, CardMedia, CardActionArea } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
-import Image from 'material-ui-image';
-import { red, grey, blue, purple, yellow, green } from '@material-ui/core/colors'
 import { CopyrightFooter } from '../components';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
-    padding: theme.spacing(10, 0, 0, 0),
+    padding: theme.spacing(5, 0, 0, 0),
   },
   radius: {
     borderRadius: 10,
@@ -124,7 +121,7 @@ export default function Album() {
 
         >
           <Grid item
-            xs={11} sm={6} md={4} lg={3}
+            xs={12} sm={6} md={4} lg={3}
           >
             <Card
               className={classes.radius}
@@ -158,7 +155,7 @@ export default function Album() {
             </Card>
           </Grid>
           <Grid item
-            xs={11} sm={6} md={4} lg={3}
+            xs={12} sm={6} md={4} lg={3}
           >
             <Card
               className={classes.radius}
@@ -189,7 +186,7 @@ export default function Album() {
             </Card>
           </Grid>
           <Grid item
-            xs={11} sm={6} md={4} lg={3}
+            xs={12} sm={6} md={4} lg={3}
           >
             <Card
               className={classes.radius}

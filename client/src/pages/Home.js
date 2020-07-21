@@ -8,10 +8,13 @@ import CopyrightFooter from '../components/Layout/CopyrightFooter'
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
-    padding: theme.spacing(10, 0, 1, 0),
+    padding: theme.spacing(5, 0, 0, 0),
   },
   radius: {
     borderRadius: 10,
+  },
+  topicspacing: {
+    padding: theme.spacing(5),
   },
   buttonOption1: {
     background: theme.palette.warning.main,
@@ -82,13 +85,14 @@ function Home(props) {
   }
 
   return (
-    <Fragment>
-      <CssBaseline />
+    <Container
+      maxWidth='false'
+    >
       <AppBar
         position="static"
         spacing="0"
-        fullwidth
         color="transparent"
+        fullwidth
         className={classes.heroContent}
       >
         <Grid container
@@ -114,9 +118,8 @@ function Home(props) {
 
       <main>
         <Grid container
+          className={classes.topicspacing}
           justify="center"
-        // component={Link}
-        // to="/addchild"
         >
           <Grid item
             className={classes.headBody}
@@ -134,7 +137,10 @@ function Home(props) {
         </Grid>
 
         <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={4}>
+          <Grid container
+            justify="center"
+            align="center"
+            spacing={4}>
             {childs.length > 0 && props.user.id ?
               childs.map((card, index) => (
                 <Grid item key={card} xs={12} sm={6} md={4}>
@@ -181,9 +187,9 @@ function Home(props) {
                         >
                           <CardMedia
                             component="img"
-                            alt="Contemplative Reptile"
+                            alt="Aww! Little Swaddled Baby 1"
                             image="Nugget.png"
-                            title="Contemplative Reptile"
+                            title="Aww! Little Swaddled Baby 1"
                           />
                           <CardContent>
                             <Typography
@@ -192,7 +198,7 @@ function Home(props) {
                               component="h2"
                               align="center"
                             >
-                              Add
+                              Tater
                         </Typography>
                           </CardContent>
                         </CardActionArea>
@@ -210,9 +216,9 @@ function Home(props) {
                         >
                           <CardMedia
                             component="img"
-                            alt="Contemplative Reptile"
+                            alt="Aww! Little Swaddled Baby 2"
                             image="Nugget.png"
-                            title="Contemplative Reptile"
+                            title="Aww! Little Swaddled Baby 2"
                           />
                           <CardContent>
                             <Typography
@@ -221,38 +227,8 @@ function Home(props) {
                               component="h2"
                               align="center"
                             >
-                              Your
+                              Tot
                           </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                      </Card>
-                    </Grid>
-                    <Grid item
-                      xs={11} sm={6} md={4}
-                    >
-                      <Card
-                        className={classes.defaultCards}
-                      >
-                        <CardActionArea
-                          component={Link}
-                          to="/addchild"
-                        >
-                          <CardMedia
-                            component="img"
-                            alt="plus sign"
-                            image="Plus.png"
-                            title="plus sign"
-                            opacity="0.3"
-                          />
-                          <CardContent>
-                            <Typography
-                              gutterBottom
-                              variant="h5"
-                              component="h2"
-                              align="center"
-                            >
-                              Tot!
-                        </Typography>
                           </CardContent>
                         </CardActionArea>
                       </Card>
@@ -262,6 +238,39 @@ function Home(props) {
               </div>
 
             }
+            <Grid item
+              justify="center"
+              align="center"
+              xs={11} sm={6} md={4}
+            >
+              <Card
+                className={classes.defaultCards}
+              >
+                <CardActionArea
+                  component={Link}
+                  to="/addchild"
+                >
+                  <CardMedia
+                    component="img"
+                    alt="add your child"
+                    image="Plus.png"
+                    title="add your child"
+                    opacity="0.3"
+                  />
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                      align="center"
+                    >
+                      Add Your Nugget!
+                        </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+
           </Grid>
         </Container>
       </main>
@@ -269,7 +278,7 @@ function Home(props) {
         <CopyrightFooter />
       </Box>
 
-    </Fragment>
+    </Container>
   );
 }
 
