@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to Swaddle 👋</h1>
 
-<img align="center" alt="Swaddle logo" src="RM-images/SplashtestGit.png">
+<img align="center" alt="Swaddle logo" src="documentation/readme-images/SplashtestGit.png">
 
 > Swaddle is an app that sets out to solve the problem of letting your baby sitter know more important details about your child that are usually helpful to know.
 
