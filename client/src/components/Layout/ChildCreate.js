@@ -14,6 +14,8 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import CopyrightFooter from './CopyrightFooter';
 import { Link } from "react-router-dom";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 
 
@@ -64,6 +66,9 @@ const useStyles = makeStyles((theme) => ({
   button6: {
     backgroundColor: theme.palette.secondary.main,
     margin: theme.spacing(1),
+  },
+  childimagecard: {
+    alignItems: "center"
   },
   container: {
     display: 'flex',
@@ -294,14 +299,28 @@ function ChildCreate() {
         </Paper>
 
         <Paper className={classes.paper}>
-          <Typography variant="h6" gutterBottom>
-            Add a lil photo of your Nugget-roo
+          <Grid container direction="row"
+            justify="center"
+            alignItems="center">
+            <Typography variant="h6" gutterBottom>
+              Add a lil photo of your Nugget-roo
           </Typography>
-          <Button
-            className={classes.button6}
-            onClick={nugImg}>
-            Upload Image
+            <Card>
+              <CardContent>
+                <img src={childImage} alt="beauty"></img>
+              </CardContent>
+
+            </Card>
+            </Grid>
+            <Grid container direction="row"
+            justify="center"
+            alignItems="center">
+            <Button
+              className={classes.button6}
+              onClick={nugImg}>
+              Upload Image
           </Button>
+          </Grid>
         </Paper>
 
         <Paper className={classes.paper}>
@@ -311,7 +330,7 @@ function ChildCreate() {
                 onClick={postChild}
                 component={Link} to="/home" className={classes.paper}
                 variant='contained'
-                size='small'
+                size='large'
                 className={classes.button5}
               >
                 Submit
