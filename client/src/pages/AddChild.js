@@ -3,14 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import CopyrightFooter from "../components/Layout/CopyrightFooter";
 import ChildCreate from "../components/Layout/ChildCreate";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import { AppBar, Typography, Card, CardMedia, Box, Grid, Button } from '@material-ui/core';
+import { AppBar, Paper, Container, Typography, Card, CardMedia, Box, Grid, Button } from '@material-ui/core';
 import { Link } from "react-router-dom";
 
+import BackBtn from "../components/Layout/BackBtn";
+import IconButton from '@material-ui/core/IconButton';
 
 
 const useStyles = makeStyles((theme) => ({
     heroContent: {
-        padding: theme.spacing(10, 0, 0, 0),
+        padding: theme.spacing(5, 0, 0, 0),
     },
     radius: {
         borderRadius: 10,
@@ -20,23 +22,17 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(6, 0, 0, 0),
         borderRadius: 10,
     },
-    buttonOption2: {
-        background: theme.palette.success.main,
+    headBody: {
+        padding: theme.spacing(2, 0, 2),
+        borderRadius: 10,
+    },
+    buttonOption4: {
+        background: theme.palette.secondary.light,
         margin: theme.spacing(6, 0),
         borderRadius: 10,
     },
     cardGrid: {
         padding: theme.spacing(8),
-    },
-
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
-    },
-    paper: {
-        margin: 0,
-        padding: 10,
     },
     topAlignment: {
         margin: 10,
@@ -48,12 +44,14 @@ const useStyles = makeStyles((theme) => ({
 function AddChild() {
     const classes = useStyles();
     return (
-        <>
+        <Container
+            maxWidth='false'
+        >
             <AppBar
                 position="static"
                 spacing="0"
-                fullwidth
                 color="transparent"
+                fullwidth
                 className={classes.heroContent}
             >
                 <Grid container
@@ -63,7 +61,9 @@ function AddChild() {
                     <Grid item
                         xs={12} sm={11} md={10} lg={9} xl={8}
                     >
-                        <Card>
+                        <Card
+                            className={classes.radius}
+                        >
                             <CardMedia
                                 component="img"
                                 alt="Swaddle Swan Logo"
@@ -78,46 +78,69 @@ function AddChild() {
             <main>
                 <Grid container
                     justify="center"
-                // component={Link}
-                // to="/addchild"
+                    fullwidth
                 >
                     <Grid item
                         className={classes.headBody}
-                        xs={10} sm={9} md={8} lg={7} xl={6}
-                    >
-                        <Typography
-                            className={classes.headText}
-                            component="h1"
-                            variant="h4"
-                            align="center"
-                        >
-                            Let's Swaddle!
-            </Typography>
-                    </Grid>
-                </Grid>
+                        xs={11} sm={10} md={9} lg={8} xl={7}
 
-
-                <Grid container spacing={4}>
-                    <Grid container item
-                        className={classes.topAlignment}
-                        xs={12} s={6} m={4}
-                        justify="flex-start"
-                        alignItems="center"
                     >
                         <div className={classes.root}>
-                            <Button component={Link} to="/home">
-                                <ArrowBackIosIcon />
-                            </Button>
-                        </div>
+                            <AppBar
+                                className={classes.radius}
+                                color="transparent"
 
+                                position="static">
+                                <Grid container
+                                    direction="row"
+                                    justify="space-between"
+                                    alignItems="center"
+                                >
+                                    <Grid item>
+                                        <IconButton
+                                            edge="start"
+                                            color="inherit"
+                                            aria-label="menu"
+                                        >
+                                            <BackBtn />
+                                        </IconButton>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography variant="h6"
+                                            align="center"
+                                            className={classes.title}
+                                        >
+                                            Let's Make Your<br></br>Child's Profile
+                                    </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Button
+                                            size="small"
+                                            className={classes.buttonOption4}
+                                        >
+                                            Log<br></br>Out
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </AppBar>
+                        </div>
                     </Grid>
                 </Grid>
-                <ChildCreate />
+
+
+                <Grid container
+                    // spacing={4}
+                    fullwidth
+                    justify="center"
+                >
+                    <ChildCreate />
+
+                </Grid>
             </main>
             <Box mt={8}>
                 <CopyrightFooter />
             </Box>
-        </>
+        </Container>
     );
 };
 

@@ -22,8 +22,8 @@ import moment from 'moment';
 // ***Created styles used in FoodTable return***
 const StyledTableCell = withStyles((theme) => ({
     head: {
-        backgroundColor: theme.palette.info.main,
-        color: theme.palette.common.white,
+        backgroundColor: theme.palette.primary.light,
+        // color: theme.palette.common.white,
     },
     body: {
         fontSize: 14,

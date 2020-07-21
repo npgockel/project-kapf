@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import BackBtn from "../components/Layout/BackBtn";
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, CardMedia, Typography, Card, CardContent, Grid, Paper, Button, Box } from "@material-ui/core";
+import { AppBar, Container, CardMedia, Typography, Card, CardContent, Grid, Paper, Button, Box } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import API from '../utils/API';
 import CopyrightFooter from "../components/Layout/CopyrightFooter"
 
+import IconButton from '@material-ui/core/IconButton';
+
 const useStyles = makeStyles((theme) => ({
     heroContent: {
-        padding: theme.spacing(10, 0, 0, 0),
+        padding: theme.spacing(5, 0, 0, 0),
     },
     radius: {
+        borderRadius: 10,
+    },
+    headBody: {
+        padding: theme.spacing(2, 0, 2),
         borderRadius: 10,
     },
     buttonOption1: {
@@ -18,29 +24,33 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(6, 0, 0, 0),
         borderRadius: 10,
     },
-    buttonOption2: {
-        background: theme.palette.success.main,
+    buttonOption4: {
+        background: theme.palette.secondary.light,
         margin: theme.spacing(6, 0),
         borderRadius: 10,
     },
-    cardGrid: {
-        padding: theme.spacing(8),
+    button1: {
+        backgroundColor: theme.palette.success.main,
+        margin: theme.spacing(1),
+        borderRadius: 10,
     },
-
+    button2: {
+        backgroundColor: theme.palette.warning.main,
+        margin: theme.spacing(1),
+        borderRadius: 10,
+    },
+    button3: {
+        backgroundColor: theme.palette.info.main,
+        margin: theme.spacing(1),
+        borderRadius: 10,
+    },
+    button4: {
+        backgroundColor: theme.palette.error.main,
+        margin: theme.spacing(1),
+        borderRadius: 10,
+    },
     root: {
         flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: "white",
-        background: theme.palette.primary.main,
-        borderRadius: 3,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)'
-    },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
     },
 }));
 
@@ -63,12 +73,14 @@ function ChildOverview(props) {
 
 
     return (
-        <>
+        <Container
+            maxWidth='false'
+        >
             <AppBar
                 position="static"
                 spacing="0"
-                fullwidth
                 color="transparent"
+                fullwidth
                 className={classes.heroContent}
             >
                 <Grid container
@@ -78,7 +90,9 @@ function ChildOverview(props) {
                     <Grid item
                         xs={12} sm={11} md={10} lg={9} xl={8}
                     >
-                        <Card>
+                        <Card
+                            className={classes.radius}
+                        >
                             <CardMedia
                                 component="img"
                                 alt="Swaddle Swan Logo"
@@ -93,82 +107,134 @@ function ChildOverview(props) {
             <main>
                 <Grid container
                     justify="center"
-                // component={Link}
-                // to="/addchild"
+                    fullwidth
                 >
                     <Grid item
                         className={classes.headBody}
-                        xs={10} sm={9} md={8} lg={7} xl={6}
+                        xs={11} sm={10} md={9} lg={8} xl={7}
+
                     >
-                        <Typography
-                            className={classes.headText}
-                            component="h1"
-                            variant="h4"
-                            align="center"
-                        >
-                            Let's Swaddle!
-            </Typography>
+                        <div className={classes.root}>
+                            <AppBar
+                                className={classes.radius}
+                                color="transparent"
+
+                                position="static">
+                                <Grid container
+                                    direction="row"
+                                    justify="space-between"
+                                    alignItems="center"
+                                >
+                                    <Grid item>
+                                        <IconButton
+                                            edge="start"
+                                            color="inherit"
+                                            aria-label="menu"
+                                        >
+                                            <BackBtn />
+                                        </IconButton>
+                                    </Grid>
+                                    <Grid item>
+                                        <Typography variant="h6"
+                                            align="center"
+                                            className={classes.title}
+                                        >
+                                            Let's Make Your<br></br>Child's Profile
+                                    </Typography>
+                                    </Grid>
+                                    <Grid item>
+                                        <Button
+                                            size="small"
+                                            className={classes.buttonOption4}
+                                        >
+                                            Log<br></br>Out
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </AppBar>
+                        </div>
                     </Grid>
                 </Grid>
 
+                <Grid container 
+                spacing={3} 
+                direction="column" 
+                alignItems="center">
+                    <Grid item 
+                    xs={10} sm={9} md={8} lg={7} xl={6}
+                    >
+                        <Card>
+                            <CardContent>
+                                <img src={childs.childImg} alt="beauty"></img>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {childs.childName}
+                                </Typography>
 
-                <div className={classes.root}>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                                <Typography variant="h3" className={classes.text}>
-                                    Child Overview
-                        </Typography>
-                            </Paper>
-                            <BackBtn />
-                        </Grid>
-                    </Grid>
-                    <Grid container spacing={3} direction="column" alignItems="center">
-                        <Grid item xs={12}>
-                            <Card>
-                                <CardContent>
-                                    <img src={childs.childImg} alt="beauty"></img>
-                                    <Typography gutterBottom variant="h5" component="h2">
-                                        {childs.childName}
-                                    </Typography>
+                            </CardContent>
 
-                                </CardContent>
+                        </Card>
+                    </Grid>
+                </Grid>
 
-                            </Card>
-                            <div>
-                            </div>
-                        </Grid>
+                <Grid container
+                    direction="row"
+                    align="center"
+                    // fullwidth
+                    justify="center"
+                >
+                    <Grid item
+                        xs={12} sm={6} md={4} lg={2}
+                    >
+                        <Button
+                            component={Link} to={{ pathname: "/logfood", state: props.location.state }}
+                            variant="contained"
+                            size="medium"
+                            className={classes.button1}
+                        >
+                            Log Food
+                    </Button>
                     </Grid>
-                    <Grid container spacing={3} direction="column" alignItems="center">
-                        <Grid item xs={12}>
-                            <Button component={Link} to={{ pathname: "/logfood", state: props.location.state }} className={classes.paper} variant="contained" size="large" color="primary">
-                                Log Food
+                    <Grid item
+                        xs={12} sm={6} md={4} lg={2}
+                    >
+                        <Button component={Link} to="/logsleep"
+                            variant="contained"
+                            size="medium"
+                            className={classes.button2}
+                        >
+                            Log Sleep
                     </Button>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Button component={Link} to="/logsleep" className={classes.paper} variant="contained" size="large" color="primary">
-                                Log Sleep
-                    </Button>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Button component={Link} to="/loginfo" className={classes.paper} variant="contained" size="large" color="primary">
-                                Log Info
-                    </Button>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Button component={Link} to={{ pathname: "/addbabysitter", state: props.location.state }} className={classes.paper} variant="contained" size="large" color="primary">
-                                Add Babysitter
-                    </Button>
-                        </Grid>
                     </Grid>
-                </div>
+                    <Grid item
+                        xs={12} sm={6} md={4} lg={2}
+                    >
+                        <Button component={Link} to="/loginfo"
+                            variant="contained"
+                            size="medium"
+                            className={classes.button3}
+                        >
+                            Log Info
+                    </Button>
+                    </Grid>
+                    <Grid item
+                        xs={12} sm={6} md={4} lg={2}
+                    >
+                        <Button component={Link} to={{ pathname: "/addbabysitter", state: props.location.state }}
+                            variant="contained"
+                            size="medium"
+                            className={classes.button4}
+                        >
+                            Add Babysitter
+                    </Button>
+                    </Grid>
+                </Grid>
             </main>
             <Box mt={8}>
                 <CopyrightFooter />
             </Box>
 
 
-        </>
+        </Container >
     );
 }
 

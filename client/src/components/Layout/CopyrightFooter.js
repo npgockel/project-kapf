@@ -12,7 +12,7 @@ function CopyrightFooter() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="/">
-                Nanny Nugget
+                Swaddle Swan
       </Link>{' '}
             {new Date().getFullYear()}
             {'.'}

@@ -19,7 +19,6 @@ function BackBtn() {
     <div className={classes.root}>
       <Button component={Link} to="/child-overview">
           <ArrowBackIcon/>
-          Back
       </Button>
     </div>
   );
