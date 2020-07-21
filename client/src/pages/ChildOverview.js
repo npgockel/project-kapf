@@ -63,7 +63,7 @@ function ChildOverview(props) {
 
     useEffect(() => {
         loadChildren()
-    },[])
+    }, [])
 
     function loadChildren() {
         API.Child.getById(props.location.state.id)
@@ -72,7 +72,7 @@ function ChildOverview(props) {
             })
             .catch(err => console.log(err))
     }
-
+    console.log(props.location.state)
 
     return (
         <>

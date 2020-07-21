@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 function LogFood(props) {
     const classes = useStyles();
 
-    console.log(props);
+    console.log(props.location.state);
 
 
     return (
@@ -109,7 +109,7 @@ function LogFood(props) {
                         </Grid>
                     </Grid>
                     <Box m={6}>
-                        <FoodTable />
+                        <FoodTable child={props.location.state}/>
                     </Box>
                     <Grid container spacing={3}>
                         <Grid item xs={12}>

@@ -116,7 +116,7 @@ const useStyles2 = makeStyles({
 
 
 
-function FoodTable() {
+function FoodTable(props) {
     const classes = useStyles2();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -131,20 +131,20 @@ function FoodTable() {
     function loadFood() {
         API.Food.getAll()
             .then(res => {
-                setFoods(res.data)
+                let cf = res.data;
+                let cfs = cf.filter(item => item.ChildId === props.child.id)
+                setFoods(cfs)
             })
             .catch(err => console.log(err))
     }
 
-    
 
     // ***THIS IS WHERE THE DATA FROM API IS PULLED AND SORTED (Gets mapped later inside TableBody)***
-    const rows = foods.sort((a, b) => (a.foodDate > b.foodDate ? -1 : 1));
+    const rows = foods
+    // .sort((a, b) => (a.foodDate > b.foodDate ? -1 : 1));
 
 
-
-
-
+  
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -159,71 +159,71 @@ function FoodTable() {
 
     return (
         <>
-        <Grid container spacing={3} direction="column" alignItems="center">
-            <Grid item xs={12}>
-                <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="custom pagination table">
-                        <TableHead>
-                            <TableRow>
-                                <StyledTableCell>Type of Food</StyledTableCell>
-                                <StyledTableCell align="right">Quantity</StyledTableCell>
-                                <StyledTableCell align="right">Unit</StyledTableCell>
-                                <StyledTableCell align="right">Time</StyledTableCell>
-                                <StyledTableCell align="right">Date</StyledTableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {(rowsPerPage > 0
-                                ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                : rows
-                            ).map((row) => (
-                                <StyledTableRow key={row.name}>
-                                    <TableCell component="th" scope="row">
-                                        {row.foodType}
-                                    </TableCell>
-                                    <TableCell style={{ width: 160 }} align="right">
-                                        {row.foodQuantity}
-                                    </TableCell>
-                                    <TableCell style={{ width: 160 }} align="right">
-                                        {row.foodUnit}
-                                    </TableCell>
-                                    <TableCell style={{ width: 160 }} align="right">
-                                        {moment(row.foodDate).format('LT')}
-                                    </TableCell>
-                                    <TableCell style={{ width: 160 }} align="right">
-                                        {moment(row.foodDate).format("MMM Do YYYY")}
-                                    </TableCell>
-                                </StyledTableRow>
-                            ))}
-
-                            {emptyRows > 0 && (
-                                <TableRow style={{ height: 53 * emptyRows }}>
-                                    <TableCell colSpan={6} />
+            <Grid container spacing={3} direction="column" alignItems="center">
+                <Grid item xs={12}>
+                    <TableContainer component={Paper}>
+                        <Table className={classes.table} aria-label="custom pagination table">
+                            <TableHead>
+                                <TableRow>
+                                    <StyledTableCell>Type of Food</StyledTableCell>
+                                    <StyledTableCell align="right">Quantity</StyledTableCell>
+                                    <StyledTableCell align="right">Unit</StyledTableCell>
+                                    <StyledTableCell align="right">Time</StyledTableCell>
+                                    <StyledTableCell align="right">Date</StyledTableCell>
                                 </TableRow>
-                            )}
-                        </TableBody>
-                        <TableFooter>
-                            <TableRow>
-                                <TablePagination
-                                    rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                                    colSpan={3}
-                                    count={rows.length}
-                                    rowsPerPage={rowsPerPage}
-                                    page={page}
-                                    SelectProps={{
-                                        inputProps: { 'aria-label': 'rows per page' },
-                                        native: true,
-                                    }}
-                                    onChangePage={handleChangePage}
-                                    onChangeRowsPerPage={handleChangeRowsPerPage}
-                                    ActionsComponent={TablePaginationActions}
-                                />
-                            </TableRow>
-                        </TableFooter>
-                    </Table>
-                </TableContainer>
+                            </TableHead>
+                            <TableBody>
+                                {(rowsPerPage > 0
+                                    ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    : rows.filter(childs => childs.ChildId === childs.ChildId)
+                                ).map((row) => (
+                                    <StyledTableRow key={row.name}>
+                                        <TableCell component="th" scope="row">
+                                            {row.foodType}
+                                        </TableCell>
+                                        <TableCell style={{ width: 160 }} align="right">
+                                            {row.foodQuantity}
+                                        </TableCell>
+                                        <TableCell style={{ width: 160 }} align="right">
+                                            {row.foodUnit}
+                                        </TableCell>
+                                        <TableCell style={{ width: 160 }} align="right">
+                                            {moment(row.foodDate).format('LT')}
+                                        </TableCell>
+                                        <TableCell style={{ width: 160 }} align="right">
+                                            {moment(row.foodDate).format("MMM Do YYYY")}
+                                        </TableCell>
+                                    </StyledTableRow>
+                                ))}
+
+                                {emptyRows > 0 && (
+                                    <TableRow style={{ height: 53 * emptyRows }}>
+                                        <TableCell colSpan={6} />
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                            <TableFooter>
+                                <TableRow>
+                                    <TablePagination
+                                        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                                        colSpan={3}
+                                        count={rows.length}
+                                        rowsPerPage={rowsPerPage}
+                                        page={page}
+                                        SelectProps={{
+                                            inputProps: { 'aria-label': 'rows per page' },
+                                            native: true,
+                                        }}
+                                        onChangePage={handleChangePage}
+                                        onChangeRowsPerPage={handleChangeRowsPerPage}
+                                        ActionsComponent={TablePaginationActions}
+                                    />
+                                </TableRow>
+                            </TableFooter>
+                        </Table>
+                    </TableContainer>
+                </Grid>
             </Grid>
-        </Grid>
         </>
     );
 }
