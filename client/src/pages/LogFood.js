@@ -65,9 +65,7 @@ const useStyles = makeStyles((theme) => ({
 function LogFood(props) {
     const classes = useStyles();
 
-    console.log(props);
-
-
+    console.log(props)
     return (
         <>
             <AppBar
@@ -170,10 +168,9 @@ function LogFood(props) {
                         <Grid item
                             xs={10}
                         >
-                            <FoodTable />
+                            <FoodTable child={props.location.state}/>
                         </Grid>
                     </Grid>
-
                     <Grid container
                         // spacing={3}
                         justify="center"
@@ -186,6 +183,7 @@ function LogFood(props) {
                                 <Typography variant="h4" className={classes.text}>
                                     Add a New Food
                                 </Typography>
+
                             </Paper>
                         </Grid>
                         <Grid item

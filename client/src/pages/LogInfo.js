@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function LogInfo() {
+function LogInfo(props) {
     const classes = useStyles();
 
 
@@ -106,13 +106,13 @@ function LogInfo() {
                             <Paper className={classes.paper}>
                                 <Typography variant="h5" className={classes.text}>Likes</Typography>
                             </Paper>
-                            <ChildLikes />
+                            <ChildLikes child={props.location.state}/>
                         </Grid>
                         <Grid item xs={6}>
                             <Paper className={classes.paper}>
                                 <Typography variant="h5" className={classes.text}>Disikes</Typography>
                             </Paper>
-                            <ChildDislikes />
+                            <ChildDislikes child={props.location.state}/>
                         </Grid>
                     </Grid>
                     <Grid container spacing={3}>
@@ -120,7 +120,7 @@ function LogInfo() {
                             <Paper className={classes.paper}>
                                 <Typography variant="h5" className={classes.text}>Allergies</Typography>
                             </Paper>
-                            <ChildAllergies />
+                            <ChildAllergies child={props.location.state}/>
                         </Grid>
                     </Grid>
                     <Grid container spacing={3}>
@@ -128,7 +128,7 @@ function LogInfo() {
                             <Paper className={classes.paper}>
                                 <Typography variant="h5" className={classes.text}>Notes</Typography>
                             </Paper>
-                            <ChildNotes />
+                            <ChildNotes child={props.location.state}/>
                         </Grid>
                     </Grid>
                 </div>

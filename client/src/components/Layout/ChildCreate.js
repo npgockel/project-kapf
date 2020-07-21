@@ -82,7 +82,7 @@ function ChildCreate() {
   const [gender, setGender] = useState('');
   const [name, setFName] = useState('');
   const [DOB, setDOB] = useState('');
-  const [childImage, setChildImg] = useState();
+  const [childImage, setChildImg] = useState("http://clipart-library.com/images/pc7K4GERi.jpg")
 
   const [allergies, setAllergies] = useState('');
   const [likes, setLikes] = useState('');

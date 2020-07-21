@@ -52,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
+    cardImg: {
+        height: 250,
+        width: 250
+    }
 }));
 
 
@@ -61,7 +65,7 @@ function ChildOverview(props) {
 
     useEffect(() => {
         loadChildren()
-    })
+    }, [])
 
     function loadChildren() {
         API.Child.getById(props.location.state.id)
@@ -71,6 +75,7 @@ function ChildOverview(props) {
             .catch(err => console.log(err))
     }
 
+    console.log(props.location.state)
 
     return (
         <Container
@@ -169,8 +174,18 @@ function ChildOverview(props) {
                                 <Typography gutterBottom variant="h5" component="h2">
                                     {childs.childName}
                                 </Typography>
-
                             </CardContent>
+
+                    <Grid container spacing={3} direction="column" alignItems="center">
+                        <Grid item xs={12}>
+                            <Card>
+                                <CardContent>
+                                    <img className={classes.cardImg} src={childs.childImg} alt="beauty"></img>
+                                    <Typography className={classes.paper2} gutterBottom variant="h5" component="h2">
+                                        {childs.childName}
+                                    </Typography>
+
+                                </CardContent>
 
                         </Card>
                     </Grid>
@@ -197,7 +212,9 @@ function ChildOverview(props) {
                     <Grid item
                         xs={12} sm={6} md={4} lg={2}
                     >
-                        <Button component={Link} to="/logsleep"
+                        <Button 
+      component={Link}
+    to={{ pathname: "/logsleep", state: props.location.state }} className={classes.paper}
                             variant="contained"
                             size="medium"
                             className={classes.button2}
@@ -208,12 +225,15 @@ function ChildOverview(props) {
                     <Grid item
                         xs={12} sm={6} md={4} lg={2}
                     >
-                        <Button component={Link} to="/loginfo"
+                        <Button 
+      component={Link}
+     to={{ pathname: "/loginfo", state: props.location.state }} className={classes.paper}
                             variant="contained"
                             size="medium"
                             className={classes.button3}
                         >
                             Log Info
+
                     </Button>
                     </Grid>
                     <Grid item

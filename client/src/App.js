@@ -77,8 +77,7 @@ function App() {
                   <SplashPage
                   />
                 </Route>
-                <Route exact path={["/addchild"]}>
-                  <AddChild />
+                <Route exact path={["/addchild"]} render={props => < AddChild {...props} />}>
                 </Route>
                 <Route exact path={["/home"]}>
                   <Home
@@ -97,11 +96,9 @@ function App() {
                 </Route>
                 <Route exact path={["/logfood"]} render={props => < LogFood {...props} />}>
                 </Route>
-                <Route exact path={["/logsleep"]}>
-                  <LogSleep />
+                <Route exact path={["/logsleep"]} render={props => < LogSleep {...props} />}>
                 </Route>
-                <Route exact path={["/loginfo"]}>
-                  <LogInfo />
+                <Route exact path={["/loginfo"]} render={props => < LogInfo {...props} />}>
                 </Route>
               </Switch>
             </Grid>
