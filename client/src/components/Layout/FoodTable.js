@@ -26,7 +26,7 @@ const StyledTableCell = withStyles((theme) => ({
         // color: theme.palette.common.white,
     },
     body: {
-        fontSize: 14,
+        fontSize: 12,
     },
 }))(TableCell);
 
@@ -41,7 +41,7 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles1 = makeStyles((theme) => ({
     root: {
         flexShrink: 0,
-        marginLeft: theme.spacing(2.5),
+        marginLeft: theme.spacing(.5),
     },
 }));
 
@@ -158,7 +158,7 @@ function FoodTable(props) {
 
     return (
         <>
-            <Grid container spacing={3} direction="column" alignItems="center">
+            <Grid container spacing={1} direction="column" alignItems="center">
                 <Grid item xs={12}>
                     <TableContainer component={Paper}>
                         <Table className={classes.table} aria-label="custom pagination table">

@@ -11,12 +11,9 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     paper: {
-        padding: theme.spacing(2),
         textAlign: 'center',
-        color: "white",
-        background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
-        borderRadius: 3,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)'
+        background: theme.palette.success.main,
+        borderRadius: 10,
     }
 }));
 
@@ -96,7 +93,7 @@ function SleepInput(props) {
             </MuiPickersUtilsProvider>
             <Grid container spacing={3} direction="column" alignItems="center">
                 <Grid item xs={12}>
-                    <Button onClick={postSleep} className={classes.paper} variant="contained" size="large" color="primary">
+                    <Button onClick={postSleep} className={classes.paper} variant="contained" size="medium" >
                         Log New Nap
                     </Button>
                 </Grid>

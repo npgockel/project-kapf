@@ -56,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     buttonOption1: {
-        background: theme.palette.secondary.light
+        background: theme.palette.secondary.light,
+        borderRadius: 10,
     }
 }));
 
@@ -157,7 +158,9 @@ function FoodInput(props) {
                         </div>
                     </form>
                     <Box m={6}>
-                        <Grid container spacing={3} direction='column' alignItems='center'>
+                        <Grid container 
+                        direction='column' 
+                        alignItems='center'>
                             <Grid item
                                 xs={12}
                                 className={classes.buttonOption1}>
@@ -165,7 +168,7 @@ function FoodInput(props) {
                                     onClick={postFood}
                                     className={classes.buttonOption1}
                                     variant='contained'
-                                    size='large'
+                                    size='medium'
                                 >
                                     Log New Food
                                 </Button>
