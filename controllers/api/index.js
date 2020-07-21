@@ -10,6 +10,7 @@ const likeRoutes = require("./likeController");
 const dislikeRoutes = require("./dislikeController");
 const allergyRoutes = require("./allergyController");
 const noteRoutes = require("./noteController");
+const parentChildRoutes = require("./parentChildController");
 
 // Hook up to the router
 router.use("/posts", postRoutes);
@@ -22,6 +23,8 @@ router.use("/like", likeRoutes);
 router.use("/dislike", dislikeRoutes);
 router.use("/allergy", allergyRoutes);
 router.use("/note", noteRoutes);
+router.use("/parentchild", parentChildRoutes)
+
 
 
 // Export the router

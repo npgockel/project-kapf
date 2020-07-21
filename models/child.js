@@ -30,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
     // Associating Child with Posts
     // When an Child is deleted, also delete any associated Posts
     Child.belongsToMany(models.Adult, {
-      through: "ParentChild"
+      through: models.ParentChild
     });
     Child.hasMany(models.BabysitterRelation);
     
