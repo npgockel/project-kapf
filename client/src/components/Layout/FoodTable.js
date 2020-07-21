@@ -140,8 +140,7 @@ function FoodTable(props) {
 
 
     // ***THIS IS WHERE THE DATA FROM API IS PULLED AND SORTED (Gets mapped later inside TableBody)***
-    const rows = foods
-    // .sort((a, b) => (a.foodDate > b.foodDate ? -1 : 1));
+    const rows = foods.sort((a, b) => (a.foodDate > b.foodDate ? -1 : 1));
 
 
   

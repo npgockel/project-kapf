@@ -138,8 +138,7 @@ function SleepTable(props) {
     }
 
     // ***THIS IS WHERE THE DATA FROM API IS PULLED AND SORTED (Gets mapped later inside TableBody)***
-    const rows = sleep
-    // .sort((a, b) => (a.date < b.date ? -1 : 1));
+    const rows = sleep.sort((a, b) => (a.date < b.date ? -1 : 1));
 
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);

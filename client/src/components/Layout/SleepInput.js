@@ -48,7 +48,12 @@ function SleepInput(props) {
         }
         API.Sleep.create(sleepData);
         console.log("thanks for click", sleepData);
+        refreshPage();
     }
+
+    function refreshPage() {
+        window.location.reload(false);
+      }
 
     return (
         <>

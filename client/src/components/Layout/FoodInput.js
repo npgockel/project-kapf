@@ -89,7 +89,12 @@ function FoodInput(props) {
         }
         API.Food.create(foodData);
         console.log('THE CLICK WORKED!', foodData);
+        refreshPage();
     }
+
+    function refreshPage() {
+        window.location.reload(false);
+      }
 
     return (
         <>
