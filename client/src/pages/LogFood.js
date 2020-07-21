@@ -47,9 +47,7 @@ const useStyles = makeStyles((theme) => ({
 function LogFood(props) {
     const classes = useStyles();
 
-    console.log(props.location.state);
-
-
+    console.log(props)
     return (
         <>
             <AppBar

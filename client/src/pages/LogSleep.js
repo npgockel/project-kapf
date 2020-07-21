@@ -44,8 +44,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function LogSleep() {
+function LogSleep(props) {
     const classes = useStyles();
+    console.log(props)
 
     return (
         <>
@@ -106,7 +107,7 @@ function LogSleep() {
                             </Paper>
                         </Grid>
                     </Grid>
-                    <SleepTable />
+                    <SleepTable  child={props.location.state}/>
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
                             <Paper className={classes.paper}>
@@ -114,7 +115,7 @@ function LogSleep() {
                             </Paper>
                         </Grid>
                     </Grid>
-                    <SleepInput />
+                    <SleepInput child={props.location.state}/>
                 </div>
             </main>
             <Box mt={8}>
@@ -124,6 +125,6 @@ function LogSleep() {
         </>
     );
 }
-
+// sleep={props.location.state}
 
 export default LogSleep;

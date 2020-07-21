@@ -115,7 +115,7 @@ const useStyles2 = makeStyles({
     },
 });
 
-function SleepTable() {
+function SleepTable(props) {
     const classes = useStyles2();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -130,13 +130,16 @@ function SleepTable() {
     function loadSleep() {
         API.Sleep.getAll()
             .then(res => {
-                setSleep(res.data)
+                let cs = res.data;
+                let css = cs.filter(item => item.ChildId === props.child.id)
+                setSleep(css)
             })
             .catch(err => console.log(err))
     }
 
     // ***THIS IS WHERE THE DATA FROM API IS PULLED AND SORTED (Gets mapped later inside TableBody)***
-    const rows = sleep.sort((a, b) => (a.date < b.date ? -1 : 1));
+    const rows = sleep
+    // .sort((a, b) => (a.date < b.date ? -1 : 1));
 
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function SleepInput() {
+function SleepInput(props) {
     const [startSleep, setStartSleep] = useState();
     const [endSleep, setEndSleep] = useState();
     const [totalSleep, setTotalSleep] = useState("test total");
@@ -43,7 +43,8 @@ function SleepInput() {
             sleepStart: startSleep,
             sleepEnd: endSleep,
             sleepTotal: totalSleep,
-            sleepDate: selectedDate
+            sleepDate: selectedDate,
+            ChildId: props.child.id
         }
         API.Sleep.create(sleepData);
         console.log("thanks for click", sleepData);

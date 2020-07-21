@@ -175,7 +175,7 @@ function FoodTable(props) {
                             <TableBody>
                                 {(rowsPerPage > 0
                                     ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                    : rows.filter(childs => childs.ChildId === childs.ChildId)
+                                    : rows
                                 ).map((row) => (
                                     <StyledTableRow key={row.name}>
                                         <TableCell component="th" scope="row">

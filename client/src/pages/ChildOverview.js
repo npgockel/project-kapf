@@ -72,6 +72,7 @@ function ChildOverview(props) {
             })
             .catch(err => console.log(err))
     }
+
     console.log(props.location.state)
 
     return (
@@ -158,12 +159,12 @@ function ChildOverview(props) {
                     </Button>
                         </Grid>
                         <Grid item xs={12}>
-                            <Button component={Link} to="/logsleep" className={classes.paper} variant="contained" size="large" color="primary">
+                            <Button component={Link} to={{ pathname: "/logsleep", state: props.location.state }} className={classes.paper} variant="contained" size="large" color="primary">
                                 Log Sleep
                     </Button>
                         </Grid>
                         <Grid item xs={12}>
-                            <Button component={Link} to="/loginfo" className={classes.paper} variant="contained" size="large" color="primary">
+                            <Button component={Link} to={{ pathname: "/loginfo", state: props.location.state }} className={classes.paper} variant="contained" size="large" color="primary">
                                 Log Info
                     </Button>
                         </Grid>
