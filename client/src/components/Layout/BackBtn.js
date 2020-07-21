@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function BackBtn() {
+function BackBtn(props) {
   const classes = useStyles();
 
   return (
@@ -25,3 +25,6 @@ function BackBtn() {
   );
 }
 export default BackBtn;
+
+
+// to={{ pathname: "/child-overview", state: props.location.state }}>
