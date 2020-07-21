@@ -95,6 +95,23 @@ export default {
             return _update("adults", id, data);
         }
     },
+    ParentChild: {
+        getAll: function () {
+            return _getAll("parentchild");
+        },
+        getById: function (id) {
+            return _getOne("parentchild", id);
+        },
+        delete: function (id) {
+            return _delete("parentchild", id);
+        },
+        create: function(data){
+            return _create("parentchild", data);
+        },
+        update: function(id, data){
+            return _update("parentchild", id, data);
+        }
+    },
     Food: {
         getAll: function () {
             return _getAll("food");

@@ -66,13 +66,24 @@ function Home(props) {
 
 
   useEffect(() => {
-    loadChildren()
+    loadChildren();
   }, [])
 
+
   function loadChildren() {
-    API.Child.getAll()
+    const childsArray = [];
+
+    API.ParentChild.getById(props.user.id)
       .then(res => {
-        setChildren(res.data)
+        console.log(props.user.id);
+        console.log(res.data)
+
+        res.data.forEach(id => {
+          API.Child.getById(id.ChildId)
+          .then(result => {
+            setChildren(childs => [...childs, result.data])
+          })
+          .catch(err => err.status(422).json(err))})
       })
       .catch(err => console.log(err))
   }
@@ -81,6 +92,8 @@ function Home(props) {
     setChosenChild(childs[event.target.getAttribute("data-index")]);
   }
 
+  
+  console.log(childs);
   return (
     <Fragment>
       <CssBaseline />
@@ -271,6 +284,7 @@ function Home(props) {
 
     </Fragment>
   );
+
 }
 
 export default Home;

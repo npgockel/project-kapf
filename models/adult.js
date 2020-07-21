@@ -98,7 +98,7 @@ module.exports = function(sequelize, DataTypes) {
     // Associating Adult with Posts
     // When an Adult is deleted, also delete any associated Posts
     Adult.belongsToMany(models.Child, {
-      through: "ParentChild",
+      through: models.ParentChild,
       onDelete: "cascade"
     });
 
