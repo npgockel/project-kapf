@@ -3,6 +3,7 @@ import { Box, Container, Typography, AppBar, Button, Grid, Card, CardContent, Ca
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 import { CopyrightFooter } from '../components';
+import Header from "../components/Layout/Header";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -45,34 +46,7 @@ export default function Album() {
     <Container
       maxWidth='false'
     >
-      <AppBar
-        position="static"
-        spacing="0"
-        color="transparent"
-        fullwidth
-        className={classes.heroContent}
-      >
-        <Grid container
-          fullwidth
-          justify="center"
-        >
-          <Grid item
-            xs={12} sm={11} md={10} lg={9} xl={8}
-          >
-            <Card
-              className={classes.radius}
-            >
-              <CardMedia
-                component="img"
-                alt="Swaddle Swan Logo"
-                image="Banner.png"
-                title="Swaddle Swan Logo"
-              />
-            </Card>
-          </Grid>
-        </Grid>
-      </AppBar>
-
+      <Header />
       <Grid container
         spacing={1}
         justify="center"

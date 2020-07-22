@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import { Box, Button, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
@@ -10,9 +9,12 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
+    cardpad: {
+        margin: theme.spacing(1),
+    },
     paper: {
         textAlign: 'center',
-        background: theme.palette.success.main,
+        background: theme.palette.warning.main,
         borderRadius: 10,
     }
 }));
@@ -50,16 +52,26 @@ function SleepInput(props) {
 
     function refreshPage() {
         window.location.reload(false);
-      }
+    }
 
     return (
         <>
             <MuiPickersUtilsProvider utils={MomentUtils}>
-                <Grid container spacing={3} direction="column" alignItems="center">
-                    <Grid item xs={12}>
+                <Grid container
+                    fullwidth
+                    justify="center"
+                    direction="row"
+                    spacing={1}
+                    className={classes.cardpad}
+                >
+                    <Grid item
+                        xs={12} md={6} lg={4} xl={3}
+                    >
                         <Fragment>
                             <KeyboardDatePicker
                                 clearable
+                                label="Date"
+
                                 value={selectedDate}
                                 placeholder="10/10/2018"
                                 onChange={handleDateChange}
@@ -67,10 +79,12 @@ function SleepInput(props) {
                             />
                         </Fragment>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item
+                        xs={12} md={6} lg={4} xl={3}
+                    >
                         <Fragment>
                             <KeyboardTimePicker
-                                label="Masked timepicker"
+                                label="Start Time"
                                 placeholder="08:00 AM"
                                 mask="__:__ _M"
                                 value={startSleep}
@@ -78,10 +92,12 @@ function SleepInput(props) {
                             />
                         </Fragment>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item
+                        xs={12} md={6} lg={4} xl={3}
+                    >
                         <Fragment>
                             <KeyboardTimePicker
-                                label="Masked timepicker"
+                                label="End Time"
                                 placeholder="08:00 AM"
                                 mask="__:__ _M"
                                 value={endSleep}
@@ -90,14 +106,16 @@ function SleepInput(props) {
                         </Fragment>
                     </Grid>
                 </Grid>
-            </MuiPickersUtilsProvider>
-            <Grid container spacing={3} direction="column" alignItems="center">
-                <Grid item xs={12}>
-                    <Button onClick={postSleep} className={classes.paper} variant="contained" size="medium" >
-                        Log New Nap
+            </MuiPickersUtilsProvider >
+            <Box m={6}>
+                <Grid container spacing={3} direction="column" alignItems="center">
+                    <Grid item xs={12}>
+                        <Button onClick={postSleep} className={classes.paper} variant="contained" size="medium" >
+                            Log New Nap
                     </Button>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Box>
         </>
     );
 }

@@ -16,7 +16,19 @@ const useStyles = makeStyles((theme) => ({
     },
     radius: {
         borderRadius: 10,
+
     },
+    headBody: {
+        padding: theme.spacing(2, 0, 2),
+        borderRadius: 10,
+    },
+    buttonOption4: {
+        background: theme.palette.secondary.light,
+        margin: theme.spacing(0),
+        padding: theme.spacing(0),
+        borderRadius: 10,
+    },
+
     cardGrid: {
         padding: theme.spacing(8),
     },
@@ -49,14 +61,13 @@ function AddBabysitter(props) {
             <main>
                 <Grid container
                     justify="center"
-                    fullwidth
                 >
                     <Grid item
                         className={classes.headBody}
-                        xs={11} sm={10} md={9} lg={8} xl={7}
+                        xs={12} sm={10} md={9} lg={8} xl={7}
 
                     >
-                        <div className={classes.root}>
+                        <div>
                             <AppBar
                                 className={classes.radius}
                                 color="transparent"
@@ -79,7 +90,6 @@ function AddBabysitter(props) {
                                     <Grid item>
                                         <Typography variant="h6"
                                             align="center"
-                                            className={classes.title}
                                         >
                                             Search For a <br></br>Babysitter
                                 </Typography>
@@ -100,7 +110,7 @@ function AddBabysitter(props) {
                 </Grid>
 
                 <BabysitterLink child={props.location.state} />
-                
+
                 <Box mt={8}>
                     <CopyrightFooter />
                 </Box>

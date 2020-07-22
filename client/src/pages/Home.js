@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import API from '../utils/API';
 import CopyrightFooter from '../components/Layout/CopyrightFooter'
 import BackBtn from "../components/Layout/BackBtn";
+// import grey from '@material-ui/core/colors/grey';
 
 import Header from "../components/Layout/Header";
 import IconButton from '@material-ui/core/IconButton';
@@ -45,11 +46,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0),
     borderRadius: 10,
   },
-  buttonOption3: {
+  button7: {
     background: theme.palette.secondary.main,
-    padding: theme.spacing(10),
+    padding: theme.spacing(0),
     // margin: theme.spacing(10),
-    color: theme.palette.primary.dark,
+    // color: theme.palette.secondary.light,
+    borderRadius: 10,
   },
   card: {
     height: '100%',
@@ -77,7 +79,6 @@ function Home(props) {
   const { user, logoutUser } = props;
 
 
-
   useEffect(() => {
     loadChildren();
     loadBabysitterChildren();
@@ -88,7 +89,7 @@ function Home(props) {
 
     API.ParentChild.getById(props.user.id)
       .then(res => {
-        
+
         const results = [];
         res.data.forEach(id => {
           API.Child.getById(id.ChildId)
@@ -140,20 +141,17 @@ function Home(props) {
       <Header />
       <main>
         <Grid container
-          className={classes.topicspacing}
           justify="center"
           fullwidth
         >
           <Grid item
             className={classes.headBody}
             xs={12} sm={10} md={9} lg={8} xl={7}
-
           >
             <div >
               <AppBar
                 className={classes.radius}
                 color="transparent"
-
                 position="static">
                 <Grid container
                   direction="row"
@@ -165,7 +163,9 @@ function Home(props) {
                     <IconButton
                       edge="start"
                     >
-                      <BackBtn />
+                      <BackBtn
+                      // style={{ color: grey[50] }}
+                      />
                     </IconButton>
                   </Grid>
                   <Grid item
@@ -192,17 +192,23 @@ function Home(props) {
         </Grid>
 
 
-        <Container className={classes.cardGrid} 
-        // maxWidth="md"
+        <Container className={classes.cardGrid}
+          maxWidth="md"
+          justify="center"
+          align="center"
+
         >
           <Grid container
             justify="center"
             align="center"
-            // spacing={4}
-            >
+            spacing={2}
+            xs={12} md={11}
+          >
             {childs.length > 0 && props.user.id ?
               childs.map((card, index) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
+                <Grid item key={card}
+                  xs={12} sm={6}
+                >
                   <Card className={classes.card}
                   >
                     <CardMedia
@@ -219,7 +225,12 @@ function Home(props) {
                     </CardContent>
                     <CardActions
                     >
-                      <Button component={Link} data-index={index} to={{ pathname: "/child-overview", state: chosenChild }} size="small" color="primary">
+                      <Button
+                        component={Link}
+                        data-index={index}
+                        to={{ pathname: "/child-overview", state: chosenChild }}
+                        size="small"
+                        className={classes.button7}>
                         View
                     </Button>
                     </CardActions>
@@ -318,7 +329,6 @@ function Home(props) {
                   />
                   <CardContent>
                     <Typography
-                      gutterBottom
                       variant="h5"
                       component="h2"
                       align="center"

@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Card, Button, IconButton, Container, CardMedia, Typography, Grid, Paper, Box } from "@material-ui/core";
 import BackBtn from "../components/Layout/BackBtn";
+import Header from "../components/Layout/Header";
 import CopyrightFooter from "../components/Layout/CopyrightFooter"
 import { ChildLikes, ChildDislikes, ChildAllergies, ChildNotes } from "../components";
 import { Link } from "react-router-dom";
@@ -15,8 +16,9 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 10,
     },
     buttonOption4: {
-        background: theme.palette.secondary.light,
-        margin: theme.spacing(6, 0),
+        background: theme.palette.info.main,
+        margin: theme.spacing(0),
+        padding: theme.spacing(0),
         borderRadius: 10,
     },
     headBody: {
@@ -26,10 +28,15 @@ const useStyles = makeStyles((theme) => ({
     headText: {
         color: theme.palette.primary.dark,
     },
-
+    buttonOption3: {
+        background: theme.palette.secondary.light,
+        margin: theme.spacing(0),
+        padding: theme.spacing(0),
+        borderRadius: 10,
+    },
     buttonOption1: {
-        background: theme.palette.warning.main,
-        margin: theme.spacing(6, 0, 0, 0),
+        backgroundColor: theme.palette.info.main,
+        margin: theme.spacing(3, 0),
         borderRadius: 10,
     },
     buttonOption2: {
@@ -64,51 +71,21 @@ function LogInfo(props) {
         <Container
             maxWidth='false'
         >
-            <AppBar
-                position="static"
-                spacing="0"
-                color="transparent"
-                fullwidth
-                className={classes.heroContent}
-            >
-                <Grid container
-                    fullwidth
-                    justify="center"
-                >
-                    <Grid item
-                        xs={12} sm={11} md={10} lg={9} xl={8}
-                    >
-                        <Card
-                            className={classes.radius}
-                        >
-                            <CardMedia
-                                component="img"
-                                alt="Swaddle Swan Logo"
-                                image="Banner.png"
-                                title="Swaddle Swan Logo"
-                            />
-                        </Card>
-                    </Grid>
-                </Grid>
-            </AppBar>
-
-
+            <Header />
             <main>
                 <Grid container
                     justify="center"
                 >
                     <Grid item
                         className={classes.headBody}
-                        xs={11} sm={10} md={9} lg={8} xl={7}
-                    >
-                        <div className={classes.root}>
+                        xs={12} sm={10} md={9} lg={8} xl={7}
+                        >
+                        <div>
                             <AppBar
                                 className={classes.radius}
                                 color="transparent"
-
                                 position="static">
-                                <Grid
-                                    container
+                                <Grid container
                                     direction="row"
                                     justify="space-between"
                                     alignItems="center"
@@ -124,19 +101,18 @@ function LogInfo(props) {
                                         </IconButton>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="h5"
+                                        <Typography variant="h6"
                                             align="center"
-                                            className={classes.title}
                                         >
-                                            Log<br></br>Food
+                                            Log<br></br>Information
                                     </Typography>
                                     </Grid>
                                     <Grid item>
                                         <Button
                                             size="small"
-                                            className={classes.buttonOption4}
+                                            className={classes.buttonOption3}
                                             component={Link} to="/" onClick={logoutUser} color="inherit"
-                                            >
+                                        >
                                             Log<br></br>Out
                                         </Button>
                                     </Grid>
@@ -156,7 +132,7 @@ function LogInfo(props) {
                         <Grid item
                             xs={10} sm={9} md={4}
                         >
-                            <Paper className={classes.buttonOption4}>
+                            <Paper className={classes.buttonOption1}>
                                 <Typography variant="h5" className={classes.text}>Likes</Typography>
                             </Paper>
                             <ChildLikes child={props.location.state} />
@@ -164,7 +140,7 @@ function LogInfo(props) {
                         <Grid item
                             xs={10} sm={9} md={4}
                         >
-                            <Paper className={classes.buttonOption4}>
+                            <Paper className={classes.buttonOption1}>
                                 <Typography variant="h5" className={classes.text}>Disikes</Typography>
                             </Paper>
                             <ChildDislikes child={props.location.state} />
@@ -179,7 +155,7 @@ function LogInfo(props) {
                         <Grid item
                             xs={10} sm={9} md={8}
                         >
-                            <Paper className={classes.buttonOption4}>
+                            <Paper className={classes.buttonOption1}>
                                 <Typography variant="h5" className={classes.text}>Allergies</Typography>
                             </Paper>
                             <ChildAllergies child={props.location.state} />
@@ -187,7 +163,7 @@ function LogInfo(props) {
                         <Grid item
                             xs={10} sm={9} md={8}
                         >
-                            <Paper className={classes.buttonOption4}>
+                            <Paper className={classes.buttonOption1}>
                                 <Typography variant="h5" className={classes.text}>Notes</Typography>
                             </Paper>
                             <ChildNotes child={props.location.state} />

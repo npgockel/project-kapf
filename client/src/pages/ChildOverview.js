@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BackBtn from "../components/Layout/BackBtn";
+import Header from "../components/Layout/Header";
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Container, CardMedia, Typography, Card, CardContent, Grid, Paper, Button, Box } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -26,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
     },
     buttonOption4: {
         background: theme.palette.secondary.light,
-        margin: theme.spacing(6, 0),
+        margin: theme.spacing(0),
+        padding: theme.spacing(0),
         borderRadius: 10,
     },
     button1: {
@@ -49,9 +51,9 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         borderRadius: 10,
     },
-    root: {
-        flexGrow: 1,
-    },
+    // root: {
+    //     flexGrow: 1,
+    // },
     cardImg: {
         height: 250,
         width: 250
@@ -83,34 +85,7 @@ function ChildOverview(props) {
         <Container
             maxWidth='false'
         >
-            <AppBar
-                position="static"
-                spacing="0"
-                color="transparent"
-                fullwidth
-                className={classes.heroContent}
-            >
-                <Grid container
-                    fullwidth
-                    justify="center"
-                >
-                    <Grid item
-                        xs={12} sm={11} md={10} lg={9} xl={8}
-                    >
-                        <Card
-                            className={classes.radius}
-                        >
-                            <CardMedia
-                                component="img"
-                                alt="Swaddle Swan Logo"
-                                image="Banner.png"
-                                title="Swaddle Swan Logo"
-                            />
-                        </Card>
-                    </Grid>
-                </Grid>
-            </AppBar>
-
+            <Header />
             <main>
                 <Grid container
                     justify="center"
@@ -118,14 +93,12 @@ function ChildOverview(props) {
                 >
                     <Grid item
                         className={classes.headBody}
-                        xs={11} sm={10} md={9} lg={8} xl={7}
-
+                        xs={12} sm={10} md={9} lg={8} xl={7}
                     >
-                        <div className={classes.root}>
+                        <div >
                             <AppBar
                                 className={classes.radius}
                                 color="transparent"
-
                                 position="static">
                                 <Grid container
                                     direction="row"
@@ -135,18 +108,15 @@ function ChildOverview(props) {
                                     <Grid item>
                                         <IconButton
                                             edge="start"
-                                            color="inherit"
-                                            aria-label="menu"
                                         >
                                             <BackBtn />
                                         </IconButton>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="h5"
+                                        <Typography variant="h6"
                                             align="center"
-                                            className={classes.title}
                                         >
-                                           {childs.childName}'s<br></br>Overview
+                                            {childs.childName}'s<br></br>Overview
                                     </Typography>
                                     </Grid>
                                     <Grid item>
@@ -154,7 +124,7 @@ function ChildOverview(props) {
                                             size="small"
                                             className={classes.buttonOption4}
                                             component={Link} to="/" onClick={logoutUser} color="inherit"
-                                            >
+                                        >
                                             Log<br></br>Out
                                         </Button>
                                     </Grid>

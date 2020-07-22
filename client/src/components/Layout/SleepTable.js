@@ -108,11 +108,15 @@ TablePaginationActions.propTypes = {
 
 
 // ***Style used below in SleepTable return***
-const useStyles2 = makeStyles({
+const useStyles2 = makeStyles((theme) => ({
     table: {
-        minWidth: 500,
+        minWidth: 200,
     },
-});
+    cardpad: {
+        margin: theme.spacing(1, 0, 3, 0),
+    },
+
+}));
 
 function SleepTable(props) {
     const classes = useStyles2();
@@ -152,8 +156,15 @@ function SleepTable(props) {
     };
 
     return (
-        <Grid container spacing={3} direction="column" alignItems="center">
-            <Grid item xs={12}>
+        <Grid container
+            spacing={1}
+            justify="center"
+            className={classes.cardpad}
+        >
+            <Grid item
+                xs={12} sm={11} md={10} lg={9} xl={8}
+
+            >
                 <TableContainer component={Paper}>
                     <Table className={classes.table} aria-label="custom pagination table">
                         <TableHead>

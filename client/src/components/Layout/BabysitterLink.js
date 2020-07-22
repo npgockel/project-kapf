@@ -26,14 +26,13 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     paper: {
-        marginTop: theme.spacing(3),
+        margin: theme.spacing(1, 0, 1),
         align: 'center',
-        marginBottom: theme.spacing(3),
-        padding: theme.spacing(2, 0, 2, 0),
+        padding: theme.spacing(1, 0, 1, 0),
         [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
             marginTop: theme.spacing(6),
             marginBottom: theme.spacing(6),
-            padding: theme.spacing(3, 0, 3, 0),
+            padding: theme.spacing(1, 0, 1, 0),
         },
     },
     buttons: {
@@ -48,6 +47,12 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexWrap: 'wrap',
     },
+    button4: {
+        backgroundColor: theme.palette.error.main,
+        margin: theme.spacing(1),
+        borderRadius: 10,
+    },
+
     textField: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
@@ -127,7 +132,7 @@ function BabysitterLink(props) {
                         spacing={1}
                         direction="column"
                         fullwidth
-                        align="center"
+                        alignItems="center"
                     >
                         <Grid item
                             xs={12}
@@ -143,17 +148,24 @@ function BabysitterLink(props) {
                             />
                         </Grid>
                         <Grid item xs={6} sm={6}>
-                            <Button onClick={() => findBabysitters(babysitterEmail)} variant='contained' size='medium' >
+                            <Button
+                                onClick={() => findBabysitters(babysitterEmail)}
+                                className={classes.button4}
+                                variant='contained'
+                                size='medium'
+                            >
                                 Search
-                </Button>
+                            </Button>
                         </Grid>
                     </Grid>
 
 
                 </Paper>
 
-                <Paper className={classes.paper}>
-
+                <Paper className={classes.paper}
+                    align="center"
+                    justify="center"
+                >
                     <Typography variant="h6" gutterBottom>
                         Babysitters Found
                     </Typography>
@@ -166,12 +178,14 @@ function BabysitterLink(props) {
                                 {babysitter}
                             </Typography>
                         </CardContent>
-                        <CardActions>
-                            <Button size="small" onClick={postBabysitterLink}>Add Babysitter</Button>
-                        </CardActions>
                     </Card>
-
-
+                    <Button
+                        size="medium"
+                        onClick={postBabysitterLink}
+                        className={classes.button4}
+                    >
+                        Add Babysitter
+                    </Button>
                 </Paper>
 
             </main>

@@ -81,10 +81,9 @@ function App() {
                   exact path={["/addchild"]} render={props => < AddChild {...props} user={user} logoutUser={logoutUser} />}>
                 </Route>
                 <Route exact path={["/home"]}>
-                  {user && user.id && <Home user={user} logoutUser={logoutUser}/>}
+                  {user && user.id && <Home user={user} logoutUser={logoutUser} />}
                 </Route>
                 <Route
-                  user={user} logoutUser={logoutUser}
                   exact path={["/addbabysitter"]} render={props => < AddBabysitter {...props} user={user} logoutUser={logoutUser}/>}>
                 </Route>
                 <Route exact path={["/login", "/signup"]}>
