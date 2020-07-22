@@ -1,8 +1,8 @@
-<h1 align="center">Welcome to Swaddle 👋</h1>
+<h1 align="center">Swaddle your nugget with information</h1>
 
 <img align="center" alt="Swaddle logo" src="documentation/readme-images/SplashtestGit.png">
 
-> Swaddle is an app that sets out to solve the problem of letting your baby sitter know more important details about your child that are usually helpful to know.
+> Swaddle sets out to solve the problem of letting a caretaker know details about your child that are often forgotten or overlooked, but are nonetheless important to the care of your little nugget.
 
 ### 🏠 [Github Homepage](https://github.com/npgockel/project-kapf/)
 
