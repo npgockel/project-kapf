@@ -109,12 +109,12 @@ function Home(props) {
 
     API.BabysitterRelation.getById(props.user.id)
       .then(res => {
-        
+
         const results = [];
         res.data.forEach(id => {
           API.Child.getById(id.ChildId)
             .then(result => {
-              
+
               results.push(result.data);
               if (results.length == res.data.length) {
                 setBabysitterChildren([...results])
@@ -133,7 +133,7 @@ function Home(props) {
   function selectBabysitterChosenChild(event) {
     setBabysitterChosenChild(babysitterChilds[event.target.getAttribute("data-index")]);
   }
-  
+
   return (
     <Container
       maxWidth='false'
@@ -216,24 +216,16 @@ function Home(props) {
                       image={card.childImg}
                       title="Your Child's Image"
                       data-index={index}
-                      onClick={selectChosenChild}
+                      onMouseOver={selectChosenChild}
+                      component={Link}
+                      data-index={index}
+                      to={{ pathname: "/child-overview", state: chosenChild }}
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
                         {card.childName}
                       </Typography>
                     </CardContent>
-                    <CardActions
-                    >
-                      <Button
-                        component={Link}
-                        data-index={index}
-                        to={{ pathname: "/child-overview", state: chosenChild }}
-                        size="small"
-                        className={classes.button7}>
-                        View
-                    </Button>
-                    </CardActions>
                   </Card>
                 </Grid>
               )) :
@@ -342,13 +334,13 @@ function Home(props) {
 
           </Grid>
 
-//////////////////////////////////Under Construction/////////////////////////////////////////
+          //////////////////////////////////Under Construction/////////////////////////////////////////
 
           <Grid container
             justify="center"
             align="center"
-            // spacing={4}
-            >
+          // spacing={4}
+          >
             {
               babysitterChilds.map((card, index) => (
                 <Grid item key={card} xs={12} sm={6} md={4}>
@@ -376,7 +368,7 @@ function Home(props) {
                 </Grid>
               ))
             }
-            
+
           </Grid>
         </Container>
       </main>
