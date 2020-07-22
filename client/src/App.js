@@ -80,9 +80,11 @@ function App() {
                 <Route exact path={["/addchild"]} render={props => < AddChild {...props} />}>
                 </Route>
                 <Route exact path={["/home"]}>
+                  {user && user.id &&
                   <Home
-                  user={user} />
+                  user={user} />}
                 </Route>
+                
                 <Route exact path={["/addbabysitter"]} render={props => < AddBabysitter {...props} />}>
                 </Route>
                 <Route exact path={["/login", "/signup"]}>
@@ -100,6 +102,7 @@ function App() {
                 </Route>
                 <Route exact path={["/loginfo"]} render={props => < LogInfo {...props} />}>
                 </Route>
+                
               </Switch>
             </Grid>
           </Grid>
