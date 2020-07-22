@@ -82,17 +82,18 @@ function Home(props) {
 
 
   function loadChildren() {
-    const childsArray = [];
 
     API.ParentChild.getById(props.user.id)
       .then(res => {
-        console.log(props.user.id);
-        console.log(res.data)
-
+        
+        const results = [];
         res.data.forEach(id => {
           API.Child.getById(id.ChildId)
             .then(result => {
-              setChildren(childs => [...childs, result.data])
+              results.push(result.data);
+              if (results.length == res.data.length) {
+                setChildren([...results])
+              }
             })
             .catch(err => err.status(422).json(err))
         })
@@ -103,9 +104,7 @@ function Home(props) {
   function selectChosenChild(event) {
     setChosenChild(childs[event.target.getAttribute("data-index")]);
   }
-
-
-  console.log(childs);
+  
   return (
     <Container
       maxWidth='false'

@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
 function LogInfo(props) {
     const classes = useStyles();
     const { user, logoutUser } = props;
@@ -153,7 +154,7 @@ function LogInfo(props) {
                         spacing={1}
                     >
                         <Grid item
-                        xs={10} sm={9} md={4}
+                            xs={10} sm={9} md={4}
                         >
                             <Paper className={classes.buttonOption4}>
                                 <Typography variant="h5" className={classes.text}>Likes</Typography>
@@ -161,8 +162,8 @@ function LogInfo(props) {
                             <ChildLikes child={props.location.state} />
                         </Grid>
                         <Grid item
-                        xs={10} sm={9} md={4}
-                         >
+                            xs={10} sm={9} md={4}
+                        >
                             <Paper className={classes.buttonOption4}>
                                 <Typography variant="h5" className={classes.text}>Disikes</Typography>
                             </Paper>
@@ -176,7 +177,7 @@ function LogInfo(props) {
                     >
 
                         <Grid item
-                        xs={10} sm={9} md={8}
+                            xs={10} sm={9} md={8}
                         >
                             <Paper className={classes.buttonOption4}>
                                 <Typography variant="h5" className={classes.text}>Allergies</Typography>
@@ -184,7 +185,7 @@ function LogInfo(props) {
                             <ChildAllergies child={props.location.state} />
                         </Grid>
                         <Grid item
-                        xs={10} sm={9} md={8}
+                            xs={10} sm={9} md={8}
                         >
                             <Paper className={classes.buttonOption4}>
                                 <Typography variant="h5" className={classes.text}>Notes</Typography>

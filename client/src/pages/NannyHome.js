@@ -1,22 +1,21 @@
-import React, { Fragment } from 'react';
-import { AppBar, Button, Box, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Typography } from '@material-ui/core/Button';
+import React, { useEffect, useState, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import { CardActionArea, Container, Typography, Grid, CssBaseline, Box, Card, CardActions, CardContent, CardMedia, Button, AppBar } from '@material-ui/core';
+import { Link } from "react-router-dom";
+import API from '../utils/API';
 import CopyrightFooter from '../components/Layout/CopyrightFooter'
 import { Link } from "react-router-dom";
 
+
 const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
   heroContent: {
     padding: theme.spacing(5, 0, 0, 0),
   },
   radius: {
     borderRadius: 10,
+  },
+  topicspacing: {
+    padding: theme.spacing(5),
   },
   buttonOption1: {
     background: theme.palette.warning.main,
@@ -28,13 +27,31 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(6, 0),
     borderRadius: 10,
   },
+  headBody: {
+    background: theme.palette.error.main,
+    padding: theme.spacing(2, 0, 2),
+    borderRadius: 10,
+  },
+  headText: {
+    color: theme.palette.primary.dark,
+  },
   cardGrid: {
     padding: theme.spacing(8),
+
+  },
+  buttonOption3: {
+    background: theme.palette.secondary.main,
+    padding: theme.spacing(10),
+    // margin: theme.spacing(10),
+    color: theme.palette.primary.dark,
   },
   card: {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+  },
+  defaultCards: {
+    opacity: '0.5',
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
@@ -44,12 +61,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Home(props) {
+function NannyHome(props) {
   const classes = useStyles();
+  const [childs, setChildren] = useState([])
+  const [chosenChild, setChosenChild] = useState([]);
   const { user, logoutUser } = props;
 
+
+  useEffect(() => {
+    loadChildren();
+  }, [])
+
+
+  function loadChildren() {
+    const childsArray = [];
+
+    API.ParentChild.getById(props.user.id)
+      .then(res => {
+        console.log(props.user.id);
+        console.log(res.data)
+
+        res.data.forEach(id => {
+          API.Child.getById(id.ChildId)
+          .then(result => {
+            setChildren(childs => [...childs, result.data])
+          })
+          .catch(err => err.status(422).json(err))})
+      })
+      .catch(err => console.log(err))
+  }
+
+  function selectChosenChild(event) {
+    setChosenChild(childs[event.target.getAttribute("data-index")]);
+  }
+
+  
+  console.log(childs);
   return (
     <Container
       maxWidth='false'
@@ -84,7 +132,8 @@ export default function Home(props) {
 
       <main>
         <Grid container
-          justify="center"
+          className={classes.topicspacing}
+          justify="center
           fullwidth
         >
           <Grid item
@@ -135,38 +184,151 @@ export default function Home(props) {
           </Grid>
         </Grid>
 
-
-        <Grid container spacing={4}>
-          {cards.map((card) => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image="https://source.unsplash.com/random"
-                  title="Image title"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Bartholamew
-                    </Typography>
-                  <Typography>
-                    ---Your child's one liner---
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    View
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container
+            justify="center"
+            align="center"
+            spacing={4}>
+            {childs.length > 0 && props.user.id ?
+              childs.map((card, index) => (
+                <Grid item key={card} xs={12} sm={6} md={4}>
+                  <Card className={classes.card}
+                  >
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={card.childImg}
+                      title="Your Child's Image"
+                      data-index={index}
+                      onClick={selectChosenChild}
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {card.childName}
+                      </Typography>
+                    </CardContent>
+                    <CardActions
+                    >
+                      <Button component={Link} data-index={index} to={{ pathname: "/child-overview", state: chosenChild }} size="small" color="primary">
+                        View
                     </Button>
-                </CardActions>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              )) :
+              // <h3>hello</h3>
+              <div>
+                <Container className={classes.cardGrid}>
+                  <Grid container
+                    spacing={10}
+                    direction="row"
+                    justify="center"
+                  >
+                    <Grid item
+                      xs={11} sm={6} md={4}
+                    >
+                      <Card
+                        className={classes.defaultCards}
+                      >
+                        <CardActionArea
+                          component={Link}
+                          to="/addchild"
+                        >
+                          <CardMedia
+                            component="img"
+                            alt="Aww! Little Swaddled Baby 1"
+                            image="Nugget.png"
+                            title="Aww! Little Swaddled Baby 1"
+                          />
+                          <CardContent>
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              component="h2"
+                              align="center"
+                            >
+                              Tater
+                        </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </Grid>
+                    <Grid item
+                      xs={11} sm={6} md={4}
+                    >
+                      <Card
+                        className={classes.defaultCards}
+                      >
+                        <CardActionArea
+                          component={Link}
+                          to="/addchild"
+                        >
+                          <CardMedia
+                            component="img"
+                            alt="Aww! Little Swaddled Baby 2"
+                            image="Nugget.png"
+                            title="Aww! Little Swaddled Baby 2"
+                          />
+                          <CardContent>
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              component="h2"
+                              align="center"
+                            >
+                              Tot
+                          </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </Grid>
+                  </Grid>
+                </Container>
+              </div>
+
+            }
+            <Grid item
+              justify="center"
+              align="center"
+              xs={11} sm={6} md={4}
+            >
+              <Card
+                className={classes.defaultCards}
+              >
+                <CardActionArea
+                  component={Link}
+                  to="/addchild"
+                >
+                  <CardMedia
+                    component="img"
+                    alt="add your child"
+                    image="Plus.png"
+                    title="add your child"
+                    opacity="0.3"
+                  />
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                      align="center"
+                    >
+                      Add Your Nugget!
+                        </Typography>
+                  </CardContent>
+                </CardActionArea>
               </Card>
             </Grid>
-          ))}
-        </Grid>
+
+          </Grid>
+        </Container>
       </main>
       <Box mt={8}>
         <CopyrightFooter />
       </Box>
 
-    </React.Fragment >
+    </Container>
   );
+
 }
+
+export default NannyHome;

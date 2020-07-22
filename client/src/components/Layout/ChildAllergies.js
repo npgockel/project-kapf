@@ -9,6 +9,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HealingIcon from '@material-ui/icons/Healing';
 import { yellow } from '@material-ui/core/colors';
 import API from '../../utils/API';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
   pos: {
     marginBottom: 12,
   },
+  button1: {
+    backgroundColor: theme.palette.success.main,
+    margin: theme.spacing(1),
+  },
 }));
 
 
@@ -33,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
 
 function ChildAllergies(props) {
   const classes = useStyles();
-  const [allergies, setAllergies] = useState([])
+  const [allergies, setAllergies] = useState([]);
+  const [postAllergies, setPostAllergies] = useState([]);
 
   useEffect(() => {
     loadAllergies();
@@ -43,36 +51,67 @@ function ChildAllergies(props) {
   function loadAllergies() {
     API.Allergy.getAll()
       .then(res => {
-        setAllergies(res.data)
+        let ca = res.data;
+        let cas = ca.filter(item => item.ChildId === props.child.id)
+        setAllergies(cas)
       })
       .catch(err => console.log(err))
   }
 
 
-  console.log(allergies);
+  const postAllergy = () => {
+    let allergyData = {
+      allergy: postAllergies,
+      ChildId: props.child.id
+    }
+    API.Allergy.create(allergyData);
+    refreshPage();
+  };
 
 
+  const handleAllergiesChange = (event) => {
+    setPostAllergies(event.target.value);
+  };
 
-
-
+  function refreshPage() {
+    window.location.reload(false);
+  };
 
 
 
   return (
     <div>
       <Card className={classes.root}>
+        <Grid item xs={12} md={6}>
+          <form>
+            <TextField
+              id="outlined-multiline-static"
+              label="Allergies"
+              variant="outlined"
+              value={postAllergies}
+              onChange={handleAllergiesChange}
+            />
+            <Button
+              variant="contained"
+              className={classes.button1}
+              onClick={postAllergy}
+            >
+              Add
+          </Button>
+          </form>
+        </Grid>
         <CardContent>
           <List>
-          {allergies.map((list) => (
-            <ListItem >
-              <ListItemIcon>
-              <HealingIcon style={{ color: yellow[900] }} />
-              </ListItemIcon>
-              <ListItemText>
-                {list.allergy}
-              </ListItemText>
-            </ListItem>
-              ))}
+            {allergies.map((list) => (
+              <ListItem >
+                <ListItemIcon>
+                  <HealingIcon style={{ color: yellow[900] }} />
+                </ListItemIcon>
+                <ListItemText>
+                  {list.allergy}
+                </ListItemText>
+              </ListItem>
+            ))}
           </List>
         </CardContent>
       </Card>

@@ -14,6 +14,8 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import CopyrightFooter from './CopyrightFooter';
 import { Link } from "react-router-dom";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 
 
@@ -65,6 +67,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.warning.light,
     margin: theme.spacing(1),
   },
+  childimagecard: {
+    alignItems: "center"
+  },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -84,10 +89,6 @@ function ChildCreate() {
   const [DOB, setDOB] = useState('');
   const [childImage, setChildImg] = useState("https://i.pinimg.com/236x/3d/31/09/3d310984e773f11d1769d08ab3c773de.jpg")
 
-  const [allergies, setAllergies] = useState('');
-  const [likes, setLikes] = useState('');
-  const [dislikes, setDislikes] = useState('');
-  const [notes, setNotes] = useState('');
 
   const handleGenderChange = (event) => {
     setGender(event.target.value);
@@ -97,18 +98,6 @@ function ChildCreate() {
   };
   const handleDOBChange = (event) => {
     setDOB(event.target.value);
-  };
-  const handleAllergiesChange = (event) => {
-    setAllergies(event.target.value);
-  };
-  const handleNotesChange = (event) => {
-    setNotes(event.target.value);
-  };
-  const handleLikesChange = (event) => {
-    setLikes(event.target.value);
-  };
-  const handleDislikesChange = (event) => {
-    setDislikes(event.target.value);
   };
 
   const postChild = () => {
@@ -121,37 +110,6 @@ function ChildCreate() {
     API.Child.create(childData);
   };
 
-  const postLike = () => {
-    let likeData = {
-      like: likes
-    }
-    API.Likes.create(likeData);
-    console.log(likeData);
-  };
-
-  const postDislike = () => {
-    let dislikeData = {
-      dislike: dislikes
-    }
-    API.Dislikes.create(dislikeData);
-    console.log(dislikeData);
-  };
-
-  const postAllergy = () => {
-    let allergyData = {
-      allergy: allergies
-    }
-    API.Allergy.create(allergyData);
-    console.log(allergyData);
-  };
-
-  const postNote = () => {
-    let noteData = {
-      note: notes
-    }
-    API.Note.create(noteData);
-    console.log(noteData);
-  };
 
   function nugImg() {
     var myWidget = window.cloudinary.createUploadWidget({
@@ -214,94 +172,30 @@ function ChildCreate() {
               </form>
             </Grid>
           </Grid>
-
-
         </Paper>
-
         <Paper className={classes.paper}>
-
-          <Typography variant="h6" gutterBottom>
-            Health Info and Comments
-      </Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-              <form>
-                <TextField
-                  id="outlined-multiline-static"
-                  label="Allergies"
-                  variant="outlined"
-                  value={allergies}
-                  onChange={handleAllergiesChange}
-                />
-                <Button
-                  variant="contained"
-                  className={classes.button1}
-                  onClick={postAllergy}
-                >
-                  Add
-                    </Button>
-              </form>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                id="outlined-multiline-static"
-                label="Notes"
-                variant="outlined"
-                value={notes}
-                onChange={handleNotesChange}
-              />
-              <Button
-                variant="contained"
-                className={classes.button2}
-                onClick={postNote}
-              >
-                Add
-                </Button>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                id="outlined-multiline-static"
-                label="Likes"
-                variant="outlined"
-                value={likes}
-                onChange={handleLikesChange}
-              />
-              <Button
-                variant="contained"
-                className={classes.button3}
-                onClick={postLike}
-              >
-                Add
-                </Button>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                id="outlined-multiline-static"
-                label="Dislikes"
-                variant="outlined"
-                value={dislikes}
-                onChange={handleDislikesChange}
-              />
-              <Button
-                variant="contained"
-                className={classes.button4}
-                onClick={postDislike}
-              >
-                Add
-                </Button>
-            </Grid>
-          </Grid>
-        </Paper>
-
-        <Paper className={classes.paper}>
-          <Typography variant="h6" gutterBottom>
-            Add a lil photo of your Nugget-roo
+          <Grid container direction="row"
+            justify="center"
+            alignItems="center">
+            <Typography variant="h6" gutterBottom>
+              Add a lil photo of your Nugget-roo
           </Typography>
-          <Button
-            className={classes.button6}
-            onClick={nugImg}>
-            Upload Image
+            <Card>
+              <CardContent>
+                <img src={childImage} alt="beauty"></img>
+              </CardContent>
+
+            </Card>
+          </Grid>
+          <Grid container direction="row"
+            justify="center"
+            alignItems="center">
+            <Button
+              className={classes.button6}
+              onClick={nugImg}>
+              Upload Image
           </Button>
+          </Grid>
         </Paper>
 
         <Paper className={classes.paper}>
