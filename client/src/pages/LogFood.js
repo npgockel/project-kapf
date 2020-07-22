@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Card, Container, CardMedia, Box, Grid, Paper, Typography } from '@material-ui/core';
 import FoodTable from "../components/Layout/FoodTable";
 import FoodInput from "../components/Layout/FoodInput";
-
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 
