@@ -17,7 +17,7 @@ function Navigation(props) {
               <Button component={Link} to="/addchild" color="inherit">Add Your Child</Button>
               <Button component={Link} to="/addbabysitter" color="inherit">Nanny Home</Button>
               <Button color="inherit">Logged in as: {user.email}</Button>
-              <Button component={Link} to="/home" onClick={logoutUser} color="inherit">Logout</Button>
+              <Button component={Link} to="/" onClick={logoutUser} color="inherit">Logout</Button>
               <Button component={Link} to="/child-overview" color="inherit">ChildOverview</Button>
               <Button component={Link} to="/logfood" color="inherit">LogFood</Button>
               <Button component={Link} to="/logsleep" color="inherit">LogSleep</Button>

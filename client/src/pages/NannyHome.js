@@ -3,6 +3,7 @@ import { AppBar, Button, Box, Card, CardActions, CardContent, CardMedia, CssBase
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import CopyrightFooter from '../components/Layout/CopyrightFooter'
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   heroContent: {
-    padding: theme.spacing(5, 0, 1, 0),
+    padding: theme.spacing(5, 0, 0, 0),
   },
   radius: {
     borderRadius: 10,
@@ -45,17 +46,19 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Home() {
+export default function Home(props) {
   const classes = useStyles();
+  const { user, logoutUser } = props;
 
   return (
-    <React.Fragment>
-      <CssBaseline />
+    <Container
+      maxWidth='false'
+    >
       <AppBar
         position="static"
         spacing="0"
-        fullwidth
         color="transparent"
+        fullwidth
         className={classes.heroContent}
       >
         <Grid container
@@ -65,7 +68,9 @@ export default function Home() {
           <Grid item
             xs={12} sm={11} md={10} lg={9} xl={8}
           >
-            <Card>
+            <Card
+              className={classes.radius}
+            >
               <CardMedia
                 component="img"
                 alt="Swaddle Swan Logo"
@@ -80,23 +85,56 @@ export default function Home() {
       <main>
         <Grid container
           justify="center"
-        // component={Link}
-        // to="/addchild"
+          fullwidth
         >
           <Grid item
             className={classes.headBody}
-            xs={10} sm={9} md={8} lg={7} xl={6}
+            xs={11} sm={10} md={9} lg={8} xl={7}
+
           >
-            <Typography
-              className={classes.headText}
-              component="h1"
-              variant="h4"
-              align="center"
-            >
-              Let's Swaddle!
-            </Typography>
+            <div className={classes.root}>
+              <AppBar
+                className={classes.radius}
+                color="transparent"
+
+                position="static">
+                <Grid container
+                  direction="row"
+                  justify="space-between"
+                  alignItems="center"
+                >
+                  <Grid item>
+                    <IconButton
+                      edge="start"
+                      color="inherit"
+                      aria-label="menu"
+                    >
+                      <BackBtn />
+                    </IconButton>
+                  </Grid>
+                  <Grid item>
+                    <Typography variant="h6"
+                      align="center"
+                      className={classes.title}
+                    >
+                      Let's Make Your<br></br>Child's Profile
+                            </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      size="small"
+                      className={classes.buttonOption4}
+                      component={Link} to="/" onClick={logoutUser} color="inherit"
+                      >
+                      Log<br></br>Out
+                                </Button>
+                  </Grid>
+                </Grid>
+              </AppBar>
+            </div>
           </Grid>
         </Grid>
+
 
         <Grid container spacing={4}>
           {cards.map((card) => (

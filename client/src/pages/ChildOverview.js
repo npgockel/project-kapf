@@ -62,6 +62,8 @@ const useStyles = makeStyles((theme) => ({
 function ChildOverview(props) {
     const classes = useStyles();
     const [childs, setChildren] = useState([])
+    const { user, logoutUser } = props;
+
 
     useEffect(() => {
         loadChildren()
@@ -151,7 +153,8 @@ function ChildOverview(props) {
                                         <Button
                                             size="small"
                                             className={classes.buttonOption4}
-                                        >
+                                            component={Link} to="/" onClick={logoutUser} color="inherit"
+                                            >
                                             Log<br></br>Out
                                         </Button>
                                     </Grid>

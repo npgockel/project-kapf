@@ -6,6 +6,7 @@ import { AppBar, Container, Button, Card, CardMedia, Typography, Box, Paper, Gri
 import SleepTable from "../components/Layout/SleepTable"
 import SleepInput from "../components/Layout/SleepInput"
 import IconButton from '@material-ui/core/IconButton';
+import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LogSleep(props) {
     const classes = useStyles();
+    const { user, logoutUser } = props;
 
     return (
         <Container
@@ -129,7 +131,8 @@ function LogSleep(props) {
                                         <Button
                                             size="small"
                                             className={classes.buttonOption4}
-                                        >
+                                            component={Link} to="/" onClick={logoutUser} color="inherit"
+                                            >
                                             Log<br></br>Out
                                         </Button>
                                     </Grid>

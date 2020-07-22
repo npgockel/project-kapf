@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   button6: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.warning.light,
     margin: theme.spacing(1),
   },
   container: {
@@ -311,7 +311,7 @@ function ChildCreate() {
                 onClick={postChild}
                 component={Link} to="/home" className={classes.paper}
                 variant='contained'
-                size='small'
+                size='large'
                 className={classes.button5}
               >
                 Submit

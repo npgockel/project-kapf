@@ -15,13 +15,10 @@ import CardContent from '@material-ui/core/CardContent';
 
 
 const useStyles = makeStyles((theme) => ({
-    appBar: {
-        position: 'relative',
-    },
     layout: {
         width: 'auto',
-        marginLeft: theme.spacing(2),
-        marginRight: theme.spacing(2),
+        // marginLeft: theme.spacing(2),
+        // marginRight: theme.spacing(2),
         [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
             width: 600,
             marginLeft: 'auto',
@@ -30,16 +27,14 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         marginTop: theme.spacing(3),
+        align: 'center',
         marginBottom: theme.spacing(3),
-        padding: theme.spacing(2),
+        padding: theme.spacing(2, 0, 2, 0),
         [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
             marginTop: theme.spacing(6),
             marginBottom: theme.spacing(6),
-            padding: theme.spacing(3),
+            padding: theme.spacing(3, 0, 3, 0),
         },
-    },
-    stepper: {
-        padding: theme.spacing(3, 0, 5),
     },
     buttons: {
         display: 'flex',
@@ -127,25 +122,28 @@ function BabysitterLink(props) {
             <CssBaseline />
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
-                    <Typography component="h1" variant="h4" align="center">
-                        Search for a Babysitter
-          </Typography>
-                    <Typography variant="h6" gutterBottom>
-                        Search
-          </Typography>
-                    <Grid container spacing={3}>
-                        <Grid item xs={6} sm={6}>
+                    <Grid container
+                        justify="center"
+                        spacing={1}
+                        direction="column"
+                        fullwidth
+                        align="center"
+                    >
+                        <Grid item
+                            xs={12}
+                            sm={8}
+                        >
                             <TextField
                                 id="outlined-helperText"
-                                label="Search Babysitters"
+                                label="Babysitters (by email)"
                                 value={babysitterEmail}
-                                helperText="Email only"
+                                // helperText="Email only"
                                 variant="outlined"
                                 onChange={handleEmail}
                             />
                         </Grid>
                         <Grid item xs={6} sm={6}>
-                            <Button onClick={() => findBabysitters(babysitterEmail)} variant='contained' size='large' color='primary'>
+                            <Button onClick={() => findBabysitters(babysitterEmail)} variant='contained' size='medium' >
                                 Search
                 </Button>
                         </Grid>
@@ -158,16 +156,15 @@ function BabysitterLink(props) {
 
                     <Typography variant="h6" gutterBottom>
                         Babysitters Found
-      </Typography>
-
+                    </Typography>
                     <Card className={classes.root}>
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary" gutterBottom>
                                 {babysitterFirstName} {babysitterLastName}
-        </Typography>
+                            </Typography>
                             <Typography className={classes.pos} color="textSecondary">
                                 {babysitter}
-        </Typography>
+                            </Typography>
                         </CardContent>
                         <CardActions>
                             <Button size="small" onClick={postBabysitterLink}>Add Babysitter</Button>

@@ -19,7 +19,7 @@ function App() {
       })
     }
     getCurrentUser()
-  }, []) 
+  }, [])
 
 
 
@@ -73,17 +73,22 @@ function App() {
             </Grid> */}
             <Grid item xs={12}>
               <Switch>
-              <Route exact path={["/","/splashpage"]}>
+                <Route exact path={["/", "/splashpage"]}>
                   <SplashPage
                   />
                 </Route>
-                <Route exact path={["/addchild"]} render={props => < AddChild {...props} />}>
+                <Route
+                  exact path={["/addchild"]} render={props => < AddChild {...props} user={user} logoutUser={logoutUser} />}>
                 </Route>
-                <Route exact path={["/home"]}>
+                <Route
+                  exact path={["/home"]}>
                   <Home
-                  user={user} />
+                    user={user} logoutUser={logoutUser}
+                  />
                 </Route>
-                <Route exact path={["/addbabysitter"]} render={props => < AddBabysitter {...props} />}>
+                <Route
+                  user={user} logoutUser={logoutUser}
+                  exact path={["/addbabysitter"]} render={props => < AddBabysitter {...props} user={user} logoutUser={logoutUser}/>}>
                 </Route>
                 <Route exact path={["/login", "/signup"]}>
                   <Auth
@@ -92,13 +97,17 @@ function App() {
                     signupUser={signupUser}
                   />
                 </Route>
-                <Route exact path={["/child-overview"]} render={props => < ChildOverview {...props} />}>
+                <Route
+                  exact path={["/child-overview"]} render={props => < ChildOverview {...props} user={user} logoutUser={logoutUser}/>}>
                 </Route>
-                <Route exact path={["/logfood"]} render={props => < LogFood {...props} />}>
+                <Route
+                  exact path={["/logfood"]} render={props => < LogFood {...props} user={user} logoutUser={logoutUser}/>}>
                 </Route>
-                <Route exact path={["/logsleep"]} render={props => < LogSleep {...props} />}>
+                <Route
+                  exact path={["/logsleep"]} render={props => < LogSleep {...props} user={user} logoutUser={logoutUser}/>}>
                 </Route>
-                <Route exact path={["/loginfo"]} render={props => < LogInfo {...props} />}>
+                <Route
+                  exact path={["/loginfo"]} render={props => < LogInfo {...props} user={user} logoutUser={logoutUser}/>}>
                 </Route>
               </Switch>
             </Grid>
