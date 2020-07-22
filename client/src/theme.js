@@ -31,9 +31,11 @@ const theme = createMuiTheme({
     },
     info: {
       main: purple[100]
-
     },
-
+    action: {
+      hover: '#ffffff',
+      hoverOpacity: 0.4
+    }
   },
   // spacing: 1,
   shadows: ["none"]

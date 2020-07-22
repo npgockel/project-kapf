@@ -55,8 +55,11 @@ const useStyles = makeStyles((theme) => ({
             width: '25ch',
         },
     },
+    cardpad: {
+        margin: theme.spacing(1),
+    },
     buttonOption1: {
-        background: theme.palette.secondary.light,
+        background: theme.palette.success.main,
         borderRadius: 10,
     }
 }));
@@ -97,11 +100,15 @@ function FoodInput(props) {
 
     function refreshPage() {
         window.location.reload(false);
-      }
+    }
 
     return (
         <>
-            <Grid container spacing={3} direction='column' alignItems='center'>
+            <Grid container
+                fullwidth
+                alignItems="center"
+                className={classes.cardpad}
+            >
                 <Grid item xs={12}>
                     <form className={classes.root} noValidate autoComplete='off'>
                         <div>
@@ -157,9 +164,9 @@ function FoodInput(props) {
                         </div>
                     </form>
                     <Box m={6}>
-                        <Grid container 
-                        direction='column' 
-                        alignItems='center'>
+                        <Grid container
+                            direction='column'
+                            alignItems='center'>
                             <Grid item
                                 xs={12}
                                 className={classes.buttonOption1}>

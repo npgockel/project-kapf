@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 275,
     backgroundColor: theme.palette.background.paper,
   },
+  cardpad: {
+    margin: theme.spacing(1),
+  },
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
@@ -30,8 +33,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 12,
   },
   button1: {
-    backgroundColor: theme.palette.success.main,
+    backgroundColor: theme.palette.info.main,
     margin: theme.spacing(1),
+    borderRadius: 10,
   },
 }));
 
@@ -78,7 +82,9 @@ function ChildDislikes(props) {
   return (
     <div>
       <Card className={classes.root}>
-        <Grid item xs={12} md={6}>
+        <Grid item
+          className={classes.cardpad}
+          xs={12} md={6}>
           <TextField
             id="outlined-multiline-static"
             label="Dislikes"

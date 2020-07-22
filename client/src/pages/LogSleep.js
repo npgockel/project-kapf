@@ -1,5 +1,6 @@
 import React from "react";
 import BackBtn from "../components/Layout/BackBtn";
+import Header from "../components/Layout/Header";
 import CopyrightFooter from "../components/Layout/CopyrightFooter";
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Container, Button, Card, CardMedia, Typography, Box, Paper, Grid } from "@material-ui/core";
@@ -24,13 +25,16 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.primary.dark,
     },
     buttonOption4: {
-        background: theme.palette.success.main,
-        borderRadius: 10,
+        background: theme.palette.warning.main,
+        margin: theme.spacing(0),
+        padding: theme.spacing(0),
+            borderRadius: 10,
     },
-    button4: {
-        backgroundColor: theme.palette.success.main,
-        margin: theme.spacing(1),
-        borderRadius: 10,
+    buttonOption3: {
+        background: theme.palette.secondary.light,
+        margin: theme.spacing(0),
+        padding: theme.spacing(0),
+            borderRadius: 10,
     },
     cardGrid: {
         padding: theme.spacing(8),
@@ -60,42 +64,14 @@ function LogSleep(props) {
         <Container
             maxWidth='false'
         >
-            <AppBar
-                position="static"
-                spacing="0"
-                color="transparent"
-                fullwidth
-                className={classes.heroContent}
-            >
-                <Grid container
-                    fullwidth
-                    justify="center"
-                >
-                    <Grid item
-                        xs={12} sm={11} md={10} lg={9} xl={8}
-                    >
-                        <Card
-                            className={classes.radius}
-                        >
-                            <CardMedia
-                                component="img"
-                                alt="Swaddle Swan Logo"
-                                image="Banner.png"
-                                title="Swaddle Swan Logo"
-                            />
-                        </Card>
-                    </Grid>
-                </Grid>
-            </AppBar>
-
+            <Header />
             <main>
                 <Grid container
                     justify="center"
                 >
                     <Grid item
                         className={classes.headBody}
-                        xs={12} sm={11} md={10} lg={9} xl={8}
-
+                        xs={12} sm={10} md={9} lg={8} xl={7}
                     >
                         <div className={classes.root}>
                             <AppBar
@@ -120,7 +96,7 @@ function LogSleep(props) {
                                         </IconButton>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="h5"
+                                        <Typography variant="h6"
                                             align="center"
                                             className={classes.title}
                                         >
@@ -130,9 +106,9 @@ function LogSleep(props) {
                                     <Grid item>
                                         <Button
                                             size="small"
-                                            className={classes.buttonOption4}
+                                            className={classes.buttonOption3}
                                             component={Link} to="/" onClick={logoutUser} color="inherit"
-                                            >
+                                        >
                                             Log<br></br>Out
                                         </Button>
                                     </Grid>
@@ -151,6 +127,7 @@ function LogSleep(props) {
                     <Grid container
                         justify="center"
                         align="center"
+                        direction="row"
                     >
                         <Grid item
                             justify="center"
@@ -164,7 +141,7 @@ function LogSleep(props) {
                         </Grid>
                         <Grid item
                             xs={10}
-                        >
+                            >
                             <SleepTable child={props.location.state} />
                         </Grid>
                     </Grid>

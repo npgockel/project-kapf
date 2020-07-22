@@ -26,7 +26,7 @@ const StyledTableCell = withStyles((theme) => ({
         // color: theme.palette.common.white,
     },
     body: {
-        fontSize: 12,
+        fontSize: 10,
     },
 }))(TableCell);
 
@@ -108,11 +108,15 @@ TablePaginationActions.propTypes = {
 
 
 // ***Style used below in FoodTable return***
-const useStyles2 = makeStyles({
+const useStyles2 = makeStyles((theme) => ({
     table: {
-        minWidth: 500,
+        minWidth: 200,
     },
-});
+    cardpad: {
+        margin: theme.spacing(1, 0, 3, 0),
+    },
+
+}));
 
 
 
@@ -143,7 +147,7 @@ function FoodTable(props) {
     const rows = foods.sort((a, b) => (a.foodDate > b.foodDate ? -1 : 1));
 
 
-  
+
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -158,9 +162,16 @@ function FoodTable(props) {
 
     return (
         <>
-            <Grid container spacing={1} direction="column" alignItems="center">
-                <Grid item xs={12}>
-                    <TableContainer component={Paper}>
+            <Grid container
+                spacing={1}
+                justify="center"
+                className={classes.cardpad}
+            >
+                <Grid item
+                    xs={12} sm={11} md={10} lg={9} xl={8}
+                >
+                    <TableContainer component={Paper}
+                    >
                         <Table className={classes.table} aria-label="custom pagination table">
                             <TableHead>
                                 <TableRow>
@@ -180,16 +191,16 @@ function FoodTable(props) {
                                         <TableCell component="th" scope="row">
                                             {row.foodType}
                                         </TableCell>
-                                        <TableCell style={{ width: 160 }} align="right">
+                                        <TableCell style={{ width: 60 }} align="right">
                                             {row.foodQuantity}
                                         </TableCell>
-                                        <TableCell style={{ width: 160 }} align="right">
+                                        <TableCell style={{ width: 60 }} align="right">
                                             {row.foodUnit}
                                         </TableCell>
-                                        <TableCell style={{ width: 160 }} align="right">
+                                        <TableCell style={{ width: 60 }} align="right">
                                             {moment(row.foodDate).format('LT')}
                                         </TableCell>
-                                        <TableCell style={{ width: 160 }} align="right">
+                                        <TableCell style={{ width: 60 }} align="right">
                                             {moment(row.foodDate).format("MMM Do YYYY")}
                                         </TableCell>
                                     </StyledTableRow>

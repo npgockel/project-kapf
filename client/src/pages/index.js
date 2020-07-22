@@ -8,4 +8,3 @@ export { default as LogFood } from "./LogFood";
 export { default as LogInfo } from "./LogInfo";
 export { default as LogSleep } from "./LogSleep";
 export { default as SplashPage } from "./SplashPage";
-export { default as NannyHome } from "./NannyHome";
