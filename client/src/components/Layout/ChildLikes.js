@@ -9,6 +9,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAlt';
 import { green } from '@material-ui/core/colors';
 import API from '../../utils/API';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,13 +29,18 @@ const useStyles = makeStyles((theme) => ({
   pos: {
     marginBottom: 12,
   },
+  button1: {
+    backgroundColor: theme.palette.success.main,
+    margin: theme.spacing(1),
+  },
 }));
 
 
 
 function ChildLikes(props) {
   const classes = useStyles();
-  const [likes, setLikes] = useState([])
+  const [likes, setLikes] = useState([]);
+  const [postLikes, setPostLikes] = useState([]);
 
   useEffect(() => {
     loadLikes();
@@ -42,38 +50,63 @@ function ChildLikes(props) {
   function loadLikes() {
     API.Likes.getAll()
       .then(res => {
-        setLikes(res.data)
+        let cl = res.data;
+        let cls = cl.filter(item => item.ChildId === props.child.id)
+        setLikes(cls)
       })
       .catch(err => console.log(err))
   }
 
   const postLike = () => {
     let likeData = {
-        like: likes
+      like: likes,
+      ChildId: props.child.id
     }
     API.Likes.create(likeData);
-    console.log(likeData);
-};
+    refreshPage();
+  };
 
-const handleLikesChange = (event) => {
-  setLikes(event.target.value);
-};
+  const handleLikesChange = (event) => {
+    setPostLikes(event.target.value);
+  };
+
+
+  function refreshPage() {
+    window.location.reload(false);
+  };
+
 
   return (
     <div>
       <Card className={classes.root}>
+        <Grid item xs={12} md={6}>
+          <TextField
+            id="outlined-multiline-static"
+            label="Likes"
+            variant="outlined"
+            value={postLikes}
+            onChange={handleLikesChange}
+          />
+          <Button
+            variant="contained"
+            className={classes.button1}
+            onClick={postLike}
+          >
+            Add
+      </Button>
+        </Grid>
         <CardContent>
           <List>
-          {likes.map((list) => (
-            <ListItem >
-              <ListItemIcon>
-              <SentimentSatisfiedAltIcon style={{ color: green[500] }} />
-              </ListItemIcon>
-              <ListItemText>
-                {list.like}
-              </ListItemText>
-            </ListItem>
-              ))}
+            {likes.map((list) => (
+              <ListItem >
+                <ListItemIcon>
+                  <SentimentSatisfiedAltIcon style={{ color: green[500] }} />
+                </ListItemIcon>
+                <ListItemText>
+                  {list.like}
+                </ListItemText>
+              </ListItem>
+            ))}
           </List>
         </CardContent>
       </Card>

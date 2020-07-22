@@ -92,7 +92,6 @@ function FoodInput(props) {
             ChildId: props.child.id
         }
         API.Food.create(foodData);
-        console.log('THE CLICK WORKED!', foodData);
         refreshPage();
     }
 
