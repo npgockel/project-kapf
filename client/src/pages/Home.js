@@ -72,12 +72,15 @@ function Home(props) {
   const classes = useStyles();
   const [childs, setChildren] = useState([])
   const [chosenChild, setChosenChild] = useState([]);
+  const [babysitterChilds, setBabysitterChildren] = useState([]);
+  const [chosenBabysitterChild, setBabysitterChosenChild] = useState([]);
   const { user, logoutUser } = props;
 
 
 
   useEffect(() => {
     loadChildren();
+    loadBabysitterChildren();
   }, [])
 
 
@@ -101,8 +104,33 @@ function Home(props) {
       .catch(err => console.log(err))
   }
 
+  function loadBabysitterChildren() {
+
+    API.BabysitterRelation.getById(props.user.id)
+      .then(res => {
+        
+        const results = [];
+        res.data.forEach(id => {
+          API.Child.getById(id.ChildId)
+            .then(result => {
+              
+              results.push(result.data);
+              if (results.length == res.data.length) {
+                setBabysitterChildren([...results])
+              }
+            })
+            .catch(err => err.status(422).json(err))
+        })
+      })
+      .catch(err => console.log(err))
+  }
+
   function selectChosenChild(event) {
     setChosenChild(childs[event.target.getAttribute("data-index")]);
+  }
+
+  function selectBabysitterChosenChild(event) {
+    setBabysitterChosenChild(babysitterChilds[event.target.getAttribute("data-index")]);
   }
   
   return (
@@ -302,6 +330,43 @@ function Home(props) {
               </Card>
             </Grid>
 
+          </Grid>
+
+//////////////////////////////////Under Construction/////////////////////////////////////////
+
+          <Grid container
+            justify="center"
+            align="center"
+            // spacing={4}
+            >
+            {
+              babysitterChilds.map((card, index) => (
+                <Grid item key={card} xs={12} sm={6} md={4}>
+                  <Card className={classes.card}
+                  >
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={card.childImg}
+                      title="Your Child's Image"
+                      data-index={index}
+                      onClick={selectBabysitterChosenChild}
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {card.childName}
+                      </Typography>
+                    </CardContent>
+                    <CardActions
+                    >
+                      <Button component={Link} data-index={index} to={{ pathname: "/child-overview", state: chosenBabysitterChild }} size="small" color="primary">
+                        View
+                    </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))
+            }
+            
           </Grid>
         </Container>
       </main>
