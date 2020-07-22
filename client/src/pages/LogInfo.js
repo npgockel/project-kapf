@@ -54,9 +54,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
 function LogInfo(props) {
     const classes = useStyles();
-
+ 
 
     return (
         <Container
@@ -151,7 +152,7 @@ function LogInfo(props) {
                         spacing={1}
                     >
                         <Grid item
-                        xs={10} sm={9} md={4}
+                            xs={10} sm={9} md={4}
                         >
                             <Paper className={classes.buttonOption4}>
                                 <Typography variant="h5" className={classes.text}>Likes</Typography>
@@ -159,8 +160,8 @@ function LogInfo(props) {
                             <ChildLikes child={props.location.state} />
                         </Grid>
                         <Grid item
-                        xs={10} sm={9} md={4}
-                         >
+                            xs={10} sm={9} md={4}
+                        >
                             <Paper className={classes.buttonOption4}>
                                 <Typography variant="h5" className={classes.text}>Disikes</Typography>
                             </Paper>
@@ -174,7 +175,7 @@ function LogInfo(props) {
                     >
 
                         <Grid item
-                        xs={10} sm={9} md={8}
+                            xs={10} sm={9} md={8}
                         >
                             <Paper className={classes.buttonOption4}>
                                 <Typography variant="h5" className={classes.text}>Allergies</Typography>
@@ -182,7 +183,7 @@ function LogInfo(props) {
                             <ChildAllergies child={props.location.state} />
                         </Grid>
                         <Grid item
-                        xs={10} sm={9} md={8}
+                            xs={10} sm={9} md={8}
                         >
                             <Paper className={classes.buttonOption4}>
                                 <Typography variant="h5" className={classes.text}>Notes</Typography>
@@ -202,3 +203,79 @@ function LogInfo(props) {
 
 
 export default LogInfo;
+
+
+{/* <Paper className={classes.paper}>
+
+<Typography variant="h6" gutterBottom>
+  Health Info and Comments
+</Typography>
+<Grid container spacing={3}>
+  <Grid item xs={12} md={6}>
+    <form>
+      <TextField
+        id="outlined-multiline-static"
+        label="Allergies"
+        variant="outlined"
+        value={allergies}
+        onChange={handleAllergiesChange}
+      />
+      <Button
+        variant="contained"
+        className={classes.button1}
+        onClick={postAllergy}
+      >
+        Add
+          </Button>
+    </form>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <TextField
+      id="outlined-multiline-static"
+      label="Notes"
+      variant="outlined"
+      value={notes}
+      onChange={handleNotesChange}
+    />
+    <Button
+      variant="contained"
+      className={classes.button2}
+      onClick={postNote}
+    >
+      Add
+      </Button>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <TextField
+      id="outlined-multiline-static"
+      label="Likes"
+      variant="outlined"
+      value={likes}
+      onChange={handleLikesChange}
+    />
+    <Button
+      variant="contained"
+      className={classes.button3}
+      onClick={postLike}
+    >
+      Add
+      </Button>
+  </Grid>
+  <Grid item xs={12} md={6}>
+    <TextField
+      id="outlined-multiline-static"
+      label="Dislikes"
+      variant="outlined"
+      value={dislikes}
+      onChange={handleDislikesChange}
+    />
+    <Button
+      variant="contained"
+      className={classes.button4}
+      onClick={postDislike}
+    >
+      Add
+      </Button>
+  </Grid>
+</Grid>
+</Paper> */}
