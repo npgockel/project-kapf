@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Card, Container, CardMedia, Box, Grid, Paper, Typography } from '@material-ui/core';
 import FoodTable from "../components/Layout/FoodTable";
 import FoodInput from "../components/Layout/FoodInput";
+import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -55,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LogFood(props) {
     const classes = useStyles();
+    const { user, logoutUser } = props;
 
     return (
         <Container
@@ -131,7 +133,8 @@ function LogFood(props) {
                                         <Button
                                             size="small"
                                             className={classes.buttonOption4}
-                                        >
+                                            component={Link} to="/" onClick={logoutUser} color="inherit"
+                                            >
                                             Log<br></br>Out
                                         </Button>
                                     </Grid>

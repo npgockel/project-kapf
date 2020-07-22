@@ -4,6 +4,10 @@ import { CardActionArea, Container, Typography, Grid, CssBaseline, Box, Card, Ca
 import { Link } from "react-router-dom";
 import API from '../utils/API';
 import CopyrightFooter from '../components/Layout/CopyrightFooter'
+import BackBtn from "../components/Layout/BackBtn";
+
+import Header from "../components/Layout/Header";
+import IconButton from '@material-ui/core/IconButton';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -12,9 +16,6 @@ const useStyles = makeStyles((theme) => ({
   },
   radius: {
     borderRadius: 10,
-  },
-  topicspacing: {
-    padding: theme.spacing(5),
   },
   buttonOption1: {
     background: theme.palette.warning.main,
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
   },
   headBody: {
-    background: theme.palette.error.main,
+    // background: theme.palette.error.main,
     padding: theme.spacing(2, 0, 2),
     borderRadius: 10,
   },
@@ -37,6 +38,12 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     padding: theme.spacing(8),
 
+  },
+  buttonOption4: {
+    background: theme.palette.secondary.light,
+    margin: theme.spacing(0),
+    padding: theme.spacing(0),
+    borderRadius: 10,
   },
   buttonOption3: {
     background: theme.palette.secondary.main,
@@ -65,6 +72,7 @@ function Home(props) {
   const classes = useStyles();
   const [childs, setChildren] = useState([])
   const [chosenChild, setChosenChild] = useState([]);
+  const { user, logoutUser } = props;
 
 
 
@@ -82,7 +90,6 @@ function Home(props) {
         res.data.forEach(id => {
           API.Child.getById(id.ChildId)
             .then(result => {
-              
               results.push(result.data);
               if (results.length == res.data.length) {
                 setChildren([...results])
@@ -97,64 +104,74 @@ function Home(props) {
   function selectChosenChild(event) {
     setChosenChild(childs[event.target.getAttribute("data-index")]);
   }
-
+  
   return (
     <Container
       maxWidth='false'
     >
-      <AppBar
-        position="static"
-        spacing="0"
-        color="transparent"
-        fullwidth
-        className={classes.heroContent}
-      >
-        <Grid container
-          fullwidth
-          justify="center"
-        >
-          <Grid item
-            xs={12} sm={11} md={10} lg={9} xl={8}
-          >
-            <Card
-              className={classes.radius}
-            >
-              <CardMedia
-                component="img"
-                alt="Swaddle Swan Logo"
-                image="Banner.png"
-                title="Swaddle Swan Logo"
-              />
-            </Card>
-          </Grid>
-        </Grid>
-      </AppBar>
-
+      <Header />
       <main>
         <Grid container
           className={classes.topicspacing}
           justify="center"
+          fullwidth
         >
           <Grid item
             className={classes.headBody}
-            xs={10} sm={9} md={8} lg={7} xl={6}
+            xs={12} sm={10} md={9} lg={8} xl={7}
+
           >
-            <Typography
-              className={classes.headText}
-              component="h1"
-              variant="h4"
-              align="center"
-            >
-              Let's Swaddle!
-            </Typography>
+            <div >
+              <AppBar
+                className={classes.radius}
+                color="transparent"
+
+                position="static">
+                <Grid container
+                  direction="row"
+                  justify="space-between"
+                  alignItems="center"
+                >
+                  <Grid item
+                  >
+                    <IconButton
+                      edge="start"
+                    >
+                      <BackBtn />
+                    </IconButton>
+                  </Grid>
+                  <Grid item
+                    align="center">
+                    <Typography variant="h6"
+                      className={classes.title}
+                    >
+                      Let's<br></br>Swaddle
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      size="small"
+                      className={classes.buttonOption4}
+                      component={Link} to="/" onClick={logoutUser} color="inherit"
+                    >
+                      Log<br></br>Out
+                    </Button>
+                  </Grid>
+                </Grid>
+              </AppBar>
+            </div>
           </Grid>
         </Grid>
 
-        <Container className={classes.cardGrid} maxWidth="md">
+
+        <Container className={classes.cardGrid} 
+        // maxWidth="md"
+        >
           <Grid container
             justify="center"
             align="center"
-            spacing={4}>
+            // spacing={4}
+            >
             {childs.length > 0 && props.user.id ?
               childs.map((card, index) => (
                 <Grid item key={card} xs={12} sm={6} md={4}>

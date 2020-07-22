@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   button6: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.warning.light,
     margin: theme.spacing(1),
   },
   childimagecard: {

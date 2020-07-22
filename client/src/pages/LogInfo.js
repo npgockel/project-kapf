@@ -4,6 +4,7 @@ import { AppBar, Card, Button, IconButton, Container, CardMedia, Typography, Gri
 import BackBtn from "../components/Layout/BackBtn";
 import CopyrightFooter from "../components/Layout/CopyrightFooter"
 import { ChildLikes, ChildDislikes, ChildAllergies, ChildNotes } from "../components";
+import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LogInfo(props) {
     const classes = useStyles();
- 
+    const { user, logoutUser } = props;
 
     return (
         <Container
@@ -134,7 +135,8 @@ function LogInfo(props) {
                                         <Button
                                             size="small"
                                             className={classes.buttonOption4}
-                                        >
+                                            component={Link} to="/" onClick={logoutUser} color="inherit"
+                                            >
                                             Log<br></br>Out
                                         </Button>
                                     </Grid>

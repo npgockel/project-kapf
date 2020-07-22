@@ -16,3 +16,5 @@ export { default as ChildNotes } from "./Layout/ChildNotes";
 export { default as CopyrightFooter } from "./Layout/CopyrightFooter";
 export { default as ChildCreate } from "./Layout/ChildCreate";
 export { default as BabysitterLink } from "./Layout/BabysitterLink";
+export { default as Header } from "./Layout/Header";
+export { default as TopBar } from "./Layout/TopBar";

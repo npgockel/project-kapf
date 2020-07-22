@@ -4,6 +4,7 @@ import { CardActionArea, Container, Typography, Grid, CssBaseline, Box, Card, Ca
 import { Link } from "react-router-dom";
 import API from '../utils/API';
 import CopyrightFooter from '../components/Layout/CopyrightFooter'
+import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -65,7 +66,7 @@ function NannyHome(props) {
   const classes = useStyles();
   const [childs, setChildren] = useState([])
   const [chosenChild, setChosenChild] = useState([]);
-
+  const { user, logoutUser } = props;
 
 
   useEffect(() => {
@@ -132,20 +133,54 @@ function NannyHome(props) {
       <main>
         <Grid container
           className={classes.topicspacing}
-          justify="center"
+          justify="center
+          fullwidth
         >
           <Grid item
             className={classes.headBody}
-            xs={10} sm={9} md={8} lg={7} xl={6}
+            xs={11} sm={10} md={9} lg={8} xl={7}
+
           >
-            <Typography
-              className={classes.headText}
-              component="h1"
-              variant="h4"
-              align="center"
-            >
-              Let's Swaddle!
-            </Typography>
+            <div className={classes.root}>
+              <AppBar
+                className={classes.radius}
+                color="transparent"
+
+                position="static">
+                <Grid container
+                  direction="row"
+                  justify="space-between"
+                  alignItems="center"
+                >
+                  <Grid item>
+                    <IconButton
+                      edge="start"
+                      color="inherit"
+                      aria-label="menu"
+                    >
+                      <BackBtn />
+                    </IconButton>
+                  </Grid>
+                  <Grid item>
+                    <Typography variant="h6"
+                      align="center"
+                      className={classes.title}
+                    >
+                      Let's Make Your<br></br>Child's Profile
+                            </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      size="small"
+                      className={classes.buttonOption4}
+                      component={Link} to="/" onClick={logoutUser} color="inherit"
+                      >
+                      Log<br></br>Out
+                                </Button>
+                  </Grid>
+                </Grid>
+              </AppBar>
+            </div>
           </Grid>
         </Grid>
 

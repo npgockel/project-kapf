@@ -15,7 +15,6 @@ function CopyrightFooter() {
                 Swaddle Swan
       </Link>{' '}
             {new Date().getFullYear()}
-            {'.'}
         </Typography>
     );
 };

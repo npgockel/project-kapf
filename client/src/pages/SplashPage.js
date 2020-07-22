@@ -129,9 +129,9 @@ export default function Album() {
               <CardActionArea>
                 <CardMedia
                   component="img"
-                  alt="Contemplative Reptile"
-                  image="featured_art_istock_baby.jpg"
-                  title="Contemplative Reptile"
+                  alt="Baby Laughing"
+                  image="Development.png"
+                  title="Baby Laughing"
                 />
                 <CardContent>
                   <Typography
@@ -140,15 +140,15 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Log Food and Sleep
+                    Track Development
                   </Typography>
                   <Typography
                     variant="body2"
-                    color="textSecondary"
+                    // color="textSecondary"
                     gutterBottom
                     align="center"
                   >
-                    Track your little one's meals and sleep patterns with our Food/Sleep Log!
+                    Use our logging feature to track your child’s development with our eating and sleep logs, with more log types in future development.
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -163,9 +163,9 @@ export default function Album() {
               <CardActionArea>
                 <CardMedia
                   component="img"
-                  alt="Contemplative Reptile"
-                  image="featured_art_istock_baby.jpg"
-                  title="Contemplative Reptile"
+                  alt="Hands Touching"
+                  image="Communicate.png"
+                  title="Hands Touching"
                 />
                 <CardContent>
                   <Typography
@@ -174,12 +174,12 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Connent With Nanny
+                    Connect
                   </Typography>
                   <Typography
                     variant="body2"
                     align="center">
-                    Track your little one's meals and sleep patterns with our Food/Sleep Log!
+                    Help grandma, the babysitter, or even your pediatrician gain a better understanding of how to take care of your child.
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -194,9 +194,9 @@ export default function Album() {
               <CardActionArea>
                 <CardMedia
                   component="img"
-                  alt="Contemplative Reptile"
+                  alt="Baby Reading"
                   image="featured_art_istock_baby.jpg"
-                  title="Contemplative Reptile"
+                  title="Baby Reading"
                 />
                 <CardContent>
                   <Typography
@@ -205,13 +205,13 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Bond With Your Bebe!
+                    Bond With Your Child!
                   </Typography>
                   <Typography
                     variant="body2"
                     align="center"
                   >
-                    Track your little one's meals and sleep patterns with our Food/Sleep Log!
+                    Does your child like trucks one day, then dinosaurs the next? Don’t let caretakers fall behind the curve.  Track your child’s preferences with our info log.
                   </Typography>
                 </CardContent>
               </CardActionArea>
