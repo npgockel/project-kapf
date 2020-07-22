@@ -3,8 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { CardActionArea, Container, Typography, Grid, CssBaseline, Box, Card, CardActions, CardContent, CardMedia, Button, AppBar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import API from '../utils/API';
-import CopyrightFooter from '../components/Layout/CopyrightFooter'
-import { Link } from "react-router-dom";
+import CopyrightFooter from '../components/Layout/CopyrightFooter';
 
 
 const useStyles = makeStyles((theme) => ({
