@@ -1,4 +1,4 @@
-<h1 align="center">Swaddle your nugget with information</h1>
+<h1 align="center">Swaddle Your Child with Information</h1>
 
 <img align="center" alt="Swaddle logo" src="documentation/readme-images/SplashtestGit.png">
 
