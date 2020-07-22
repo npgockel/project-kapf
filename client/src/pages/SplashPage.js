@@ -12,6 +12,11 @@ const useStyles = makeStyles((theme) => ({
   radius: {
     borderRadius: 10,
   },
+  noHover: {
+    hover: {
+      background: none,
+    }
+  },
   buttonOption1: {
     background: theme.palette.warning.main,
     margin: theme.spacing(6, 0, 0, 0),
@@ -103,6 +108,7 @@ export default function Album() {
               <CardActionArea>
                 <CardMedia
                   component="img"
+                  className={classes.noHover}
                   alt="Baby Laughing"
                   image="Development.png"
                   title="Baby Laughing"
