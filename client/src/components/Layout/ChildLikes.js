@@ -50,16 +50,16 @@ function ChildLikes(props) {
   function loadLikes() {
     API.Likes.getAll()
       .then(res => {
-        let cl = res.data;
-        let cls = cl.filter(item => item.ChildId === props.child.id)
-        setLikes(cls)
+        let chila = res.data;
+        let chilas = chila.filter(item => item.ChildId === props.child.id)
+        setLikes(chilas)
       })
       .catch(err => console.log(err))
   }
 
   const postLike = () => {
     let likeData = {
-      like: likes,
+      like: postLikes,
       ChildId: props.child.id
     }
     API.Likes.create(likeData);

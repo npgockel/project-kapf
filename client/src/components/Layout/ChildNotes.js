@@ -59,7 +59,7 @@ function ChildNotes(props) {
 
   const postNote = () => {
     let noteData = {
-      note: notes,
+      note: postNotes,
       ChildId: props.child.id
     }
     API.Note.create(noteData);

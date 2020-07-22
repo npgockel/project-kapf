@@ -60,7 +60,7 @@ function ChildDislikes(props) {
 
   const postDislike = () => {
     let dislikeData = {
-      dislike: dislikes,
+      dislike: postDislikes,
       ChildId: props.child.id
     }
     API.Dislikes.create(dislikeData);
