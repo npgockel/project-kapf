@@ -49,10 +49,18 @@ function ChildAllergies(props) {
   }
 
 
-  console.log(allergies);
+  const postAllergy = () => {
+    let allergyData = {
+        allergy: allergies
+    }
+    API.Allergy.create(allergyData);
+    console.log(allergyData);
+};
 
 
-
+const handleAllergiesChange = (event) => {
+  setAllergies(event.target.value);
+};
 
 
 

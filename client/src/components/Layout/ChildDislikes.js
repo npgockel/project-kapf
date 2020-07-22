@@ -47,24 +47,33 @@ function ChildDislikes(props) {
       .catch(err => console.log(err))
   }
 
+  const postDislike = () => {
+    let dislikeData = {
+      dislike: dislikes
+    }
+    API.Dislikes.create(dislikeData);
+    console.log(dislikeData);
+  };
 
-  console.log(dislikes);
+  const handleDislikesChange = (event) => {
+    setDislikes(event.target.value);
+  };
 
   return (
     <div>
       <Card className={classes.root}>
         <CardContent>
           <List>
-          {dislikes.map((list) => (
-            <ListItem >
-              <ListItemIcon>
-                <SentimentVeryDissatisfiedIcon style={{ color: red[500] }} />
-              </ListItemIcon>
-              <ListItemText>
-                {list.dislike}
-              </ListItemText>
-            </ListItem>
-              ))}
+            {dislikes.map((list) => (
+              <ListItem >
+                <ListItemIcon>
+                  <SentimentVeryDissatisfiedIcon style={{ color: red[500] }} />
+                </ListItemIcon>
+                <ListItemText>
+                  {list.dislike}
+                </ListItemText>
+              </ListItem>
+            ))}
           </List>
         </CardContent>
       </Card>

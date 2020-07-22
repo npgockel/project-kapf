@@ -47,8 +47,17 @@ function ChildLikes(props) {
       .catch(err => console.log(err))
   }
 
+  const postLike = () => {
+    let likeData = {
+        like: likes
+    }
+    API.Likes.create(likeData);
+    console.log(likeData);
+};
 
-  console.log(likes);
+const handleLikesChange = (event) => {
+  setLikes(event.target.value);
+};
 
   return (
     <div>

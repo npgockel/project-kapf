@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function ChildAllergies(props) {
+function ChildNotes(props) {
   const classes = useStyles();
   const [notes, setNotes] = useState([])
 
@@ -47,7 +47,17 @@ function ChildAllergies(props) {
   }
 
 
-  console.log(notes);
+  const postNote = () => {
+    let noteData = {
+        note: notes
+    }
+    API.Note.create(noteData);
+    console.log(noteData);
+};
+
+const handleNotesChange = (event) => {
+  setNotes(event.target.value);
+};
 
   return (
     <div>
@@ -71,4 +81,4 @@ function ChildAllergies(props) {
   );
 };
 
-export default ChildAllergies;
+export default ChildNotes;
