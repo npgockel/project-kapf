@@ -114,7 +114,7 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Track Development of Your Child
+                     Track <br/>Development
                   </Typography>
                   <Typography
                     variant="body2"
@@ -122,7 +122,7 @@ export default function Album() {
                     gutterBottom
                     align="center"
                   >
-                    Use our logging feature to track your child’s development with our eating and sleep logs, with more log types in future development.
+                    Use our logging feature to track your child’s development with our eating and sleep logs, with more log types to come.
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -148,7 +148,7 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Connect With Caretakers
+                    Connect With <br/> Caretakers
                   </Typography>
                   <Typography
                     variant="body2"
@@ -179,13 +179,13 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Bond With Your Child!
+                    Ducks or <br/> Dinos?
                   </Typography>
                   <Typography
                     variant="body2"
                     align="center"
                   >
-                    Does your child like trucks one day, then dinosaurs the next? Don’t let caretakers fall behind the curve.  Track your child’s preferences with our info log.
+                    Does your child like ducks one day, then dinosaurs the next? Don’t let caretakers fall behind the curve by tracking your child’s interests.
                   </Typography>
                 </CardContent>
               </CardActionArea>
