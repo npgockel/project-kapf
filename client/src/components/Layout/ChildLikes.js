@@ -12,6 +12,7 @@ import API from '../../utils/API';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import DeleteBtn from './DeleteBtn';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,6 +71,12 @@ function ChildLikes(props) {
     refreshPage();
   };
 
+  function deleteLike(id) {
+    API.Likes.delete(id)
+      .then(res => loadLikes())
+      .catch(err => console.log(err));
+  };
+  
   const handleLikesChange = (event) => {
     setPostLikes(event.target.value);
   };
@@ -119,6 +126,7 @@ function ChildLikes(props) {
                 <ListItemText>
                   {list.like}
                 </ListItemText>
+                <DeleteBtn onClick={() => deleteLike(list.id)} />
               </ListItem>
             ))}
           </List>
