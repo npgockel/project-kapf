@@ -114,7 +114,7 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Track Development
+                    Track Development of Your Child
                   </Typography>
                   <Typography
                     variant="body2"
@@ -148,12 +148,12 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Connect
+                    Connect With Caretakers
                   </Typography>
                   <Typography
                     variant="body2"
                     align="center">
-                    Help grandma, the babysitter, or even your pediatrician gain a better understanding of how to take care of your child.
+                    Help grandma, the babysitter, and your pediatrician gain a better understanding of how to take care of your child.
                   </Typography>
                 </CardContent>
               </CardActionArea>
