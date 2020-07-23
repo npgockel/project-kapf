@@ -81,23 +81,31 @@ function ChildNotes(props) {
   return (
     <div>
       <Card >
-        <Grid item
-          className={classes.cardpad}
-          xs={12} md={6}>
-          <TextField
-            id="outlined-multiline-static"
-            label="Notes"
-            variant="outlined"
-            value={postNotes}
-            onChange={handleNotesChange}
-          />
-          <Button
-            variant="contained"
-            className={classes.button1}
-            onClick={postNote}
-          >
-            Add
+        <Grid container
+          justify="center"
+        >
+          <Grid item
+            className={classes.cardpad}
+            xs={12} md={6}>
+            <form
+              align="center"
+            >
+              <TextField
+                id="outlined-multiline-static"
+                label="Notes"
+                variant="outlined"
+                value={postNotes}
+                onChange={handleNotesChange}
+              />
+              <Button
+                variant="contained"
+                className={classes.button1}
+                onClick={postNote}
+              >
+                Add
       </Button>
+            </form>
+          </Grid>
         </Grid>
         <CardContent>
           <List>

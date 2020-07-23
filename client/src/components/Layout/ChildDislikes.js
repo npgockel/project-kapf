@@ -82,23 +82,32 @@ function ChildDislikes(props) {
   return (
     <div>
       <Card className={classes.root}>
-        <Grid item
-          className={classes.cardpad}
-          xs={12} md={6}>
-          <TextField
-            id="outlined-multiline-static"
-            label="Dislikes"
-            variant="outlined"
-            value={postDislikes}
-            onChange={handleDislikesChange}
-          />
-          <Button
-            variant="contained"
-            className={classes.button1}
-            onClick={postDislike}
+        <Grid container
+          justify="center"
+        >
+          <Grid item
+            className={classes.cardpad}
+            xs={12} md={6}
           >
-            Add
+            <form
+              align="center"
+            >
+              <TextField
+                id="outlined-multiline-static"
+                label="Dislikes"
+                variant="outlined"
+                value={postDislikes}
+                onChange={handleDislikesChange}
+              />
+              <Button
+                variant="contained"
+                className={classes.button1}
+                onClick={postDislike}
+              >
+                Add
       </Button>
+            </form>
+          </Grid>
         </Grid>
         <CardContent>
           <List>
