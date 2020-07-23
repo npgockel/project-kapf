@@ -83,23 +83,31 @@ function ChildLikes(props) {
   return (
     <div>
       <Card className={classes.root}>
-        <Grid item
-          className={classes.cardpad}
-          xs={12} md={6}>
-          <TextField
-            id="outlined-multiline-static"
-            label="Likes"
-            variant="outlined"
-            value={postLikes}
-            onChange={handleLikesChange}
-          />
-          <Button
-            variant="contained"
-            className={classes.button1}
-            onClick={postLike}
-          >
-            Add
+        <Grid container
+          justify="center"
+        >
+          <Grid item
+            className={classes.cardpad}
+            xs={12} md={6}>
+            <form
+              align="center"
+            >
+              <TextField
+                id="outlined-multiline-static"
+                label="Likes"
+                variant="outlined"
+                value={postLikes}
+                onChange={handleLikesChange}
+              />
+              <Button
+                variant="contained"
+                className={classes.button1}
+                onClick={postLike}
+              >
+                Add
       </Button>
+            </form>
+          </Grid>
         </Grid>
         <CardContent>
           <List>

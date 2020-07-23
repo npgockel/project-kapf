@@ -86,26 +86,31 @@ function ChildAllergies(props) {
   return (
     <div>
       <Card className={classes.root}>
-        <Grid item
-          className={classes.cardpad}
-
-          xs={12} md={6}>
-          <form>
-            <TextField
-              id="outlined-multiline-static"
-              label="Allergies"
-              variant="outlined"
-              value={postAllergies}
-              onChange={handleAllergiesChange}
-            />
-            <Button
-              variant="contained"
-              className={classes.button1}
-              onClick={postAllergy}
+        <Grid container
+          justify="center"
+        >
+          <Grid item
+            className={classes.cardpad}
+            xs={12} md={6}>
+            <form
+              align="center"
             >
-              Add
+              <TextField
+                id="outlined-multiline-static"
+                label="Allergies"
+                variant="outlined"
+                value={postAllergies}
+                onChange={handleAllergiesChange}
+              />
+              <Button
+                variant="contained"
+                className={classes.button1}
+                onClick={postAllergy}
+              >
+                Add
           </Button>
-          </form>
+            </form>
+          </Grid>
         </Grid>
         <CardContent>
           <List>
