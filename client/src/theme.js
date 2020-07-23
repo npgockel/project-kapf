@@ -12,34 +12,32 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: grey[900],
-      light: grey[100]
+      light: grey[200]
     },
     secondary: {
-      main: blue[100],
-      light: teal[100]
+      main: blue[200],
+      light: teal[200]
     },
     error: {
-      main: red[100]
+      main: red[200]
     },
     warning: {
-      main: yellow[100],
-      light: orange[100]
+      main: yellow[200],
+      light: orange[200]
     },
     success: {
-      main: green[100],
-      light: lime[100]
+      main: green[200],
+      light: lime[200]
     },
     info: {
-      main: purple[100]
+      main: purple[200]
     },
     action: {
       hover: '#ffffff',
       hoverOpacity: 0.4
     }
   },
-  // spacing: 1,
   shadows: ["none"]
-
 });
 
 export default theme;

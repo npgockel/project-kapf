@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';
 import CopyrightFooter from "./Layout/CopyrightFooter";
+import Header from "./Layout/Header";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,39 +46,11 @@ function SignupForm(props) {
         <Container component="main" >
             <CssBaseline />
 
-            <AppBar
-                position="static"
-                spacing="0"
-                color="transparent"
-                fullwidth
-                className={classes.heroContent}
-            >
-                <Grid container
-                    fullwidth
-                    justify="center"
-                >
-                    <Grid item
-                        xs={12} sm={11} md={10} lg={9} xl={8}
-                    >
-                        <Card
-                            className={classes.radius}
-                        >
-                            <CardMedia
-                                component="img"
-                                alt="Swaddle Swan Logo"
-                                image="Banner.png"
-                                title="Swaddle Swan Logo"
-                            />
-                        </Card>
-                    </Grid>
-                </Grid>
-            </AppBar>
-
-
+            <Header />
 
             <Grid container className={classes.paper}>
                 <Grid item
-                align="center"
+                    align="center"
                 >
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon />
@@ -87,7 +60,7 @@ function SignupForm(props) {
                 </Typography>
                 </Grid>
                 <Grid item
-                    xs={11} sm={6} md={4} lg={3} 
+                    xs={11} sm={6} md={4} lg={3}
 
                 >
                     <form className={classes.form} noValidate>
@@ -175,6 +148,7 @@ function SignupForm(props) {
                             component={Link}
                             to="/login"
                             fullWidth
+                            className={classes.submit}
                             align="center"
                         >
                             Aready have an account?<br></br>Log in!

@@ -208,6 +208,7 @@ function Home(props) {
               childs.map((card, index) => (
                 <Grid item key={card}
                   xs={12} sm={6}
+                  boxShadow={10}
                 >
                   <Card className={classes.card}
                   >

@@ -48,7 +48,7 @@ function Header() {
                     justify="center"
                 >
                     <Grid item
-                        xs={12} sm={11} md={10} lg={9} xl={8}
+                        xs={12} sm={10} md={8} lg={6}
                     >
                         <Card
                             className={classes.radius}

@@ -2,8 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CopyrightFooter from "../components/Layout/CopyrightFooter";
 import BabysitterLink from "../components/Layout/BabysitterLink";
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import { Box, Grid, Card, Container, Typography, CardMedia, AppBar, Button } from '@material-ui/core';
+import { Box, Grid, Container, Typography, AppBar, Button } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import Header from "../components/Layout/Header"
 import BackBtn from "../components/Layout/BackBtn";

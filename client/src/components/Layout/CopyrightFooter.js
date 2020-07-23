@@ -1,21 +1,22 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-
-
-
-
+import { Grid, Link, Typography } from '@material-ui/core';
 
 
 function CopyrightFooter() {
     return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="/">
-                Swaddle Swan
-      </Link>{' '}
-            {new Date().getFullYear()}
-        </Typography>
+        <Grid contianer>
+            <Grid item spacing={1}>
+                <Typography variant="body2"
+                    color="textSecondary" align="center">
+                    {'Copyright © '}
+                    <Link color="inherit" href="/">
+                        Swaddle
+                    </Link>{' '}
+                    {new Date().getFullYear()}
+                </Typography>
+
+            </Grid>
+        </Grid>
     );
 };
 

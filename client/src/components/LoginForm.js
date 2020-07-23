@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import CopyrightFooter from '../components/Layout/CopyrightFooter';
+import Header from '../components/Layout/Header';
 import { Link } from "react-router-dom";
 
 
@@ -48,34 +49,7 @@ function LoginForm(props) {
         <Container component="main">
             <CssBaseline />
 
-            <AppBar
-                position="static"
-                spacing="0"
-                color="transparent"
-                fullwidth
-                className={classes.heroContent}
-            >
-                <Grid container
-                    fullwidth
-                    justify="center"
-                >
-                    <Grid item
-                        xs={12} sm={11} md={10} lg={9} xl={8}
-                    >
-                        <Card
-                            className={classes.radius}
-                        >
-                            <CardMedia
-                                component="img"
-                                alt="Swaddle Swan Logo"
-                                image="Banner.png"
-                                title="Swaddle Swan Logo"
-                            />
-                        </Card>
-                    </Grid>
-                </Grid>
-            </AppBar>
-
+<Header/>
             <Grid container
                 className={classes.paper}>
                 <Grid item
@@ -132,6 +106,7 @@ function LoginForm(props) {
                             component={Link}
                             to="/signup"
                             fullWidth
+                            className={classes.submit}
                             align="center"
                         >
                             Don't have an account?<br></br> Sign Up!

@@ -9,9 +9,14 @@ import { CssBaseline } from '@material-ui/core';
 ReactDOM.render(
   <React.StrictMode>
     <CssBaseline />
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <div className="App">
+      <header className="App-header">
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </header>
+    </div>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

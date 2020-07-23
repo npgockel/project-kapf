@@ -3,7 +3,7 @@ import BackBtn from "../components/Layout/BackBtn";
 import Header from "../components/Layout/Header";
 import CopyrightFooter from "../components/Layout/CopyrightFooter";
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Card, Container, CardMedia, Box, Grid, Paper, Typography } from '@material-ui/core';
+import { AppBar, Container, Box, Grid, Paper, Typography } from '@material-ui/core';
 import FoodTable from "../components/Layout/FoodTable";
 import FoodInput from "../components/Layout/FoodInput";
 import { Link } from "react-router-dom";
@@ -34,9 +34,9 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2, 0, 2),
         borderRadius: 10,
     },
-    headText: {
-        color: theme.palette.primary.dark,
-    },
+    // headText: {
+    //     color: theme.palette.primary.dark,
+    // },
     cardGrid: {
         padding: theme.spacing(8),
     },
@@ -84,10 +84,6 @@ function LogFood(props) {
                                 >
                                     <Grid item>
                                         <IconButton
-                                            edge="start"
-                                            className={classes.menuButton}
-                                            color="inherit"
-                                            aria-label="menu"
                                         >
                                             <BackBtn />
                                         </IconButton>
