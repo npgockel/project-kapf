@@ -175,6 +175,7 @@ function SignupForm(props) {
                             component={Link}
                             to="/login"
                             fullWidth
+                            className={classes.submit}
                             align="center"
                         >
                             Aready have an account?<br></br>Log in!

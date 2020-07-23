@@ -191,7 +191,7 @@ function ChildCreate() {
             justify="center"
             alignItems="center">
             <Button
-              className={classes.button6}
+              className={classes.button5}
               onClick={nugImg}>
               Upload Image
           </Button>

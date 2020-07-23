@@ -132,6 +132,7 @@ function LoginForm(props) {
                             component={Link}
                             to="/signup"
                             fullWidth
+                            className={classes.submit}
                             align="center"
                         >
                             Don't have an account?<br></br> Sign Up!

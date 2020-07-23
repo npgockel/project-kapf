@@ -12,11 +12,11 @@ const useStyles = makeStyles((theme) => ({
   radius: {
     borderRadius: 10,
   },
-  noHover: {
-    hover: {
-      background: none,
-    }
-  },
+  // noHover: {
+  //   hover: {
+  //     background: none,
+  //   }
+  // },
   buttonOption1: {
     background: theme.palette.warning.main,
     margin: theme.spacing(6, 0, 0, 0),
