@@ -197,7 +197,7 @@ function Home(props) {
           justify="center"
           align="center"
 
-        >
+        ><Typography variant="h2">Your Children</Typography>
           <Grid container
             justify="center"
             align="center"
@@ -206,6 +206,7 @@ function Home(props) {
           >
             {childs.length > 0 && props.user.id ?
               childs.map((card, index) => (
+                
                 <Grid item key={card}
                   xs={12} sm={6}
                   boxShadow={10}
@@ -335,7 +336,7 @@ function Home(props) {
 
           </Grid>
 
-          //////////////////////////////////Under Construction/////////////////////////////////////////
+          <Typography variant="h2" mt={22}>Children You Babysit</Typography>
 
           <Grid container
             justify="center"
