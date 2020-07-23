@@ -105,7 +105,7 @@ export default function Album() {
             <Card
               className={classes.radius}
             >
-              <CardActionArea>
+              
                 <CardMedia
                   component="img"
                   className={classes.noHover}
@@ -120,7 +120,7 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                     Track <br/>Development
+                     Track <br/>Habits
                   </Typography>
                   <Typography
                     variant="body2"
@@ -128,10 +128,10 @@ export default function Album() {
                     gutterBottom
                     align="center"
                   >
-                    Use our logging feature to track your child’s development with our eating and sleep logs, with more log types to come.
+                    Use our logging feature to track your child’s habits with our eating and sleep logs, with more log types to come.
                   </Typography>
                 </CardContent>
-              </CardActionArea>
+              
             </Card>
           </Grid>
           <Grid item
@@ -140,7 +140,7 @@ export default function Album() {
             <Card
               className={classes.radius}
             >
-              <CardActionArea>
+              
                 <CardMedia
                   component="img"
                   alt="Hands Touching"
@@ -162,7 +162,7 @@ export default function Album() {
                     Help grandma, the babysitter, and your pediatrician gain a better understanding of how to take care of your child.
                   </Typography>
                 </CardContent>
-              </CardActionArea>
+              
             </Card>
           </Grid>
           <Grid item
@@ -171,7 +171,7 @@ export default function Album() {
             <Card
               className={classes.radius}
             >
-              <CardActionArea>
+              
                 <CardMedia
                   component="img"
                   alt="Baby Reading"
@@ -194,7 +194,7 @@ export default function Album() {
                     Does your child like ducks one day, then dinosaurs the next? Don’t let caretakers fall behind the curve by tracking your child’s interests.
                   </Typography>
                 </CardContent>
-              </CardActionArea>
+              
             </Card>
           </Grid>
         </Grid>
