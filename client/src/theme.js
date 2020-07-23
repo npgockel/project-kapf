@@ -37,9 +37,7 @@ const theme = createMuiTheme({
       hoverOpacity: 0.4
     }
   },
-  // spacing: 1,
   shadows: ["none"]
-
 });
 
 export default theme;

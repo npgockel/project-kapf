@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BackBtn from "../components/Layout/BackBtn";
 import Header from "../components/Layout/Header";
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Container, CardMedia, Typography, Card, CardContent, Grid, Paper, Button, Box } from "@material-ui/core";
+import { AppBar, Container, Typography, Card, CardContent, Grid, Paper, Button, Box } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import API from '../utils/API';
 import CopyrightFooter from "../components/Layout/CopyrightFooter"
