@@ -125,7 +125,7 @@ function LogInfo(props) {
                 <div className={classes.root}>
                     <Grid container
                         justify="center"
-                        align="center"
+                        // align="center"
                         fullwidth
                         spacing={1}
                     >
@@ -148,7 +148,7 @@ function LogInfo(props) {
                     </Grid>
                     <Grid container
                         justify="center"
-                        align="center"
+                        // align="center"
                         fullwidth
                     >
 
