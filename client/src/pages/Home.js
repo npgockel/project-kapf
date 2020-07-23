@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.dark,
   },
   cardGrid: {
-    padding: theme.spacing(8),
+    padding: theme.spacing(0),
 
   },
   buttonOption4: {
@@ -63,6 +63,10 @@ const useStyles = makeStyles((theme) => ({
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
+  },
+  titlespace: {
+    paddingTop: theme.spacing(5),
+    paddingBottom: theme.spacing(5),
   },
   cardContent: {
     flexGrow: 1,
@@ -196,8 +200,16 @@ function Home(props) {
           maxWidth="md"
           justify="center"
           align="center"
+        >
+          <Grid item>
+            <Typography
+              variant="h3"
+              className={classes.titlespace}
+            >
+              Your Children
+              </Typography>
+          </Grid>
 
-        ><Typography variant="h2">Your Children</Typography>
           <Grid container
             justify="center"
             align="center"
@@ -206,10 +218,9 @@ function Home(props) {
           >
             {childs.length > 0 && props.user.id ?
               childs.map((card, index) => (
-                
+
                 <Grid item key={card}
                   xs={12} sm={6}
-                  boxShadow={10}
                 >
                   <Card className={classes.card}
                   >
@@ -235,7 +246,7 @@ function Home(props) {
               <div>
                 <Container className={classes.cardGrid}>
                   <Grid container
-                    spacing={10}
+                    spacing={2}
                     direction="row"
                     justify="center"
                   >
@@ -335,17 +346,25 @@ function Home(props) {
             </Grid>
 
           </Grid>
-
-          <Typography variant="h2" mt={22}>Children You Babysit</Typography>
+          <Typography
+            className={classes.titlespace}
+            variant="h3"
+            mt={22}
+          >
+            Children You Babysit
+          </Typography>
 
           <Grid container
             justify="center"
             align="center"
-          // spacing={4}
+            spacing={2}
+            xs={12} md={11}
           >
             {
               babysitterChilds.map((card, index) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
+                <Grid item key={card} 
+                xs={12} sm={6}
+                >
                   <Card className={classes.card}
                   >
                     <CardMedia
@@ -353,19 +372,22 @@ function Home(props) {
                       image={card.childImg}
                       title="Your Child's Image"
                       data-index={index}
-                      onClick={selectBabysitterChosenChild}
+                      onMouseOver={selectChosenChild}
+                      component={Link}
+                      data-index={index}
+                      to={{ pathname: "/child-overview", state: chosenChild }}
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
                         {card.childName}
                       </Typography>
                     </CardContent>
-                    <CardActions
+                    {/* <CardActions
                     >
                       <Button component={Link} data-index={index} to={{ pathname: "/child-overview", state: chosenBabysitterChild }} size="small" color="primary">
                         View
                     </Button>
-                    </CardActions>
+                    </CardActions> */}
                   </Card>
                 </Grid>
               ))
