@@ -12,6 +12,7 @@ import API from '../../utils/API';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import DeleteBtn from './DeleteBtn'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,6 +72,12 @@ function ChildDislikes(props) {
     refreshPage();
   };
 
+  function deleteDislike(id) {
+    API.Dislikes.delete(id)
+      .then(res => loadDislikes())
+      .catch(err => console.log(err));
+  };
+
   const handleDislikesChange = (event) => {
     setPostDislikes(event.target.value);
   };
@@ -119,6 +126,7 @@ function ChildDislikes(props) {
                 <ListItemText>
                   {list.dislike}
                 </ListItemText>
+                <DeleteBtn onClick={() => deleteDislike(list.id)} />
               </ListItem>
             ))}
           </List>

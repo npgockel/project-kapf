@@ -12,6 +12,7 @@ import API from '../../utils/API';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import DeleteBtn from './DeleteBtn';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,6 +73,11 @@ function ChildAllergies(props) {
     refreshPage();
   };
 
+  function deleteAllergy(id) {
+    API.Allergy.delete(id)
+      .then(res => loadAllergies())
+      .catch(err => console.log(err));
+  };
 
   const handleAllergiesChange = (event) => {
     setPostAllergies(event.target.value);
@@ -122,6 +128,7 @@ function ChildAllergies(props) {
                 <ListItemText>
                   {list.allergy}
                 </ListItemText>
+                <DeleteBtn onClick={() => deleteAllergy(list.id)} />
               </ListItem>
             ))}
           </List>

@@ -12,6 +12,7 @@ import API from '../../utils/API';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import DeleteBtn from './DeleteBtn';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,6 +71,12 @@ function ChildNotes(props) {
     refreshPage();
   };
 
+  function deleteNote(id) {
+    API.Note.delete(id)
+      .then(res => loadNotes())
+      .catch(err => console.log(err));
+  };
+
   const handleNotesChange = (event) => {
     setPostNotes(event.target.value);
   };
@@ -117,6 +124,7 @@ function ChildNotes(props) {
                 <ListItemText>
                   {list.note}
                 </ListItemText>
+                <DeleteBtn onClick={() => deleteNote(list.id)} />
               </ListItem>
             ))}
           </List>
