@@ -88,6 +88,23 @@ function ChildNotes(props) {
   return (
     <div>
       <Card >
+        <CardContent>
+          <List>
+            {notes.map((list) => (
+              <Grid item xs={12} md={4} sm={6}>
+              <ListItem >
+                <ListItemIcon>
+                  <InfoIcon style={{ color: blue[500] }} />
+                </ListItemIcon>
+                <ListItemText>
+                  {list.note}
+                </ListItemText>
+                <DeleteBtn onClick={() => deleteNote(list.id)} />
+              </ListItem>
+              </Grid>
+            ))}
+          </List>
+        </CardContent>
         <Grid container
           justify="center"
         >
@@ -114,21 +131,6 @@ function ChildNotes(props) {
             </form>
           </Grid>
         </Grid>
-        <CardContent>
-          <List>
-            {notes.map((list) => (
-              <ListItem >
-                <ListItemIcon>
-                  <InfoIcon style={{ color: blue[500] }} />
-                </ListItemIcon>
-                <ListItemText>
-                  {list.note}
-                </ListItemText>
-                <DeleteBtn onClick={() => deleteNote(list.id)} />
-              </ListItem>
-            ))}
-          </List>
-        </CardContent>
       </Card>
     </div>
   );

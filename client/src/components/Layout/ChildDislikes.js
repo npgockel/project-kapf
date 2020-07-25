@@ -89,6 +89,23 @@ function ChildDislikes(props) {
   return (
     <div>
       <Card className={classes.root}>
+        <CardContent>
+          <List>
+            {dislikes.map((list) => (
+              <Grid item xs={12} md={4} sm={6}>
+              <ListItem >
+                <ListItemIcon>
+                  <SentimentVeryDissatisfiedIcon style={{ color: red[500] }} />
+                </ListItemIcon>
+                <ListItemText>
+                  {list.dislike}
+                </ListItemText>
+                <DeleteBtn onClick={() => deleteDislike(list.id)} />
+              </ListItem>
+              </Grid>
+            ))}
+          </List>
+        </CardContent>
         <Grid container
           justify="center"
         >
@@ -116,21 +133,6 @@ function ChildDislikes(props) {
             </form>
           </Grid>
         </Grid>
-        <CardContent>
-          <List>
-            {dislikes.map((list) => (
-              <ListItem >
-                <ListItemIcon>
-                  <SentimentVeryDissatisfiedIcon style={{ color: red[500] }} />
-                </ListItemIcon>
-                <ListItemText>
-                  {list.dislike}
-                </ListItemText>
-                <DeleteBtn onClick={() => deleteDislike(list.id)} />
-              </ListItem>
-            ))}
-          </List>
-        </CardContent>
       </Card>
     </div>
   );

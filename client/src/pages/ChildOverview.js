@@ -50,13 +50,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.error.main,
         margin: theme.spacing(1),
         borderRadius: 10,
-    },
-    // root: {
-    //     flexGrow: 1,
-    // },
-    cardImg: {
-        height: 250,
-        width: 250
     }
 }));
 
@@ -142,7 +135,7 @@ function ChildOverview(props) {
                                 <Grid item xs={12}>
                                     <Card>
                                         <CardContent>
-                                            <img className={classes.cardImg} src={childs.childImg} alt="beauty"></img>
+                                            <img src={childs.childImg} alt="beauty"></img>
                                         </CardContent>
                                     </Card>
                                 </Grid>

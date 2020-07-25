@@ -92,6 +92,23 @@ function ChildAllergies(props) {
   return (
     <div>
       <Card className={classes.root}>
+        <CardContent>
+          <List>
+            {allergies.map((list) => (
+              <Grid item xs={12} md={4} sm={6}>
+              <ListItem >
+                <ListItemIcon>
+                  <HealingIcon style={{ color: yellow[900] }} />
+                </ListItemIcon>
+                <ListItemText>
+                  {list.allergy}
+                </ListItemText>
+                <DeleteBtn onClick={() => deleteAllergy(list.id)} />
+              </ListItem>
+              </Grid>
+            ))}
+          </List>
+        </CardContent>
         <Grid container
           justify="center"
         >
@@ -118,21 +135,6 @@ function ChildAllergies(props) {
             </form>
           </Grid>
         </Grid>
-        <CardContent>
-          <List>
-            {allergies.map((list) => (
-              <ListItem >
-                <ListItemIcon>
-                  <HealingIcon style={{ color: yellow[900] }} />
-                </ListItemIcon>
-                <ListItemText>
-                  {list.allergy}
-                </ListItemText>
-                <DeleteBtn onClick={() => deleteAllergy(list.id)} />
-              </ListItem>
-            ))}
-          </List>
-        </CardContent>
       </Card>
     </div>
   );

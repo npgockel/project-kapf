@@ -76,7 +76,7 @@ function ChildLikes(props) {
       .then(res => loadLikes())
       .catch(err => console.log(err));
   };
-  
+
   const handleLikesChange = (event) => {
     setPostLikes(event.target.value);
   };
@@ -90,6 +90,25 @@ function ChildLikes(props) {
   return (
     <div>
       <Card className={classes.root}>
+        <CardContent>
+          <List>
+          <Grid container spacing={3} direction="row">
+            {likes.map((list) => (
+              <Grid item xs={12} md={4} sm={6}>
+              <ListItem >
+                <ListItemIcon>
+                  <SentimentSatisfiedAltIcon style={{ color: green[500] }} />
+                </ListItemIcon>
+                <ListItemText>
+                  {list.like}
+                </ListItemText>
+                <DeleteBtn onClick={() => deleteLike(list.id)} />
+              </ListItem>
+              </Grid>
+            ))}
+            </Grid>
+          </List>
+        </CardContent>
         <Grid container
           justify="center"
         >
@@ -116,21 +135,6 @@ function ChildLikes(props) {
             </form>
           </Grid>
         </Grid>
-        <CardContent>
-          <List>
-            {likes.map((list) => (
-              <ListItem >
-                <ListItemIcon>
-                  <SentimentSatisfiedAltIcon style={{ color: green[500] }} />
-                </ListItemIcon>
-                <ListItemText>
-                  {list.like}
-                </ListItemText>
-                <DeleteBtn onClick={() => deleteLike(list.id)} />
-              </ListItem>
-            ))}
-          </List>
-        </CardContent>
       </Card>
     </div>
   );
