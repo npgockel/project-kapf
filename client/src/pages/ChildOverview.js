@@ -106,11 +106,7 @@ function ChildOverview(props) {
                                     alignItems="center"
                                 >
                                     <Grid item>
-                                        <IconButton
-                                            edge="start"
-                                        >
                                             <BackBtn />
-                                        </IconButton>
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="h6"

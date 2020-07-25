@@ -1,14 +1,13 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { CardActionArea, Container, Typography, Grid, CssBaseline, Box, Card, CardActions, CardContent, CardMedia, Button, AppBar } from '@material-ui/core';
+import { CardActionArea, Container, Typography, Grid, Box, Card, CardContent, CardMedia, Button, AppBar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import API from '../utils/API';
 import CopyrightFooter from '../components/Layout/CopyrightFooter'
 import BackBtn from "../components/Layout/BackBtn";
 // import grey from '@material-ui/core/colors/grey';
-
 import Header from "../components/Layout/Header";
-import IconButton from '@material-ui/core/IconButton';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -162,15 +161,8 @@ function Home(props) {
                   justify="space-between"
                   alignItems="center"
                 >
-                  <Grid item
-                  >
-                    <IconButton
-                      edge="start"
-                    >
-                      <BackBtn
-                      // style={{ color: grey[50] }}
-                      />
-                    </IconButton>
+                  <Grid>
+                      <BackBtn/>
                   </Grid>
                   <Grid item
                     align="center">

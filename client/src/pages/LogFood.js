@@ -83,10 +83,7 @@ function LogFood(props) {
                                     alignItems="center"
                                 >
                                     <Grid item>
-                                        <IconButton
-                                        >
                                             <BackBtn />
-                                        </IconButton>
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="h6"
