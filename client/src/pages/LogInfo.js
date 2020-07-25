@@ -123,20 +123,20 @@ function LogInfo(props) {
                         spacing={1}
                     >
                         <Grid item
-                            xs={10} sm={9} md={4}
+                            xs={10} sm={9} md={8}
                         >
                             <Paper className={classes.buttonOption1}>
                                 <Typography variant="h5" className={classes.text}>Likes</Typography>
+                                <ChildLikes child={props.location.state} />
                             </Paper>
-                            <ChildLikes child={props.location.state} />
                         </Grid>
                         <Grid item
-                            xs={10} sm={9} md={4}
+                            xs={10} sm={9} md={8}
                         >
                             <Paper className={classes.buttonOption1}>
                                 <Typography variant="h5" className={classes.text}>Disikes</Typography>
+                                <ChildDislikes child={props.location.state} />
                             </Paper>
-                            <ChildDislikes child={props.location.state} />
                         </Grid>
                     </Grid>
                     <Grid container
@@ -150,16 +150,16 @@ function LogInfo(props) {
                         >
                             <Paper className={classes.buttonOption1}>
                                 <Typography variant="h5" className={classes.text}>Allergies</Typography>
+                                <ChildAllergies child={props.location.state} />
                             </Paper>
-                            <ChildAllergies child={props.location.state} />
                         </Grid>
                         <Grid item
                             xs={10} sm={9} md={8}
                         >
                             <Paper className={classes.buttonOption1}>
                                 <Typography variant="h5" className={classes.text}>Notes</Typography>
+                                <ChildNotes child={props.location.state} />
                             </Paper>
-                            <ChildNotes child={props.location.state} />
                         </Grid>
 
                     </Grid>
