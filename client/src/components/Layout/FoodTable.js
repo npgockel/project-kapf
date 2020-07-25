@@ -18,6 +18,7 @@ import TableHead from '@material-ui/core/TableHead';
 import Grid from '@material-ui/core/Grid';
 import API from '../../utils/API';
 import moment from 'moment';
+import DeleteBtn from './DeleteBtn';
 
 // ***Created styles used in FoodTable return***
 const StyledTableCell = withStyles((theme) => ({
@@ -143,6 +144,13 @@ function FoodTable(props) {
     }
 
 
+    function deleteFood(id) {
+        API.Food.delete(id)
+          .then(res => loadFood())
+          .catch(err => console.log(err));
+      };
+
+
     // ***THIS IS WHERE THE DATA FROM API IS PULLED AND SORTED (Gets mapped later inside TableBody)***
     const rows = foods.sort((a, b) => (a.foodDate > b.foodDate ? -1 : 1));
 
@@ -180,6 +188,7 @@ function FoodTable(props) {
                                     <StyledTableCell align="right">Unit</StyledTableCell>
                                     <StyledTableCell align="right">Time</StyledTableCell>
                                     <StyledTableCell align="right">Date</StyledTableCell>
+                                    <StyledTableCell align="right">Remove</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -203,6 +212,9 @@ function FoodTable(props) {
                                         <TableCell style={{ width: 60 }} align="right">
                                             {moment(row.foodDate).format("MMM Do YYYY")}
                                         </TableCell>
+                                        <TableCell style={{ width: 60 }} align="right">
+                                    <DeleteBtn onClick={() => deleteFood(row.id)} />
+                                    </TableCell>
                                     </StyledTableRow>
                                 ))}
 
