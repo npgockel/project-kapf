@@ -72,7 +72,11 @@ function AddChild(props) {
                             >
                                 <Grid item
                                 >
+                                    <IconButton
+                                        edge="start"
+                                    >
                                         <BackBtn />
+                                    </IconButton>
                                 </Grid>
                                 <Grid item>
                                     <Typography variant="h6"

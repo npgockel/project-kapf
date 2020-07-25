@@ -85,7 +85,15 @@ function LogSleep(props) {
                                     alignItems="center"
                                 >
                                     <Grid item>
+                                        <IconButton
+                                            edge="start"
+                                            className={classes.menuButton}
+
+                                            color="inherit"
+                                            aria-label="menu"
+                                        >
                                             <BackBtn />
+                                        </IconButton>
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="h6"

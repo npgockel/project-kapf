@@ -78,7 +78,13 @@ function AddBabysitter(props) {
                                     alignItems="center"
                                 >
                                     <Grid item>
+                                        <IconButton
+                                            edge="start"
+                                            color="inherit"
+                                            aria-label="menu"
+                                        >
                                             <BackBtn />
+                                        </IconButton>
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="h6"
