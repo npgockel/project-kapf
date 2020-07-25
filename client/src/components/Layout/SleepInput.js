@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SleepInput(props) {
-    const [startSleep, setStartSleep] = useState();
-    const [endSleep, setEndSleep] = useState();
+    const [startSleep, setStartSleep] = useState(new Date());
+    const [endSleep, setEndSleep] = useState(new Date());
     const [totalSleep, setTotalSleep] = useState("test total");
     const [selectedDate, setSelectedDate] = useState(new Date());
 
