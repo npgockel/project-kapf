@@ -223,7 +223,6 @@ function Home(props) {
                       data-index={index}
                       onMouseOver={selectChosenChild}
                       component={Link}
-                      data-index={index}
                       to={{ pathname: "/child-overview", state: chosenChild }}
                     />
                     <CardContent className={classes.cardContent}>
@@ -364,10 +363,10 @@ function Home(props) {
                       image={card.childImg}
                       title="Your Child's Image"
                       data-index={index}
-                      onMouseOver={selectChosenChild}
+                      onMouseOver={selectBabysitterChosenChild}
                       component={Link}
                       data-index={index}
-                      to={{ pathname: "/child-overview", state: chosenChild }}
+                      to={{ pathname: "/child-overview", state: chosenBabysitterChild }}
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
