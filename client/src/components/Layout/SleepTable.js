@@ -18,6 +18,7 @@ import TableHead from '@material-ui/core/TableHead';
 import Grid from '@material-ui/core/Grid';
 import API from '../../utils/API';
 import moment from 'moment';
+import DeleteBtn from './DeleteBtn';
 
 // ***Created styles used in FoodTable return***
 const StyledTableCell = withStyles((theme) => ({
@@ -138,7 +139,13 @@ function SleepTable(props) {
                 setSleep(css)
             })
             .catch(err => console.log(err))
-    }
+    };
+
+    function deleteSleep(id) {
+        API.Sleep.delete(id)
+          .then(res => loadSleep())
+          .catch(err => console.log(err));
+      };
 
     // ***THIS IS WHERE THE DATA FROM API IS PULLED AND SORTED (Gets mapped later inside TableBody)***
     const rows = sleep.sort((a, b) => (a.date < b.date ? -1 : 1));
@@ -173,6 +180,7 @@ function SleepTable(props) {
                                 <StyledTableCell align="right">End Time</StyledTableCell>
                                 <StyledTableCell align="right">Total Nap Time</StyledTableCell>
                                 <StyledTableCell align="right">Date</StyledTableCell>
+                                <StyledTableCell align="right">Remove</StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -193,9 +201,11 @@ function SleepTable(props) {
                                     <TableCell style={{ width: 160 }} align="right">
                                         {moment(row.sleepDate).format("MMM Do YYYY")}
                                     </TableCell>
+                                    <TableCell style={{ width: 160 }} align="right">
+                                    <DeleteBtn onClick={() => deleteSleep(row.id)} />
+                                    </TableCell>
                                 </StyledTableRow>
                             ))}
-
                             {emptyRows > 0 && (
                                 <TableRow style={{ height: 53 * emptyRows }}>
                                     <TableCell colSpan={6} />
