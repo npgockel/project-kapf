@@ -109,9 +109,9 @@ export default function Album() {
                 <CardMedia
                   component="img"
                   className={classes.noHover}
-                  alt="Baby Laughing"
+                  alt="Baby Reading"
                   image="Development.png"
-                  title="Baby Laughing"
+                  title="Baby Reading"
                 />
                 <CardContent>
                   <Typography
@@ -143,9 +143,9 @@ export default function Album() {
               
                 <CardMedia
                   component="img"
-                  alt="Hands Touching"
+                  alt="Caregivers Comparing Notes"
                   image="Communicate.png"
-                  title="Hands Touching"
+                  title="Caregivers Comparing Notes"
                 />
                 <CardContent>
                   <Typography
@@ -154,7 +154,7 @@ export default function Album() {
                     component="h2"
                     align="center"
                   >
-                    Connect With <br/> Caretakers
+                    Connect With <br/> Caregivers
                   </Typography>
                   <Typography
                     variant="body2"
@@ -174,9 +174,9 @@ export default function Album() {
               
                 <CardMedia
                   component="img"
-                  alt="Baby Reading"
+                  alt="Baby Laughing"
                   image="featured_art_istock_baby.jpg"
-                  title="Baby Reading"
+                  title="Baby Laughing"
                 />
                 <CardContent>
                   <Typography
@@ -191,7 +191,7 @@ export default function Album() {
                     variant="body2"
                     align="center"
                   >
-                    Does your child like ducks one day, then dinosaurs the next? Don’t let caretakers fall behind the curve by tracking your child’s interests.
+                    Does your child like ducks one day, then dinosaurs the next? Don’t let caregivers fall behind the curve by tracking your child’s interests.
                   </Typography>
                 </CardContent>
               
