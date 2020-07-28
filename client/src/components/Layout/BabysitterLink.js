@@ -11,6 +11,7 @@ import CopyrightFooter from './CopyrightFooter';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import { Link } from "react-router-dom";
 
 
 
@@ -108,7 +109,7 @@ function BabysitterLink(props) {
     }, [babysitterId])
 
 
-
+    console.log(props)
 
 
     function findBabysitters(babysitterEmailQuery) {
@@ -183,6 +184,8 @@ function BabysitterLink(props) {
                         size="medium"
                         onClick={postBabysitterLink}
                         className={classes.button4}
+                        component={Link}
+                    to={{ pathname: "/home" }}
                     >
                         Add Babysitter
                     </Button>
