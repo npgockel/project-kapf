@@ -2,6 +2,10 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { red, grey, blue, orange, teal, lime, purple, yellow, green } from '@material-ui/core/colors'
 
 const theme = createMuiTheme({
+  typography: {
+    // fontFamily: "Dosis, sans-serif"
+    fontFamily: "Sniglet, cursive"
+  },
   props: {
     // Name of the component ⚛️
     MuiButtonBase: {
